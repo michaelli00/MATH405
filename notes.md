@@ -13,6 +13,8 @@ header-includes:
 output: pdf_document
 ---
 
+\newpage
+
 # Vector Spaces
 
 ## Definitions
@@ -475,7 +477,7 @@ Thus the vectors form a basis and $\dim (U \times W) = \dim U + \dim W$
 
 ## Space of Matrices
 
-**Definition - Matrix**: An $m$-by-$n$ **matrix** in $K$ is denoted
+**Definition - Matrix**: An $m$-by-$n$ **matrix** in $K$ is denoted by
 $$\begin{bmatrix} a_{11} & \cdots & a_{1n}\\ \vdots & \cdots & \vdots \\ a_{m1} & \cdots & a_{mn} \end{bmatrix}$$
 
 - Each **component** is denoted $a_{ij}$ for $i = 1, \ldots, m$ and $j = i, \ldots, n$
@@ -495,8 +497,8 @@ $$\begin{bmatrix} a_{11} & \cdots & a_{1n}\\ \vdots & \cdots & \vdots \\ a_{m1} 
 
 Matrix operations:
 
-- Addition: components $a_{ij}$ and $b_{ij}$ are added componentwise
-- Scalar Multiplication: Each component $a_{ij}$ is multiplied by $c$
+- **Addition**: components $a_{ij}$ and $b_{ij}$ are added componentwise
+- **Scalar Multiplication**: Each component $a_{ij}$ is multiplied by $c$
 
 Under these operations, it's clear that matrices satisfy all the properties of a vector space, which we denote Mat$_{x \times n}(K)$
 
@@ -530,7 +532,7 @@ Under these operations, it's clear that matrices satisfy all the properties of a
 \end{align*}
 
 - This system is said to be **homogeneous** if $b_1 = \cdots = b_m = 0$
-- Here the matrix $A$ is called the matrix of **coefficients**
+- Here the matrix $A$ is called the **matrix of coefficients**
 
 Clearly the homogeneous system always has the **trivial solution** where $x_j = 0$
 
@@ -565,7 +567,7 @@ $$x_1 A^1 + \cdots + x_n A^n = B$$
 
 *Proof*: Since $A^1, \ldots, A^n$ are linearly independent, they form a basis of $K^n$
 
-Thus any vector $B$ has a unique expressions as a linear combination
+Thus any vector $B$ has a unique expression as a linear combination of $A^1, \ldots, A^n$
 $$B = x_i A^1 + \cdots + x_n A^n$$
 Thus $X = (x_1, \ldots, x_n)$, for $x_i \in K$, is the unique solution of the system
 
@@ -578,12 +580,77 @@ Thus $X = (x_1, \ldots, x_n)$, for $x_i \in K$, is the unique solution of the sy
 &nbsp;
 
 **Definition - Matrix Product**: Let $A$ be an $m$-by-$n$ matrix and $B$ be an $n$-by-$s$ matrix. Then the **product** $AB$ is the $m$-by-$s$ matrix whose $ik$-coordinate is
-$$\sum_{j = 1}^n = a_{ij} b_{jk} = a_{i1} b_{ik} + \cdots + a_{in} b_{nj}$$
-We can also interpret this definition as the dot product of row vectors, $A_1, \ldots, A_m$, of matrix $A$ witht he column vectors, $B^1, \ldots, B^s$, of matrix $B$. Then
+$$\sum_{j = 1}^n a_{ij} b_{jk} = a_{i1} b_{ik} + \cdots + a_{in} b_{nk}$$
+We can also interpret this definition as the dot product of row vectors, $A_1, \ldots, A_m$, of matrix $A$ with the column vectors, $B^1, \ldots, B^s$, of matrix $B$. Then
 $$AB = \begin{bmatrix} A_1 \cdot B^1 & \cdots & A_1 \cdot B^s \\ \vdots & \vdots & \vdots \\ A_m \cdot B^1 & \cdots & A_m \cdot B^s \end{bmatrix}$$
 
 - For a column vector $B$, the product $AB$ produces a column vector
 $$\begin{bmatrix} a_{11} & \cdots & a_{1n} \\ \vdots & \vdots & \vdots \\ a_{m1} & \cdots & a_{mn}\end{bmatrix} \begin{bmatrix} b_1 \\ \vdots \\ b_n \end{bmatrix} = \begin{bmatrix} c_1 \\ \vdots \\ c_m\end{bmatrix}$$
-- For a row vector, the product $XA$ produces a row vector
+- For a row vector $X$, the product $XA$ produces a row vector
 $$\begin{bmatrix} x_1 & \cdots & x_m \end{bmatrix} \begin{bmatrix} a_{11} & \cdots & a_{1n} \\ \vdots & \vdots & \vdots \\ a_{m1} & \cdots & a_{mn}\end{bmatrix} = \begin{bmatrix} y_1 & \cdots & y_n\end{bmatrix}$$
 
+
+&nbsp;
+
+**Theorem 3.1**: Let $A, B, C$ be matrices and assume that $A, B$ can be multiplied, $A, C$ can be multiplied, and $B, C$ can be added. Then $A, B + C$ can be multiplied. Thus
+$$A(B + C) = AB + AC$$
+Furthermore, if $x \in K$, then
+$$A(xB) + x(AB)$$
+
+*Proof*: Let $A_i$ be the $i$-th row of $A$, and let $B^k, C^k$ be the $k$-th column of $B$ and $C$, respectively
+
+Then $B^k + C^k$ is the $k$-th column of $B + C$
+
+By definition, the $ik$-component of $AB$ is $A_i \cdot B^k$, the $ik$-component of $AC$ is $A_i \cdot C^k$, and the $ik$-component of $A(B + C)$ is $A_i \cdot (B^k + C^k)$
+
+Thus by construction we see that $A(B + C) = AB + AC$
+
+For the second assertion, note that the $k$-th column of $xB$ is $xB^k$
+
+Thus we see that
+$$A_i \cdot xB^k = x(A_i B^k)$$
+
+Thus by construction, our second assertion holds
+
+&nbsp;
+
+**Theorem 3.2**: Let $A, B, C$ be matrices such that $A, B$ can be multiplied and $B, C$ can be multiplied. Then we have
+$$(AB)C = A(BC)$$
+
+*Proof*: TODO
+
+&nbsp;
+
+**Definition - Invertible**: Let $A$ be a square $n \times n$ matrix. Then $A$ is **invertible** if there exists an $n \times n$ matrix $A^{-1}$ such that
+$$AA^{-1} = A^{-1}A = I_n$$
+
+- **Note**: the matrix $B$ is unique, for if there was a matrix $C$ such that $AC = CA = I_n$, then
+$$B = BI_n B(AC) + I_n C = C$$
+
+&nbsp;
+
+**Definition - Matrix Powers**: Let $A$ be a square matrix. Then we can form the product $A$ with itself multiple times, denoted $A^m$
+
+- The usual rule $A^{r + s} = A^r A^s$ holds for $r, s \in Z \wedge r, s \geq 0$
+- *Note**: We define $A^0 = I$
+
+&nbsp;
+
+**Theorem 3.3**: Let $A, B$ be matrices that can be multiplied. Then $B^t, A^t$ can be multiplied and
+$$(AB)^t = B^t A^t$$
+
+*Proof*: Let $A = (a_{ij})$ and $B = (b_{jk})$, and let $AB = C$. Then
+$$c_{ik} = \sum_{j = 1}^n a_{ij}b_{jk}$$
+Let $B^t = (b'_{kj})$ and $A^t = (a'_{ji})$. Then the $ki$-component of $B^t A^t$ is defined as
+$$\sum_{j = 1}^{n}b'_{kj} a'_{ji}$$
+Since $b'_{kj} = b_{jk}$ and $a'_{ji} = a_{ij}$, we see that
+$$\sum_{j = 1}^{n}b'_{kj} a'_{ji} = \sum_{j = 1}^n a_{ij}b_{jk}$$
+By definition, this is the $ki$-component of $C^t$. Thus by construction the statement holds
+
+&nbsp;
+
+&nbsp;
+
+**Upshot**: In terms of matrix multiplication, we can now write a system of linear equations in the from
+$$AX = B$$
+For an $m$-by-$n$ matrix $A$, a column vector $X$ of size $n$, and a column vector $B$ of size $m$
