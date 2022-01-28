@@ -226,3 +226,116 @@ Then $W$ is an $R$-vector space. We prove this by showing that $W$ is a subspace
 
 - $+:$ Take $a_1 \sin(x) + b_1 \cos(x)$ and $a_2 \sin(x) + b_2 \cos(x) \in W$. Then $(a_1 + a_2) \sin(x) + (b_1 + b_2) \cos(x) \in W$
 - $\times:$ Take $r \in R$. Then $r(a \sin(x) + b \cos(x)) = (ra) \sin(x) + (rb) \cos(x) \in W$
+
+## Basis
+
+**Definition - Linear Combination**: For vectors $\{v_1, \ldots, v_n\} \subseteq V$, a **linear combination** of $\{v_1, \ldots, v_n\}$ is any vector of the form
+$$a_1 v_1 + \cdots + a_n v_n \quad \quad a_i \in K$$
+
+&nbsp;
+
+**Definition - Span**: $\Span(\{v_1, \ldots, v_n\}) = \{\text { all linear combinations of } \{v_1, \ldots, v_n\}\}$
+
+&nbsp;
+
+**Proposition 1**: $W = \Span(\{v_1, \ldots, v_n\})$ is a subspace of $V$ and thus is itself a $K$-Vector Space
+
+*Proof*: We show that $W$ satisfies the necessary criteria to be a subspace of $V$
+
+- $+:$ Let $a = a_1 v_1 + \cdots + a_n v_n \in W$ and $b = b_1 v_1 + \cdots + b_n v_n \in W$
+
+    Then $a + b = (a_1 + b_1) v_1 + \cdots + (a_n + b_n) \in W$
+
+    Thus $W$ is closed under addition
+
+- Scalar $\times:$ Let $a = a_1 v_1 + \cdots + a_n v_n \in W$ and let $c \in K$
+
+    Then $ca = (c a_1)v_1 + \cdots + (c a_n) \in W$
+
+    Thus $W$ is closed under scalar multiplication
+
+&nbsp;
+
+**Example**: Take $(5, 3, 1)$ and $(4, 0 , -2) \in R^3$
+
+$\Span(\{(5, 3, 1), (4, 0, -2)\})$ is a plane in $R^3$ passing through $(0, 0, 0)$
+
+&nbsp;
+
+**Example**: Take $(5, 3, 1)$ and $(10, 6 , 2) \in R^3$
+
+$\Span(\{(5, 3, 1), (10, 6, 2)\})$ is a line in $R^3$ passing through $(0, 0, 0)$
+
+- **Note**: $(10, 6, 2) = 2(5, 3, 1)$. Thus $\Span(\{(5, 3, 1), (10, 6, 2)\}) = a_1 (5, 3, 1) + a_2 (10, 6, 2) = (a_1 + 2a_2) (5, 3, 1)$
+
+&nbsp;
+
+**Definition - Linearly Independent**: $\{v_1, \cdots, v_n\}$ is **linearly independent** if whenever $a_1 v_1 + \cdots + a_n v_n = 0$, then $a_1 = \cdots = a_n = 0$
+
+- Otherwise $\{v_1, \ldots, v_n\}$ is **linearly dependent**
+
+&nbsp;
+
+**Proposition 2**: $\{v_1, \ldots, v_n\}$ is linearly independent if and only if no $v_i$ is a linearly combination of the other $n-1$ vectors
+
+*Proof*: $\implies$ Assume $\{v_1, \ldots, v_n\}$ is linearly independent
+
+BWOC, assume some $v_i = a_1 v_1 + \cdots + a_n v_n$ for some $v_i \notin \{v_1, \ldots, v_n\}$
+
+Then we have
+$$O = a_1 v_1 + \cdots + a_n v_n + (-1)v_i$$
+Since $v_i$ is a linear combination of $\{v_1, \ldots, v_n\}$, the above equation shows that $\{v_1, \ldots, v_n\}$ is linearly dependent. Contradiction
+
+Thus $v_i$ cannot be written as a linear combination of the other vectors
+
+$\impliedby$ Assume by way of contraposition that $\{v_1, \ldots, v_n\}$ is not linearly independent
+
+Thus choose $a_1, \ldots, a_n \in K$, not all $0$ such that
+
+$$a_1 v_1 + \cdots + a_n v_n = O$$
+WLOG, assume $a_1 \neq 0$. Then $v_2 a_2 + \cdots + a_n v_n = a_1 v_n$
+
+Since $a_1 \neq 0$ and $K$ is a field, we have
+$$v_1 = \frac{a_2}{-a_1} v_2 + \cdots + \frac{a_n}{-a_1}v_n$$
+Thus we have shown that $v_1$ is a linear combination of the other $n-1$ vectors
+
+&nbsp;
+
+**Corollary 3**: $\{v_1, \ldots, v_n\}$ is linearly independent if and only if for each $i$, $v_i \notin \Span(\{v_1, \ldots, v_n\} \setminus \{v_i\})$
+
+*Proof*: This follows from the previous proposition
+
+&nbsp;
+
+**Definition - Spans**: Let $W$ be a $K$-Vector Space and $\{v_1, \ldots, v_n\} \subseteq W$. If $\Span(\{v_1, \ldots, v_n\})$, then $\{v_1, \ldots, v_n\}$ **spans** $W$, so every $w \in W$ is a linear combination of $\{v_1, \ldots, v_n\}$
+
+**Definition - Basis**: $\{v_1, \ldots, v_n\}$ is a **basis** of $W$ if it spans $W$ and is linearly independent
+
+&nbsp;
+
+**Example**: $\{(5, 3, 1), (4, 0, -2)\}$ is a basis for $\Span(\{(5, 3, 1), (4, 0, -2)\})$
+
+**Example**: $\{(5, 3, 1), (10, 6, 2)\}$ is not a basis for $\Span(\{(5, 3, 1), (10, 6, 2)\})$ since it is not linearly independent
+
+&nbsp;
+
+**Proposition 4**: Let $\{v_1, \ldots, v_n\}$ be a basis for $W$ and let $w \in W$ be arbitrary. Then $w$ can be written uniquely as
+$$w = a_1 v_1 + \cdots + a_n v_n \quad \quad a_i \in K$$
+
+*Proof*: Since $\{v_1, \ldots, v_n\}$ spans $W$, every $w \in W$ is a linear combination of $\{v_1, \ldots, v_n\}$
+
+For uniqueness, suppose
+$$w = a_1 v_1 + \cdots + a_n v_n = b_1 v_1 + \cdots + b_n v_n$$
+Then we have
+$$O = (b_1 - a_1) v_1 + \cdots (b_n - a_n)$$
+Since $\{v_1, \ldots, v_n\}$ is linearly independent, we must have $b_i - a_i = 0$, and thus $b_i = a_i$ for each $i$
+
+Thus each $w \in W$ can be written uniquely as a linear combination of $\{v_1, \ldots, v_n\}$
+
+&nbsp;
+
+**Example**: Let $W = \Span(\{\sin(x), \cos(x)\} = \{\text{ all functions of the form } a \sin(x) + b \cos(x) \mid a, b \in R\}$
+
+We know that $W$ is an $R$-Vector Space
+
+$\{ \sin(x), \cos(x)\}$ is linearly independent. Otherwise $\sin(x) = r \cos(x)$ for all $x \in X$ and some $r \in R$. However, this cannot hold for when $x = \pi / 2$ since $\sin(\pi / 2) = 1 \neq r \cos(\pi / 2) = r0$
