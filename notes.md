@@ -339,3 +339,87 @@ Thus each $w \in W$ can be written uniquely as a linear combination of $\{v_1, \
 We know that $W$ is an $R$-Vector Space
 
 $\{ \sin(x), \cos(x)\}$ is linearly independent. Otherwise $\sin(x) = r \cos(x)$ for all $x \in X$ and some $r \in R$. However, this cannot hold for when $x = \pi / 2$ since $\sin(\pi / 2) = 1 \neq r \cos(\pi / 2) = r0$
+
+&nbsp;
+
+Let $\{v_1, \ldots, v_n\} \subseteq V$ and let $W = \Span(\{v_1, \ldots, v_n\})$
+
+Now let $X = \{w_1, \ldots, w_m\} \subseteq W$. Then there are 2 desirable properties of $X$
+
+- **X is Big**: $X$ spans $W$ if $\Span(X) = W$, i.e. all $w \in W$ is a linear combination of vectors from $X$
+- **X is Small**: $X$ is linearly independent, i.e. no element in $X$ is a linear combination of the remaining elements
+
+**Note**: the empty set $\emptyset$ is linearly independent since no element in $\emptyset$ is a linear combination of the others. More notably, $\emptyset$ is a basis for $\{O\}$
+
+&nbsp;
+
+**Shrinking Lemma**: Let $X = \{w_1, \ldots, w_m\} \subseteq W$ and spans $W$ but $X$ is not linearly independent. Then $X \setminus \{w_i\}$ still spans $W$ for some $w_i \in X$
+
+*Proof*: Since $X$ is not linearly independent, we know that some $w_i$ is a linear combination of elements in $X \setminus \{w_i\}$. Suppose
+$$w_i = a_1 w_1 + \cdots + a_m w_m \quad \quad \text{ without $w_i$ occurring}$$
+
+
+Then take arbitrary $u \in W$ where
+$$u = b_1 w_1 + \cdots + b_m w_m$$
+Replacing $w_i$ above with the previous equation, we see that $u$ is a linear combination of $X \setminus \{w_i\}$
+
+Thus $X \setminus \{w_i\} = \Span(W)$
+
+&nbsp;
+
+**Shrinking Theorem**: Let $X = \{w_1, \ldots, w_m\}$ span $W$. Then for some subset $Y \subseteq X$ is a basis of $W$
+
+*Proof*:
+
+Case 0: If $X$ is linearly independent, then $X$ is a basis by definition
+
+Otherwise, apply the shrinking lemma to get $X_1 = X \setminus \{w_i\}$, which spans $W$
+
+Case 1: If $X_1$ is linearly independent, then $X_1$ is a basis
+
+$\ldots$
+
+Since $X$ is finite (it has $m$ elements), we will stop eventually. Either
+
+- Some $X_i$ is linearly independent and we are done
+- Otherwise if we hit case m: $X_m = \emptyset$, which is linearly independent and thus $X_m$ spans $W = \{O\}$
+
+&nbsp;
+
+**Corollary**: If $W = \Span(\{v_1, \ldots, v_n\})$, then some subset of $\{v_1, \ldots, v_n\}$ is a basis
+
+- **Note**: In particular, $W$ has to have a basis
+
+&nbsp;
+
+**Enlarging Lemma**: Suppose $X = \{w_1, \ldots, w_m\} \subseteq W$ and is linearly independent but doesn't span $W$. Then for any $w \in W \setminus \Span(X)$, $X \cup \{w\}$ is still linearly independent
+
+*Proof*: Suppose $a_1 w_1 + \cdots + a_m w_m + bw = O$. We show that $a_1 = \cdots = a_m = b = 0$
+
+Suppose BWOC, $b \neq 0$, then we can solve for $w$
+$$w = \frac{-a_1}{b}w_1 + \cdots + \frac{-a_m}{b}w_m$$
+Which means that $w$ is a linear combination of $X \implies w \in \Span(X)$. Contradiction
+
+Thus $b = 0$. This gives
+$$a_1 w_1 + \cdots + a_m w_m + 0w = O$$
+Since $X = \{w_1, \ldots, w_m\}$ is linearly independent, we also have $a_1 = \cdots = a_m = 0$
+
+Thus $X \cup \{w\}$ is linearly independent
+
+&nbsp;
+
+Main question: does the enlarging process above terminate? After some number of steps, do we get a set $\{w_1, \ldots, w_m\}$ that spans $W$?
+
+**Exchanging Theorem**: Let $X = \{v_1, \ldots, v_n\}$ be any basis for $W$. Choose any $w \in W$ but $w \notin \Span(\{v_k, \ldots, v_n\})$. Then $\exists v_i, i \leq k,$ such that $Y = (X \setminus \{v_i\}) \cup \{w\}$ is still a basis
+
+- **Note**: If $k > n$, then $\{v_k, \ldots, v_n\} = \emptyset$
+
+*Proof*: Since $X$ spans $W$, then we can write
+$$w = a_1 v_1 + \cdots + a_n v_n \implies v_1 = \frac{1}{a_1} + \frac{-a_2}{a_1}v_2 + \cdots + \frac{-a_m}{a_1}v_m$$
+Since $w \notin \Span(\{v_k, \ldots, v_n\})$, we must have $a_i \neq 0$ for some $i < k$
+
+WLOG, let $a_1 \neq 0$. We show that $Y$ spans $W$
+
+Since $X$ spans $W$, for arbitrary $u \in W$, we have
+$$u = d_1 v_1 + \cdots + d_n v_n$$
+Replacing $v_1$ above with the previous equation, we see that $u$ is a linear combination of elements of $Y$ and thus $u \in \Span(Y)$
