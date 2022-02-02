@@ -410,12 +410,12 @@ Thus $X \cup \{w\}$ is linearly independent
 
 Main question: does the enlarging process above terminate? After some number of steps, do we get a set $\{w_1, \ldots, w_m\}$ that spans $W$?
 
-**Exchanging Theorem**: Let $X = \{v_1, \ldots, v_n\}$ be any basis for $W$. Choose any $w \in W$ but $w \notin \Span(\{v_k, \ldots, v_n\})$. Then $\exists v_i, i \leq k,$ such that $Y = (X \setminus \{v_i\}) \cup \{w\}$ is still a basis
+**Exchanging Lemma**: Let $X = \{v_1, \ldots, v_n\}$ be any basis for $W$. Choose any $w \in W$ but $w \notin \Span(\{v_k, \ldots, v_n\})$. Then $\exists v_i, i < k,$ such that $Y = (X \setminus \{v_i\}) \cup \{w\}$ is still a basis
 
 - **Note**: If $k > n$, then $\{v_k, \ldots, v_n\} = \emptyset$
 
-*Proof*: Since $X$ spans $W$, then we can write
-$$w = a_1 v_1 + \cdots + a_n v_n \implies v_1 = \frac{1}{a_1} + \frac{-a_2}{a_1}v_2 + \cdots + \frac{-a_m}{a_1}v_m$$
+*Proof*: First we show that $\Span(Y) = W$. Since $X$ spans $W$, we can write
+$$w = a_1 v_1 + \cdots + a_n v_n \implies v_1 = \frac{1}{a_1}w + \frac{-a_2}{a_1}v_2 + \cdots + \frac{-a_m}{a_1}v_m$$
 Since $w \notin \Span(\{v_k, \ldots, v_n\})$, we must have $a_i \neq 0$ for some $i < k$
 
 WLOG, let $a_1 \neq 0$. We show that $Y$ spans $W$
@@ -423,3 +423,76 @@ WLOG, let $a_1 \neq 0$. We show that $Y$ spans $W$
 Since $X$ spans $W$, for arbitrary $u \in W$, we have
 $$u = d_1 v_1 + \cdots + d_n v_n$$
 Replacing $v_1$ above with the previous equation, we see that $u$ is a linear combination of elements of $Y$ and thus $u \in \Span(Y)$
+
+Next we show that $Y$ is linearly independent
+
+Suppose we have
+$$cw + b_2 v_2 + b_n v_n = O$$
+We show that $c = b_2 = \cdots = b_n = 0$
+
+- If $c = 0 \implies b_2 = \cdots = b_n = 0$ since $\{b_2, \ldots, b_n\}$ is linearly independent
+- Otherwise suppose $c \neq 0$, then we can solve for $w$
+$$w = \frac{-b_2}{c}v_2 + \cdots + \frac{-b_n}{c}v_n \implies v_1 = \frac{1}{a_1}(\frac{-b_2}{c}v_2 + \cdots + \frac{-b_n}{c}v_n) + \frac{-a_1}{a_1}v_2 + \cdots + \frac{-a_m}{a_1v_m}$$
+Thus $v_1$ is a linear combination of $\{v_2, \ldots, v_n\}$, which is a contradiction since we said $X$ was linearly independent. Thus $c = 0$
+
+&nbsp;
+
+**Theorem**: Let $X = \{v_1, \ldots, v_n\}$ be a basis for $W$, and let $\{w_1, \ldots, w_m\} \subseteq W$ be linearly independent. Then $m \leq n$
+
+*Proof*: If $m < n$, we are done
+
+Now assume $m \geq n$, we show that $m = n$
+
+Since $\{w_1, \ldots, w_m\}$ is linearly independent, we have that $w_1 \neq O = \Span(\emptyset)$
+
+Now apply the Exchanging Lemma to the basis $X$, with $k > n$ and $w_1$ Then $\exists v_i$ such that $X_1 = (X \setminus \{v_i\}) \cup \{w_1\}$ is a basis
+
+After reindexing, we see that $X_1$ has $n-1$ vectors from $X$ and $1$ vector from $w_1$
+
+
+Now take $k = n$. Since $\{w_1, \ldots, w_m\}$ is linearly independent, $w_2 \notin \Span(\{w_1\})$
+
+Thus applying the Exchanging Lemma again, there exists $j < k = n$ such that $X_2 = (X_1 \setminus \{v_j\}) \cup \{w_2\}$ is a basis
+
+Reindexing again, we get that $X_2 = \{v_1, \ldots, v_{n-2}, w_1, w_2\}$ is a basis
+
+&nbsp;
+
+After $n$ steps, $X_n$ has no elements from $X$ and $X_n = \{w_1, \ldots, w_n\}$ is a basis
+
+Furthermore, we see that $w_m \in \Span(\{w_1, \ldots, w_n\})$, contradicting that $\{w_1, \ldots, w_m\}$ is linearly independent
+
+Thus $m = n$
+
+&nbsp;
+
+**Corollary**: If $W$ is any $K$-vector space and some basis of $W$ has $n$ elements, then every basis of $W$ has $n$ elements
+
+&nbsp;
+
+**Definition - Finite Dimensional**: Let $W$ be a $K$-vector space. Then $W$ is **finite dimensional** if some basis for $W$ is finite
+
+&nbsp;
+
+**Definition - Dimension**: Number of elements in any basis for a vector space $W$
+
+&nbsp;
+
+**Corollary**: Suppose $\dim(W) = n$ and $X = \{w_1, \ldots, w_n\}$ are any $n$-vectors
+
+1. If $X$ spans $W$, then $X$ is a basis for $W$
+2. If $X$ is linearly independent, then $X$ is a basis for $W$
+
+*Proof*:
+
+1. By Shrinking Theorem, there exists a basis $Y \subseteq X$
+
+    However, $|Y| < n$ contradicts that $\dim(W) = n$
+
+    Thus $Y = X$, i.e. $X$ is a basis
+
+2. By Expansion Theorem, we can expand $X$ to a basis $Y$
+
+    However, $|Y| > n$ contradicts that $\dim(W) = n$
+
+    Thus $Y = X$, i.e. $X$ is a basis
