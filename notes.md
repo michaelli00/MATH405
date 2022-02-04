@@ -340,7 +340,7 @@ We know that $W$ is an $R$-Vector Space
 
 $\{ \sin(x), \cos(x)\}$ is linearly independent. Otherwise $\sin(x) = r \cos(x)$ for all $x \in X$ and some $r \in R$. However, this cannot hold for when $x = \pi / 2$ since $\sin(\pi / 2) = 1 \neq r \cos(\pi / 2) = r0$
 
-&nbsp;
+## Dimension
 
 Let $\{v_1, \ldots, v_n\} \subseteq V$ and let $W = \Span(\{v_1, \ldots, v_n\})$
 
@@ -496,3 +496,129 @@ Thus $m = n$
     However, $|Y| > n$ contradicts that $\dim(W) = n$
 
     Thus $Y = X$, i.e. $X$ is a basis
+
+### Toolbox Corollaries and Results
+
+The following are useful corollaries that can be used to prove additional interesting results
+
+Let $V$ be a $K$-Vector Space with $\dim(V) = n$, i.e. $V$ has some basis with $n$ elements
+
+1. Every basis for $V$ has $n$ elements
+2. If $X \supseteq V$ and $\Span(X) = V$, then $X$ has at least $n$ elements and some subset $Y \subseteq X$ is a basis for $V$
+3. If $Z \subseteq V$ is linearly independent, then $Z$ has at most $n$ elements and $Z$ can be extended to a basis $Y \supseteq Z$ for $V$
+
+&nbsp;
+
+**Example**: Let $V = R^3$. Since $\dim(V) = 3$, $V$ has a basis with $3$ elements
+
+- Consider the **Standard Basis**: $B = \{(1, 0, 0), (0, 1, 0), (0, 0, 1)\}$
+
+Suppose $X = \{v_1, v_2, v_3\} \subseteq V$ for arbitrary vectors
+
+- If $\Span(X) = V$ then $X$ is a basis
+- If $X$ is linearly independent, since $|X| = 3$, $X$ is a basis for $V$
+
+&nbsp;
+
+**Example**: Describe all subspaces $W \subseteq R^3$
+
+**Note**: Since $\dim(V) = 3$, we must have $\dim(W) \leq \dim(V) = 3$
+
+- Case 0: $\dim(W) = 0$
+
+    Clearly $W = \{O\}$
+
+- Case 1: $\dim(W) = 1$
+
+    $W$ is a line going through $(0, 0, 0)$
+
+    Thus a basis for $W$ will be $\{w\}$ for any nonzero $w \in W$
+
+- Case 2: $\dim(W) = 2$
+
+    $W$ is a plane containing $(0, 0, 0)$
+
+    Thus a basis for $W$ will be any 2 element set $\{w_1, w_2\} \subseteq W$ such that
+
+    - Neither element is $O$
+    - $w_2$ is not a scalar multiple of $w_1$
+
+- Case 3: $\dim(W) = 3$
+
+    Only possibility is $W = V = R^3$
+
+&nbsp;
+
+**Examples**: Consider subspaces of $\mathcal{F}(R)$ and look at small subspaces
+
+- $W = \Span(\{e^x\}) = \{re^x \mid r \in R\}$
+
+    This can be thought of as a 1-dimensional subpsace of $\mathcal{F}(R)$
+
+- $V = \Span(\{\sin(x), \cos(x)\}) = \{a \sin(x) + b \cos(x) \mid a, b \in R\}$
+
+    Clearly $\dim(V) = 2$
+
+    Consider $f(x) = \sin(x) \quad g(x) = \cos(x) \quad h(x) = 3 \sin(x) - 2 \cos(x)$
+
+    Since $h = 3f + (-2)g$, $\{f, g, h\}$ is not linearly independent
+
+    Thus $\Span(\{f, g, h\}) = \Span(\{f, g\})$
+
+## Direct Sums
+
+Let $V$ be a $K$-Vector Space with $\dim(V) = n$. Let $W \subseteq V$ be a subspace of $V$. Then $\dim(W) \leq n$
+
+Now choose another subspace $U \subseteq V$
+
+**Note** $W \cap U \neq \emptyset$ since both must contain $O$
+
+Thus the smallest we can make $W \cap U$ is $\{O\}$
+
+Furthermore, it can be shown that both $U \cap W$ and $U + W$ are both subspaces of $V$
+
+**Definition - Direct Sum**: $U \oplus W$ is called a **direct sum** if
+
+- $U \oplus W = U + W$
+- $U \cap W = \{O\}$
+
+We often look at cases where $V = U \oplus W$
+
+&nbsp;
+
+**Example**: Consider $R^3$ and let $W$ be any plane containing $(0, 0, 0)$
+
+If $U$ is any line through $(0, 0, 0)$ such that $U \notin W$, then $R^3 = W \oplus U$
+
+&nbsp;
+
+**Theorem**: Let $V$ be a $K$-Vector Space with $\dim(V) = n$. Let $W \subseteq V$ be any subspace of $V$. Then there exists a subspace $U \subseteq V$ such that
+$$V = U \oplus W$$
+
+*Proof*: Choose any basis $Z = \{w_1, \ldots, w_m\}$ of $W$ (we know that $m \leq n$)
+
+Now extend $Z$ to $Y = Z \cup \{u_1, \ldots, u_r\}$, which is a basis for $V$
+
+Let $U = \Span(\{u_1, \ldots, u_r\})$. Then $U$ is a subspace of $V$ and $\{u_1, \ldots, u_r\}$ is a basis for $U$
+
+- Show that $U \cap W = \{O\}$
+
+    Choose $v \in U \cap W$
+
+    Then we have $v = a_1u_1 + \cdots + a_ru_r = b_1w_1 + \cdots + b_m w_m$
+
+    Since $Y$ is a basis for $V$, then $\{u_1, \ldots, u_r, b_1, \ldots, b_m\}$ is linearly independent
+
+    Thus $v-v = a_1 u_1 + \cdots + a_r u_r - b_1w_1 - \cdots - b_m w_m = O \implies a_1 = \cdots = a_3 = b_1 = \cdots = b_m = 0$
+
+    Thus $v = O$
+
+- Show that $V = U + W$
+
+    Choose any $v \in V$
+
+    Since $Y$ is a basis for $V$
+
+    $v = \underbrace{a_1 u_1 + \cdots + a_r u_r}_{u \in U} + \underbrace{b_1 w_1 + \cdots + b_m w_m}_{w \in W}$
+
+    Thus $v = u + w \implies V = U + W$
