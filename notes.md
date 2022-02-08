@@ -7,6 +7,7 @@ header-includes:
     - \usepackage{mathrsfs}
     - \DeclareMathOperator{\lcm}{lcm}
     - \DeclareMathOperator{\Span}{span}
+    - \DeclareMathOperator{\mat}{Mat}
     - \DeclareMathOperator{\Null}{null}
     - \DeclareMathOperator{\range}{range}
     - \DeclareMathOperator{\matvect}{Mat$_{x \times n}(K)$}
@@ -571,7 +572,7 @@ Let $V$ be a $K$-Vector Space with $\dim(V) = n$. Let $W \subseteq V$ be a subsp
 
 Now choose another subspace $U \subseteq V$
 
-**Note** $W \cap U \neq \emptyset$ since both must contain $O$
+**Note**: $W \cap U \neq \emptyset$ since both must contain $O$
 
 Thus the smallest we can make $W \cap U$ is $\{O\}$
 
@@ -622,3 +623,122 @@ Let $U = \Span(\{u_1, \ldots, u_r\})$. Then $U$ is a subspace of $V$ and $\{u_1,
     $v = \underbrace{a_1 u_1 + \cdots + a_r u_r}_{u \in U} + \underbrace{b_1 w_1 + \cdots + b_m w_m}_{w \in W}$
 
     Thus $v = u + w \implies V = U + W$
+
+# Matrices
+
+**Definition - $\mathbf{m \times n}$ Matrix**: Entries $\in K$ of the form
+$$A = \begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & \cdots & \cdots & a_{mn}\end{bmatrix}$$
+
+&nbsp;
+
+**Example**: $A = \begin{bmatrix} 4 & 0 & 2 \\ -1 & 3 & 6\end{bmatrix}$ is a $2 \times 3$ matrix with entries $\in Q$
+
+&nbsp;
+
+**Note**: Any $2 \times 3$ matrices can be added together componentwise or multiplied by a scalar, resulting in a $2 \times 3$ matrix
+
+- Here the additive identity is $\begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0\end{bmatrix}$
+- here the additive inverse of $A$ (from previous example) is $-A = \begin{bmatrix} -4 & 0 & -2 \\ 1 & -3 & -6\end{bmatrix}$
+
+Thus $\mat_{2 \times 3}(K)$, the set of all $2 \times 3$ matrices with entries in $K$ is a $K$-Vector Space
+
+Here the basis is $B = \{\begin{bmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}, \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 0 \end{bmatrix}, \begin{bmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix}, \begin{bmatrix} 0 & 0 & 0 \\ 1 & 0 & 0 \end{bmatrix}, \begin{bmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \end{bmatrix}, \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 1 \end{bmatrix}\}$
+
+- Clearly spans since any $2 \times 3$ matrix $\begin{bmatrix} a_1 & a_2 & a_3 \\ a_4 & a_5 & a_6\end{bmatrix}$ can be written as a linear combination of elements in $B$
+- Clearly $B$ is linearly independent since the only way to write $O$ is to take each scalar $a_i = 0$
+
+Thus $\dim(\mat_{2 \times 3}(K)) = 6$
+
+&nbsp;
+
+**Upshot**: We can generalize the discussion above to show that $\mat_{m \times n}(K)$ is a $K$-Vector Space of $\dim = m \times n$
+
+&nbsp;
+
+**Example**: $\{\begin{bmatrix} a & b \\ b & d\end{bmatrix}\}$, **symmetric $\mathbf{2 \times 2}$ matrices**, is a subspace of $\mat_{2 \times 2}(K)$, which has dimension $4$
+
+&nbsp;
+
+**Non-Example**: $\mat(K)$ is NOT a Vector Space since addition between $2 \times 2$ and $3 \times 3$ matrices is not defined
+
+&nbsp;
+
+**Notation**: $A_i = (a_{i1}, \ldots, a_{in})$, the $i$th row vector, is a $1 \times n$ matrix
+
+**Notation**: $A^j = (a_{1j}, \ldots, a_{mj})$, the $j$th column vector, is a $m \times 1$ matrix
+
+&nbsp;
+
+**Definition - Transpose**: Given an $m \times n$ matrix $A$, the **transpose** $^t A$ is an $n \times m$ matrix that swaps the rows and columns, and vice versa
+
+- **Note**: If $A$ is a square $n \times n$ matrix, then $^t A$ is also a square $n \times n$ matrix
+
+&nbsp;
+
+**Example**: $^t \begin{bmatrix} 4 & 0 & 3 \\ -1 & 3 & 0\end{bmatrix} = \begin{bmatrix} 4 & -1 \\ 0 & 3 \\ 2 & 6\end{bmatrix}$
+
+&nbsp;
+
+**Definition - Matrix Multiplication**: An $m \times n$ matrix $A$ can multiply with an $n \times k$ matrix $B$ where
+$$C_{il} = \sum_{d=1}^{n}a_{ij} b_{d, l}$$
+
+- **Note**: If $A, B$ are both $n \times n$ matrices, then $AB$ is an $n \times n$ matrix
+- **Upshot**: Square matrices are closed under transposition and matrix multiplication
+
+&nbsp;
+
+**Example**: $\begin{bmatrix} 2 & 3 & 4 \\ 0 &1 & 2\end{bmatrix} \begin{bmatrix} 6 \\ 2 \\ 1\end{bmatrix} = \begin{bmatrix} 22 \\ 4\end{bmatrix}$
+
+&nbsp;
+
+### Linear Equations
+
+Consider
+\begin{align*}
+ 5x_1 + 3x_2 - 6x)3 &= 8 \\
+ x_1 - 2x_2 + x_3 = 4
+\end{align*}
+We can represent this using
+$$A = \begin{bmatrix} 5 & 3 & -6 \\ 1 & -2 & 1\end{bmatrix} \quad \quad X = \begin{bmatrix} x_1 \\ x_2 \\ x_3\end{bmatrix} \quad \quad B = \begin{bmatrix} 8 \\ 4 \end{bmatrix} \implies AX = B$$
+
+# Mappings
+
+**Definition - Function**: Mapping between 2 sets $D, R$ such that for each $x \in D$, there exists a unique $y \in R$ such that $f(x) = y$
+$$F: D \rightarrow R$$
+- **Note**: $D$ here is the **domain** of $F$ and $R$ is the **range** of $F$
+
+&nbsp;
+
+**Definition - Image**: $F(D) = \{F(x) \mid x \in D\} \subseteq R$
+
+&nbsp;
+
+**Example**: $F: R \rightarrow R \quad \quad F(x) = x^2$
+
+- Domain($F$) = Range($F$) = $R$
+- Image of $F = \{y \in R \mid y \geq 0\} = [0, \infty)$
+
+&nbsp;
+
+**Example**: $G[0, \infty) \rightarrow R \quad \quad G(x) = \sqrt{x}$
+
+- Image of $G = [0, \infty)$
+
+&nbsp;
+
+**Example**: $\mathcal{F} =$ all functions $F: \rightarrow R$
+
+Let $S$ be all "infinitely" differentiable functions
+
+Let $\frac{d}{dx} : S \rightarrow S$ where $\frac{d}{dx}(f) = f'$
+
+Thus $\frac{d}{dx}$ is a function
+
+&nbsp;
+
+**Example**: $t: \mat_{2 \times 3}(K) \rightarrow \mat_{3 \times 2}(K)$
+
+Then $t(A) = ^t A$ is a function
+
+
+
