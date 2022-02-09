@@ -37,7 +37,9 @@ Goals of this course is to discuss
 7. Additive Inverse: $\forall a \in K, \exists b$ such that $a + b = 0$, namely $b = -a$ which is unique
 8. Multiplicative Inverse: $\forall a \in K, \exists b$ such that $ab = 1$, name $b = 1/a$ which is unique
 
-- **Example**: $R, Q$ are fields. $Z$ is not a field since there is no multiplicative inverse of $2$
+&nbsp;
+
+**Example**: $R, Q$ are fields. $Z$ is not a field since there is no multiplicative inverse of $2$
 
 &nbsp;
 
@@ -75,7 +77,7 @@ Goals of this course is to discuss
 
 &nbsp;
 
-**Definition - Vector Space**: For an arbitrary field $K$, a $K$-vector space is a set $V$ with a distinguished element $O$ such that any 2 elements in $V$ can be added and scalar multiplied by $c \in K$
+**Definition - Vector Space**: For an arbitrary field $K$, a $K$-vector space is a set $V$, with a distinguished element $O$, such that any 2 elements in $V$ can be added and scalar multiplied by $c \in K$
 
 - $u, v \in V \implies u + v \in V$
 - $c \in K, u \in V \implies cu \in V$
@@ -101,7 +103,7 @@ $$R^3 = \{(x, y , z) \mid x, y, z \in R\}$$
 
 &nbsp;
 
-**Example**: For any field $K$, $K^2$ is a $K$-vector space defined by the oepartions
+**Example**: For any field $K$, $K^2$ is a $K$-vector space defined by the operations
 $$K^2 = \{(x, y) \mid x, y \in K\}$$
 
 - $+:$ add componentwise so $(a, b) + (c, d) = (a + c, b + d)$
@@ -110,11 +112,11 @@ $$K^2 = \{(x, y) \mid x, y \in K\}$$
 
 &nbsp;
 
-**Example**: $R$ is an $R$-vector space since clearly the properties hold
+**Example**: $R$ is an $R$-vector space since clearly the necessary properties hold
 
 &nbsp;
 
-**Example** $R$ is a $Q$-vector space since clearly the properties hold
+**Example** $R$ is a $Q$-vector space since clearly the necessary properties hold
 
 - Notably, for $q \in Q$ and $r \in R$, we have $qr \in R$. Thus scalar multiplication is closed
 
@@ -187,9 +189,9 @@ $$v + u = v + w \implies u = w$$
 
     Since $W$ is closed under scalar multiplication, $(-1)w = -w \in W$ by Lemma 4
 
-4. Other conditions (e.g. associative addition, commutative addition, etc.) hold because $u, v, w \in V \implies u, v, w \in W$
+4. Other conditions (associative addition, commutative addition, etc.) hold because $u, v, w \in W \implies u, v, w \in V$
 
-    For example, choose $u, v \in V$, then $u + v = v + u$, which also holds under $W$. Thus commutative addtion is satisfied
+    For example, choose $u, v \in W$, then $u + v = v + u$, since $u, v \in V$. Thus commutative addtion is satisfied
 
 &nbsp;
 
@@ -217,7 +219,7 @@ Then $W$ is an $R$-vector space. We prove this by showing that $W$ is a subspace
 
 - $\times:$ Let $(x, y, z) \in U$ and $r \in R$
 
-    Then $2x + 3y = 0 \implies r(2x + 3y) 2rx + 3ry = 0$
+    Then $2x + 3y = 0 \implies r(2x + 3y) = 2rx + 3ry = 0$
 
     Thus $r(x, y, z) \in U$
 
@@ -230,7 +232,7 @@ Then $W$ is an $R$-vector space. We prove this by showing that $W$ is a subspace
 
 ## Basis
 
-**Definition - Linear Combination**: For vectors $\{v_1, \ldots, v_n\} \subseteq V$, a **linear combination** of $\{v_1, \ldots, v_n\}$ is any vector of the form
+**Definition - Linear Combination**: For vectors $\{v_1, \ldots, v_n\} \subseteq V$, a **linear combination** of $\{v_1, \ldots, v_n\}$ is a vector of the form
 $$a_1 v_1 + \cdots + a_n v_n \quad \quad a_i \in K$$
 
 &nbsp;
@@ -245,13 +247,13 @@ $$a_1 v_1 + \cdots + a_n v_n \quad \quad a_i \in K$$
 
 - $+:$ Let $a = a_1 v_1 + \cdots + a_n v_n \in W$ and $b = b_1 v_1 + \cdots + b_n v_n \in W$
 
-    Then $a + b = (a_1 + b_1) v_1 + \cdots + (a_n + b_n) \in W$
+    Then $a + b = (a_1 + b_1) v_1 + \cdots + (a_n + b_n)v_n \in W$
 
     Thus $W$ is closed under addition
 
 - Scalar $\times:$ Let $a = a_1 v_1 + \cdots + a_n v_n \in W$ and let $c \in K$
 
-    Then $ca = (c a_1)v_1 + \cdots + (c a_n) \in W$
+    Then $ca = (c a_1)v_1 + \cdots + (c a_n)v_n \in W$
 
     Thus $W$ is closed under scalar multiplication
 
@@ -308,7 +310,9 @@ Thus we have shown that $v_1$ is a linear combination of the other $n-1$ vectors
 
 &nbsp;
 
-**Definition - Spans**: Let $W$ be a $K$-Vector Space and $\{v_1, \ldots, v_n\} \subseteq W$. If $\Span(\{v_1, \ldots, v_n\})$, then $\{v_1, \ldots, v_n\}$ **spans** $W$, so every $w \in W$ is a linear combination of $\{v_1, \ldots, v_n\}$
+**Definition - Spans**: Let $W$ be a $K$-Vector Space and $\{v_1, \ldots, v_n\} \subseteq W$. If $\Span(\{v_1, \ldots, v_n\}) = W$, then $\{v_1, \ldots, v_n\}$ **spans** $W$, so every $w \in W$ is a linear combination of $\{v_1, \ldots, v_n\}$
+
+&nbsp;
 
 **Definition - Basis**: $\{v_1, \ldots, v_n\}$ is a **basis** of $W$ if it spans $W$ and is linearly independent
 
@@ -335,7 +339,7 @@ Thus each $w \in W$ can be written uniquely as a linear combination of $\{v_1, \
 
 &nbsp;
 
-**Example**: Let $W = \Span(\{\sin(x), \cos(x)\} = \{\text{ all functions of the form } a \sin(x) + b \cos(x) \mid a, b \in R\}$
+**Example**: Let $W = \Span(\{\sin(x), \cos(x)\} = \{a \sin(x) + b \cos(x) \mid a, b \in R\}$
 
 We know that $W$ is an $R$-Vector Space
 
@@ -347,7 +351,7 @@ Let $\{v_1, \ldots, v_n\} \subseteq V$ and let $W = \Span(\{v_1, \ldots, v_n\})$
 
 Now let $X = \{w_1, \ldots, w_m\} \subseteq W$. Then there are 2 desirable properties of $X$
 
-- **X is Big**: $X$ spans $W$ if $\Span(X) = W$, i.e. all $w \in W$ is a linear combination of vectors from $X$
+- **X is Big**: $X$ spans $W$ if $\Span(X) = W$, i.e. all $w \in W$ is a linear combination of elements from $X$
 - **X is Small**: $X$ is linearly independent, i.e. no element in $X$ is a linear combination of the remaining elements
 
 **Note**: the empty set $\emptyset$ is linearly independent since no element in $\emptyset$ is a linear combination of the others. More notably, $\emptyset$ is a basis for $\{O\}$
@@ -382,8 +386,8 @@ $\ldots$
 
 Since $X$ is finite (it has $m$ elements), we will stop eventually. Either
 
-- Some $X_i$ is linearly independent and we are done
-- Otherwise if we hit case m: $X_m = \emptyset$, which is linearly independent and thus $X_m$ spans $W = \{O\}$
+- Some $X_i$ is linearly independent. Thus $X_i$ is a basis for $W$
+- Otherwise if we hit case m: $X_m = \emptyset$, which is linearly independent, and thus $X_m$ spans $W = \{O\}$
 
 &nbsp;
 
@@ -409,7 +413,9 @@ Thus $X \cup \{w\}$ is linearly independent
 
 &nbsp;
 
-Main question: does the enlarging process above terminate? After some number of steps, do we get a set $\{w_1, \ldots, w_m\}$ that spans $W$?
+**Main Question**: does the enlarging process above terminate? After some steps, do we get a set $\{w_1, \ldots, w_m\}$ that spans $W$?
+
+&nbsp;
 
 **Exchanging Lemma**: Let $X = \{v_1, \ldots, v_n\}$ be any basis for $W$. Choose any $w \in W$ but $w \notin \Span(\{v_k, \ldots, v_n\})$. Then $\exists v_i, i < k,$ such that $Y = (X \setminus \{v_i\}) \cup \{w\}$ is still a basis
 
@@ -425,6 +431,8 @@ Since $X$ spans $W$, for arbitrary $u \in W$, we have
 $$u = d_1 v_1 + \cdots + d_n v_n$$
 Replacing $v_1$ above with the previous equation, we see that $u$ is a linear combination of elements of $Y$ and thus $u \in \Span(Y)$
 
+Thus $\Span(Y) = W$
+
 Next we show that $Y$ is linearly independent
 
 Suppose we have
@@ -434,7 +442,7 @@ We show that $c = b_2 = \cdots = b_n = 0$
 - If $c = 0 \implies b_2 = \cdots = b_n = 0$ since $\{b_2, \ldots, b_n\}$ is linearly independent
 - Otherwise suppose $c \neq 0$, then we can solve for $w$
 $$w = \frac{-b_2}{c}v_2 + \cdots + \frac{-b_n}{c}v_n \implies v_1 = \frac{1}{a_1}(\frac{-b_2}{c}v_2 + \cdots + \frac{-b_n}{c}v_n) + \frac{-a_1}{a_1}v_2 + \cdots + \frac{-a_m}{a_1v_m}$$
-Thus $v_1$ is a linear combination of $\{v_2, \ldots, v_n\}$, which is a contradiction since we said $X$ was linearly independent. Thus $c = 0$
+Thus $v_1$ is a linear combination of $\{v_2, \ldots, v_n\}$. Contradiction since we said $X$ was linearly independent. Thus $c = 0$
 
 &nbsp;
 
@@ -695,7 +703,7 @@ $$C_{il} = \sum_{d=1}^{n}a_{ij} b_{d, l}$$
 
 Consider
 \begin{align*}
- 5x_1 + 3x_2 - 6x)3 &= 8 \\
+ 5x_1 + 3x_2 - 6x_3 &= 8 \\
  x_1 - 2x_2 + x_3 = 4
 \end{align*}
 We can represent this using
@@ -740,5 +748,68 @@ Thus $\frac{d}{dx}$ is a function
 
 Then $t(A) = ^t A$ is a function
 
+&nbsp;
 
+**Definition - Onto**: A function $F: D \rightarrow R$ is **onto** if Image of $F = R$
 
+**Definition - 1-1**: A function $F: D \rightarrow R$ is **1-1** if different elements from $D$ get mapped to different elements of $R$
+$$F(d) = F(e) \implies d = e$$
+
+**Definition - Bijection**: A function that is both onto and 1-1
+
+&nbsp;
+
+**Definition - Inverse Function**: If $F:D \rightarrow R$ is a bijection, there exists an inverse function $F^{-1}: R \rightarrow D$ such that
+\begin{align*}
+\forall r, \in R, F(F^{-1}(r)) &= r\\
+\forall d, \in D, F^{-1}(F(d)) &= d
+\end{align*}
+
+&nbsp;
+
+**Definition - Linear Transformation**: For fixed $K$-Vector Spaces $V, W$, a **linear transformation** $T: V \rightarrow W$ is a function satisfying
+
+1. $\forall v_1, v_2 \in W$, $T(v_1 + v_2) = T(v_1) + T(v_2)$
+2. $\forall c \in K, v \in W$, $T(cv) = cT(v)$
+
+**Examples**
+
+1. $F: R \rightarrow R, F(x) = x^2$
+
+    - Not onto since $x^2$ cannot be negative
+    - Not 1-1 since $1^2 = (-1)^2 = 1$
+    - Not a linear transformation since $(1 + 2)^2 = 9 \neq 1^2 + 2^2$
+2. $F: [0, \infty) \rightarrow R, F(x) = \sqrt{x}$
+
+    - Not onto since $x^2$ cannot be negative
+    - 1-1 since $\sqrt{x} = \sqrt{y} \implies x = y$
+    - Not a linear transformation since $[0, \infty)$ isn't a Vector Space
+3. Let $S$ be the set of all infinite differentiable functions. Consider $\frac{d}{dx}: S \rightarrow S$ where $\frac{d}{dx}(f) = f'$
+
+    - Onto by the Fundamental Theorem of Calculus
+    - Not 1-1 since $f$ and $f+ 5$ share the same derivative
+    - Is a linear transformation by addition and scalar multiplication properties of derivatives
+
+4. Let $C$ be the set of continuous functions on $[0, 1]$. Consider $I: C \rightarrow R, I(f) = \int_0^1 f(t) \, dt$
+
+    - Onto since we can generate any value of $R$ by taking the integral of the constant function
+    - Not 1-1 since the definite integral of $2$ functions could yield the same result
+    - Is a linear transformation by additional and scalar multiplication properties of integrals
+
+5. $I^*: G \rightarrow C, I^*(f) =  \int_0^x f(t) \, dt$
+
+    - Not onto since not all functions of $f(0) = 0$
+    - 1-1 since indefinite integral yields a unique function
+    - Is a linear transformation by additional and scalar multiplication properties of integrals
+
+6. Fix $(4, 0, 2)$ and consider $T_{(4, 0, 2)}: R^3 \rightarrow R^3, T_{(4, 0, 2)}((x, y, z)) = (x + 4, y, z + 2)$
+
+    - Clearly onto
+    - Clearly 1-1
+    - Not a linear transformation since $T_{(4, 0, 2)}((0, 0, 0) + (1, 1, 1)) = (5, 0, 3) \neq T_{(4, 0, 2)}((0, 0, 0)) + T_{(4, 0, 2)}((1, 1, 1))$
+
+7. $E_\pi: R^3 \rightarrow R^3, E_\pi((x, y, z)) = (\pi x, \pi y, \pi z)$
+
+    - Clearly onto
+    - Clearly 1-1
+    - Is a linear transformation since $E_\pi((a, b, c) + (d, e, f)) = (\pi(a + d), \pi (b + e), \pi (c + f)) = E_\pi((a, b, c)) + E_\pi((d, e, f))$
