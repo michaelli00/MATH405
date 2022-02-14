@@ -10,6 +10,8 @@ header-includes:
     - \DeclareMathOperator{\mat}{Mat}
     - \DeclareMathOperator{\Null}{null}
     - \DeclareMathOperator{\range}{range}
+    - \DeclareMathOperator{\Img}{Im}
+    - \DeclareMathOperator{\Ker}{Ker}
     - \DeclareMathOperator{\matvect}{Mat$_{x \times n}(K)$}
 output: pdf_document
 ---
@@ -646,7 +648,7 @@ $$A = \begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cd
 **Note**: Any $2 \times 3$ matrices can be added together componentwise or multiplied by a scalar, resulting in a $2 \times 3$ matrix
 
 - Here the additive identity is $\begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0\end{bmatrix}$
-- here the additive inverse of $A$ (from previous example) is $-A = \begin{bmatrix} -4 & 0 & -2 \\ 1 & -3 & -6\end{bmatrix}$
+- Here the additive inverse of $A$ (from previous example) is $-A = \begin{bmatrix} -4 & 0 & -2 \\ 1 & -3 & -6\end{bmatrix}$
 
 Thus $\mat_{2 \times 3}(K)$, the set of all $2 \times 3$ matrices with entries in $K$ is a $K$-Vector Space
 
@@ -699,7 +701,7 @@ $$C_{il} = \sum_{d=1}^{n}a_{ij} b_{d, l}$$
 
 &nbsp;
 
-### Linear Equations
+## Linear Equations
 
 Consider
 \begin{align*}
@@ -713,6 +715,7 @@ $$A = \begin{bmatrix} 5 & 3 & -6 \\ 1 & -2 & 1\end{bmatrix} \quad \quad X = \beg
 
 **Definition - Function**: Mapping between 2 sets $D, R$ such that for each $x \in D$, there exists a unique $y \in R$ such that $f(x) = y$
 $$F: D \rightarrow R$$
+
 - **Note**: $D$ here is the **domain** of $F$ and $R$ is the **range** of $F$
 
 &nbsp;
@@ -746,7 +749,7 @@ Thus $\frac{d}{dx}$ is a function
 
 **Example**: $t: \mat_{2 \times 3}(K) \rightarrow \mat_{3 \times 2}(K)$
 
-Then $t(A) = ^t A$ is a function
+Then $t(A) = ^tA$ is a function
 
 &nbsp;
 
@@ -771,6 +774,8 @@ $$F(d) = F(e) \implies d = e$$
 
 1. $\forall v_1, v_2 \in W$, $T(v_1 + v_2) = T(v_1) + T(v_2)$
 2. $\forall c \in K, v \in W$, $T(cv) = cT(v)$
+
+&nbsp;
 
 **Examples**
 
@@ -813,3 +818,160 @@ $$F(d) = F(e) \implies d = e$$
     - Clearly onto
     - Clearly 1-1
     - Is a linear transformation since $E_\pi((a, b, c) + (d, e, f)) = (\pi(a + d), \pi (b + e), \pi (c + f)) = E_\pi((a, b, c)) + E_\pi((d, e, f))$
+
+## Consequences of Properties of Linear Transformations
+
+**Proposition**:  For any linear transformation $T: V \rightarrow W$, we have that
+$$T(O_V) = O_W$$
+*Proof*: Let $w = T(O_V)$
+
+Since $O_V = 0 * O_V$, we have that
+$$T(O_V) = T(0 * O_V) = 0 * T(O_V) = 0 * w = O_W$$
+
+&nbsp;
+
+**Proposition**: $T(a_1v_1 + \cdots + a_n v_n) = a_1T(v_1) + \cdots + a_n T(v_n)$
+
+*Proof*: Follows from linearly properties of linear transformations
+
+- **Note**: If $x = \{v_1, \ldots, v_n\}$ is a basis for $V$ and if $w_1, \ldots, w_n$ are arbitrary vectors in $W$, then there is a unique linear transformation $T: V \rightarrow W$ such that
+$$T(v_1) = w_1, \ldots, T(v_n) = w_n$$
+
+&nbsp;
+
+**Lemma**: $\Img(T)$ is a subspace of $W$
+
+*Proof*: We show the necessary conditions for a subspace
+
+- $+: w_1, w_2 \in \Img(T) \implies \exists v_1, v_2 \in V$ such that $T(v_1) = w_1$ and $T(v_2) = w_2$
+
+    Then $w_1 + w_2 = T(v_1) + T(v_2) = T(\underbrace{v_1 + v_2}_{\in V}) \in \Img(T)$
+
+- $\times: w \in \Img(T) \implies \exists v \in V$ such that $T(v) = w$
+
+    Then for $c \in K$, we have $cw = c(Tv) = T(\underbrace{cv}_{\in V}) \in \Img(T)$
+
+&nbsp;
+
+**Definition - Pull Back**: Suppose $Y = \{w_1, \ldots, w_m\} \subseteq \Img(T)$. Then a **pull-back** is any set $\{v_1, \ldots, v_m\} \subseteq V$ such that
+$$T(v_1) = w_1, \ldots, T(v_m) = w_m$$
+
+&nbsp;
+
+**Lemma**: If $\{w_1, \ldots, w_m\}$ is linearly independent in $\Img(T)$ (or in $W$), then any pull back $\{v_1, \ldots, v_m\} \subseteq V$ is linearly independent in $V$
+
+*Proof*: Let $a_1v_1 + \cdots + a_m v_m = O_V$
+
+Thus $T(a_1, v_1 + \cdots + a_m v_m = O_V) = a_1 w_1 + \cdots + a_m w_m = O_W$
+
+Since $\{w_1, \ldots, w_m\}$ is linearly independent, we have $a_1 = \cdots = a_m = 0$ as desired
+
+&nbsp;
+
+**Pull Back Property**: Suppose $\{w_1, \ldots, w_m\}$ is a basis for $\Img(T)$, and let $\{v_1, \ldots, v_m\} \subseteq V$ be any pull back. Furthermore, let $S = \Span(\{v_1, \ldots, v_m\}) \subseteq V$ be a subspace. Then $\{v_1, \ldots, v_m\}$ is a basis for $S$
+
+*Proof*: By the previous lemma, $\{v_1, \ldots, v_m\}$ is linearly independent
+
+Furthermore, $\{v_1, \ldots, v_m\}$ spans $S$ by definition
+
+&nbsp;
+
+**Corollary**: If $T: V \rightarrow W$ is any linearly transformation and if $\dim(V) = n$, then $\dim(\Img(T)) \leq n$
+
+*Proof*: BWOC, suppose $\dim(\Img(T)) > n$, thus we can create a set of $n+1$ linearly independent elements in $\Img(T)$.
+
+By the Pull Back Property, this pulls back to $n+1$ linearly independent elements in $V$. Contradiction since $n + 1 > n = \dim(V)$
+
+&nbsp;
+
+**Note**: $T: V \rightarrow W$ where $T(v) = \{O_W\}$ is a linearly transformation with $\dim(\Img(T)) = 0$, regardless of the value of $\dim(V)$
+
+## Kernel
+
+**Definition - Kernel**: For $T: V \rightarrow W$, the **kernel** $\Ker(T) = \{v \in V \mid T(v) = O_W\}$
+
+&nbsp;
+
+**Proposition**: $\Ker(T)$ is a subspace of $V$
+
+*Proof*: Clearly $O_V \in \Ker(T)$
+
+- $+:$ For $v_1, v_2 \in \Ker(T)$, we see that $T(v_1 + v_2) = T(v_1) + T(v_2) = O_W + O_W = O_W$. Thus $v_1 + v_2 \in \Ker(T)$
+- $\times:$ For $c \in K$ and $v \in \Ker(T)$, we see that $T(cv) = cT(v) = O_W$. Thus $cv \in \Ker(V)$
+
+&nbsp;
+
+**Proposition**: Let $T: V \rightarrow W$ be any linear transformation. For any basis $B = \{w_1, \ldots, w_m\} \subseteq \Img(T)$ and for any pullback $\{v_1, \ldots, v_m\} \subseteq V$, we have
+$$V = \Ker(T) \oplus S \quad \quad S = \Span(\{v_1, \ldots, v_m\})$$
+
+*Proof*: We need to show $V = \Ker(T) + S$ and $\Ker(T) \cap S = \{O_V\}$
+
+- Take arbitrary $v \in V \implies T(v) \in \Img(T) = a_1 w_1 + \cdots + a_m w_m$
+
+    Let $s = a_1 v_1 + \cdots a_m v_m \in S$.
+
+    Then $T(s) = T(v) \implies T(v-s) = T(v) - T(s) = O_W \implies v -s \in \Ker(T)$
+
+    Let $u = v - s \in \Ker(T)$
+
+    Thus clearly $v = u + s$ for $u \in \Ker(T)$ and $s \in S$
+
+- Clearly $O_V \in \Ker(T) \cap S$ since both are subspaces of $V$
+
+    Take any arbitrary $v \in \Ker(T) \cap S$
+
+    $v \in S \implies v= b_1 v_1 + \cdots b_m v_m \implies T(v) = b_1 w_1 + \cdots b_m w_m$
+
+    Since $v \in \Ker(T)$, we have that $T(v) = O_W \implies b_1 = \cdots = b_m = 0$ since $\{w_1, \ldots, w_m\}$ is linearly independent
+
+    Thus we have $v = 0v_1 + \cdots + 0 v_m = O_V \implies \Ker(T) \cap S = \{O_V\}$
+
+Thus we have shown the necessary properties for $V = \Ker(T) \oplus S$
+
+&nbsp;
+
+**Theorem**: $\dim(V) = \dim(\Ker(T)) + \dim(\Img(T))$
+
+*Proof*: Choose a basis $B = \{w_1, \ldots, w_m\}$ for $\Img(T)$ and a pullback $\{v_1, \ldots, v_m\}$
+
+Let $S = \Span(\{v_1, \ldots, v_m\})$
+
+Since $V = \Ker(T) \oplus S$, we have $\dim(\Ker(T)) + \dim(S) = \dim(\Ker(T)) + \dim(\Img(T)) = \dim(V)$
+
+&nbsp;
+
+### Consequences of Kernel
+
+**Corollary 1**: For linear $T: R^3 \rightarrow R^4$, $T$ is NOT onto
+
+*Proof*: $\dim(\Img(T)) \leq \dim(R^3) = 3 < 4 \implies \Img(T) \neq R^4 \implies T$ is NOT onto
+
+&nbsp;
+
+**Corollary 2**: For linear $T: R^4 \rightarrow R^3$, $T$ is NOT 1-1
+
+*Proof*: $\dim(\Ker(T)) + \underbrace{\dim(\Img(T))}_{\leq 3} = \dim(R^4) = 4 \implies \dim(\Ker(T)) \geq 1$
+
+Thus $\Ker(T)$ has something non-zero mapped to $O_W \implies T$ is NOT 1-1
+
+&nbsp;
+
+**Definition - Isomorphism**: $T: V \rightarrow W$ such that $T$ is linear transformation and a bijection
+
+&nbsp;
+
+**Corollary 3**: $\dim(V) = \dim(W)$ and $T: V \rightarrow W$ is a linear transformation and 1-1 $\implies T$ is an isomorphism (i.e. $T$ is onto)
+
+*Proof*: $\dim(\Ker(T)) + \dim(\Img(T)) = \dim(V)$
+
+But we know that $\dim(\Ker(T)) = 0 \implies \dim(\Img(T)) = \dim(V) = \dim(W)$
+
+Furthermore $\Img(T)$ is a subspace of $W$ and $\dim(\Img(T)) = \dim(W) \implies T$ is onto
+
+&nbsp;
+
+**Corollary 4**: $\dim(V) = \dim(W)$ and $T: V \rightarrow W$ is a linear transformation and onto $\implies T$ is an isomorphism (i.e. $T$ is 1-1)
+
+*Proof*: $\dim(\Ker(T)) + \dim(\Img(T)) = \dim(V)$
+
+But we know that $\dim(\Img(T)) = \dim(V) \implies \dim(\Ker(T)) = 0$
