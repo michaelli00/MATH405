@@ -975,3 +975,129 @@ Furthermore $\Img(T)$ is a subspace of $W$ and $\dim(\Img(T)) = \dim(W) \implies
 *Proof*: $\dim(\Ker(T)) + \dim(\Img(T)) = \dim(V)$
 
 But we know that $\dim(\Img(T)) = \dim(V) \implies \dim(\Ker(T)) = 0$
+
+## Compositions and Inverse Linear Mappings
+
+Consider Vector Spaces $U, V, W$ and linear transformations $T: U \rightarrow V$ and $S: V \rightarrow W$
+
+**Proposition**: $S \circ T: V \rightarrow W$ is a linear transformation
+
+*Proof*:
+
+- $+:$ For $u_1, u_2 \in U$ we have that
+\begin{align*}
+S \circ T(u_1 + u_2) &= S(T(u_1 + u_2)) \\
+&= S(T(u_1) + T(u_2)) \\
+&= S(T(u_1)) + S(T(u_2)) \\
+&= S \circ T(u_1) + S \circ T(u_2)
+\end{align*}
+
+- $\times:$ For $u \in U$ and $c \in K$
+\begin{align*}
+S \circ T(cu) &= S(T(cu)) \\
+&= S(cT(u)) \\
+&= cS(T(u)) \\
+&= c S \circ T(u)
+\end{align*}
+
+Thus $S \circ T: V \rightarrow W$ is a linear transformation
+
+&nbsp;
+
+**Definition - Inverse Mapping**: $T^{-1}: W \rightarrow V$ where $T^{-1}(w) =$ the unique $v \in V$ such that $T(v) = w$
+
+&nbsp;
+
+**Proposition**: $T^{-1}: W \rightarrow V$ is a linear transformation (and thus an isomorphism)
+
+*Proof*:
+
+- $+:$ Take $w_1, w_2 \in W$ such that $T(v_1) = w_1$ and $T(v_2) = w_2$ for $v_1, v_2 \in V$. Then we see that
+$$T(v_1 + v_2) = T(v_1) + T(v_2) = w_1 + w_2$$
+However, by definition of inverse mapping, $v_1 + v_2$ is the unique element such that $T(v_1 + v_2) = w_1 + w_2$
+
+&nbsp; &nbsp; &nbsp; &nbsp; Thus by definition of $T^{-1}$, we have that $T^{-1}(w_1 + w_2) = v_1 + v_2 = T^{-1}(w_1) + T^{-1}(w_2)$
+
+- $\times:$ Similar
+
+# Linear Maps and Matrices
+
+**Definition - $\mathbf{L_A}$**: For a $m \times n$ matrix $A$, $L_A$ determines a linear transformation from $R^n \rightarrow R^m$
+
+&nbsp;
+
+**Example**: Consider $L_A: R^3 \rightarrow R^2$ where $A = \displaystyle \begin{bmatrix} 2 & 3 & 1 \\ 0 & 4 & 2\end{bmatrix}$
+
+Then we see that $A \begin{bmatrix} x \\ y \ z\end{bmatrix} = \begin{bmatrix} 2x + 3y + z \\ 4y + 2z\end{bmatrix}$
+
+It can be clearly shwon that $L_A$ is a linear transformation (follows from logic of dot products)
+
+## Bases, Matrices, and Linear Maps
+
+For a given transformation $T: V \rightarrow W$, the matrix of $T$ with respect to the standard basis is given by
+$$A = (T(E_1), \ldots, T(E_n))$$
+
+&nbsp;
+
+**Example**: $T: R^2 \rightarrow R^3 \quad \quad T(x, y) = (5x + y, x - y, x)$
+
+$T(E_1) = (5, 1, 1) \quad \quad T(E_2) = (1, -1, 0)$
+
+Thus we see that $A = \begin{bmatrix} 5 & 1 \\ 1 & -1 \\ 1 & 0\end{bmatrix}$
+
+- $T(^t(3, 2)) = \begin{bmatrix} 5 & 1 \\ 1 & -1 \\ 1 & 0\end{bmatrix} \begin{bmatrix} 3 \\ 2\end{bmatrix} = ^t(17, 1, 3)$
+
+&nbsp;
+
+**Example**: $T: R^2 \rightarrow R^2$ where we stretch the $x$-coordinate by $2$
+
+$T(^t(1, 0)) = ^(2, 0) \quad \quad T(^t(0, 1)) = ^(0, 1)$
+
+Thus we see that $A = \begin{bmatrix} 2 & 0 \\ 0 & 1\end{bmatrix}$
+
+&nbsp;
+
+**Example**:  $S \circ T: R^2 \rightarrow R^2$ where we first stretch by $x$ by $3$ then stretch $y$ by $3$
+
+$T(^t(1, 0)) = ^t(2, 0) \quad \quad T(^t(0, 1)) = ^(0, 3)$
+
+Thus we see that $A = \begin{bmatrix} 2 & 0 \\ 0 & 3\end{bmatrix}$
+
+- **Note**: we see that applying functions just corresponds to matrix multiplication $\begin{bmatrix} 1 & 0 \\ 0 & 3\end{bmatrix} \begin{bmatrix} 2 & 0 \\ 0 & 1\end{bmatrix} \begin{bmatrix} 2 & 0 \\ 0 & 3\end{bmatrix}$
+
+&nbsp;
+
+**Example**: Fix $\theta \in R$, then rotate by $\theta$
+
+$R_{\theta} (^t(1, 0)) = ^t(\cos(\theta), \sin(\theta)) \quad \quad R_{\theta} (^t(0, 1)) = ^t(- \sin(\theta), \cos(\theta))$
+
+Thus $A = \begin{bmatrix} \cos(\theta) & -\sin(\theta) \\ \sin(\theta) & \cos(\theta)\end{bmatrix}$
+
+Thus given any $^t(x, y) \in R^2$, we see that $T_\theta(^t(x, y)) = \begin{bmatrix} x\cos(\theta) - y \sin(\theta) \\ x\sin(\theta) + y \cos(\theta)\end{bmatrix}$
+
+&nbsp;
+
+**Example**: Stretch $x$ by $2$, rotate by $\pi / 4$, and stretch $y$ by $3$
+
+$A = \begin{bmatrix} 1 & 0 \\ 0 & 3\end{bmatrix} \begin{bmatrix} \sqrt{2} / 2 & - \sqrt{2} / 2 \\ \sqrt{2} / 2 & \sqrt{2} / 2\end{bmatrix} \begin{bmatrix} 2 & 0 \\ 0 & 1\end{bmatrix}$
+
+&nbsp;
+
+**Note**: Given $T: K^n \rightarrow K^m$, the matrix $A$ for $T$ depends on our choosing of bases for $K^n$ and $K^m$
+
+&nbsp;
+
+**Example**: $T: R^2 \rightarrow R^3 \quad\quad T(x, y) = (5x + y, x- y, x)$
+
+Let $B = \{\underbrace{(1, 4)}_{v_1}, \underbrace{(3, 0)}_{v_2}\}$ be a basis for $R^2$ and $B' = \{\underbrace{(3, 0, 0)}_{w_1}, \underbrace{(0, 5, 0)}_{w_2}, \underbrace{(0, 0, 1)}_{w_3}\}$ be a basis for $R^3$
+
+We can define a matrix of $T$ with respect to $B$ and $B'$
+$$M_{B'}^B(T) = (\underbrace{T(v_1) \quad \quad T(v_2)}_{\text{in terms of } w_1, w_2, w_3})$$
+
+$T(v_1) = T(1, 4) = (9, -3, 1) = 3w_1 - \frac{3}{5}w_2 + w_3$
+
+$T(v_2) = T(1, 4) = (15, 3, 3) = 5w_1 + \frac{3}{5}w_2 + 3w_3$
+
+Thus we see that $M_{B'}^B(T) = \begin{bmatrix} 3 & 5\\ -3/5 & 3/5 \\ 1 & 3\end{bmatrix}$
+
+**Upshot**: Any vector, written in $B$ coordinates, when multiplied by this matrix, yields an answer in $B'$ coordinates
