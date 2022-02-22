@@ -13,6 +13,7 @@ header-includes:
     - \DeclareMathOperator{\Img}{Im}
     - \DeclareMathOperator{\Ker}{Ker}
     - \DeclareMathOperator{\matvect}{Mat$_{x \times n}(K)$}
+    - \DeclareMathOperator{\id}{id}
 output: pdf_document
 ---
 
@@ -174,6 +175,7 @@ $$v + u = v + w \implies u = w$$
 
 - $w_1, w_2, \in W \implies w_1 + w_2 \in W$
 - $\forall a \in K, w \in W \implies aw \in W$
+- $O \in W$
 
 &nbsp;
 
@@ -405,7 +407,7 @@ Since $X$ is finite (it has $m$ elements), we will stop eventually. Either
 
 Suppose BWOC, $b \neq 0$, then we can solve for $w$
 $$w = \frac{-a_1}{b}w_1 + \cdots + \frac{-a_m}{b}w_m$$
-Which means that $w$ is a linear combination of $X \implies w \in \Span(X)$. Contradiction
+Which means that $w \in \Span(X)$. Contradiction
 
 Thus $b = 0$. This gives
 $$a_1 w_1 + \cdots + a_m w_m + 0w = O$$
@@ -502,7 +504,7 @@ Thus $m = n$
 
     Thus $Y = X$, i.e. $X$ is a basis
 
-2. By Expansion Theorem, we can expand $X$ to a basis $Y$
+2. By Enlarging Lemma, we can expand $X$ to a basis $Y$
 
     However, $|Y| > n$ contradicts that $\dim(W) = n$
 
@@ -620,7 +622,7 @@ Let $U = \Span(\{u_1, \ldots, u_r\})$. Then $U$ is a subspace of $V$ and $\{u_1,
 
     Since $Y$ is a basis for $V$, then $\{u_1, \ldots, u_r, b_1, \ldots, b_m\}$ is linearly independent
 
-    Thus $v-v = a_1 u_1 + \cdots + a_r u_r - b_1w_1 - \cdots - b_m w_m = O \implies a_1 = \cdots = a_3 = b_1 = \cdots = b_m = 0$
+    Thus $v-v = a_1 u_1 + \cdots + a_r u_r - b_1w_1 - \cdots - b_m w_m = O \implies a_1 = \cdots = a_r = b_1 = \cdots = b_m = 0$
 
     Thus $v = O$
 
@@ -1028,9 +1030,9 @@ However, by definition of inverse mapping, $v_1 + v_2$ is the unique element suc
 
 **Example**: Consider $L_A: R^3 \rightarrow R^2$ where $A = \displaystyle \begin{bmatrix} 2 & 3 & 1 \\ 0 & 4 & 2\end{bmatrix}$
 
-Then we see that $A \begin{bmatrix} x \\ y \ z\end{bmatrix} = \begin{bmatrix} 2x + 3y + z \\ 4y + 2z\end{bmatrix}$
+Then we see that $A \begin{bmatrix} x \\ y \\ z\end{bmatrix} = \begin{bmatrix} 2x + 3y + z \\ 4y + 2z\end{bmatrix}$
 
-It can be clearly shwon that $L_A$ is a linear transformation (follows from logic of dot products)
+It can be clearly shown that $L_A$ is a linear transformation (follows from logic of dot products)
 
 ## Bases, Matrices, and Linear Maps
 
@@ -1051,7 +1053,7 @@ Thus we see that $A = \begin{bmatrix} 5 & 1 \\ 1 & -1 \\ 1 & 0\end{bmatrix}$
 
 **Example**: $T: R^2 \rightarrow R^2$ where we stretch the $x$-coordinate by $2$
 
-$T(^t(1, 0)) = ^(2, 0) \quad \quad T(^t(0, 1)) = ^(0, 1)$
+$T(^t(1, 0)) = ^t(2, 0) \quad \quad T(^t(0, 1)) = ^t(0, 1)$
 
 Thus we see that $A = \begin{bmatrix} 2 & 0 \\ 0 & 1\end{bmatrix}$
 
@@ -1059,7 +1061,7 @@ Thus we see that $A = \begin{bmatrix} 2 & 0 \\ 0 & 1\end{bmatrix}$
 
 **Example**:  $S \circ T: R^2 \rightarrow R^2$ where we first stretch by $x$ by $3$ then stretch $y$ by $3$
 
-$T(^t(1, 0)) = ^t(2, 0) \quad \quad T(^t(0, 1)) = ^(0, 3)$
+$T(^t(1, 0)) = ^t(2, 0) \quad \quad T(^t(0, 1)) = ^t(0, 3)$
 
 Thus we see that $A = \begin{bmatrix} 2 & 0 \\ 0 & 3\end{bmatrix}$
 
@@ -1100,4 +1102,59 @@ $T(v_2) = T(1, 4) = (15, 3, 3) = 5w_1 + \frac{3}{5}w_2 + 3w_3$
 
 Thus we see that $M_{B'}^B(T) = \begin{bmatrix} 3 & 5\\ -3/5 & 3/5 \\ 1 & 3\end{bmatrix}$
 
-**Upshot**: Any vector, written in $B$ coordinates, when multiplied by this matrix, yields an answer in $B'$ coordinates
+**Upshot**: Any vector, written in $B$ coordinates, when multiplied by this matrix, yields an answer in $B'$ coordinates. Thus for $v = a v_1 + b v_2$, we have
+$$T(v) = (3a + 5b) w_1 + (-3/5 a + 3/5 b) w_2 + (a + 3b) w_3$$
+
+- As a sanity check, for $v = (5,8) \in R^2$
+  - Normal Transformation: $T(v) = (33, -3, 5)$
+  - Linear Map: writing $v$ in terms of $v_1, v_2$, we get $(5,8) = a(1, 4) + b(3, 0) \implies (5, 8) = 2(1, 4) + 2 (3, 0)$
+
+    Thus we have
+    $$M^B_{B'}(T) \begin{bmatrix} a \\ b \end{bmatrix} = \begin{bmatrix} 3 & 5 \\ -3/5 & 3/5 \\ 1 & 3\end{bmatrix} \begin{bmatrix} 2 \\ 1\end{bmatrix} = \begin{bmatrix} 11 \\ -3/5 \\ 5\end{bmatrix} \implies 11(3, 0, 0) - 3/5(0, 5, 0) + 5(0, 0, 1) = (33, -3, 5)$$
+
+&nbsp;
+
+**Example**: Consider $P_n = \{a_0 + a_1 x + \cdots + a_n x^n \mid a_i \in R\}$
+
+It's easily verifiable that $P_n$ is a subspace of $\mathcal{F}(R)$. Furthermore, the basis for $P_n$ is $\{1, x, \ldots, x^n\} \implies \dim(P_n) = n + 1$
+
+Let $D: P_2 \rightarrow P_2$ be the derivative
+$$D(a_0 + a_1 x + a_2 x^2 = a_1 + 2a_2 x)$$
+Easily verifiable that $D$ is a linear transformation. Consider what is the matrix of $D$ with respect to $B = \{1, x, x^2\}$?
+$$A = \begin{bmatrix} D(1) & D(x) & D(x^2)\end{bmatrix} = \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 2 \\ 0 & 0 & 0\end{bmatrix}$$
+Thus we see that for $p(x) = 5 + 3x + 4x^2$,
+$$D(p(x)) = 3 + 8x = 5(0, 0, 0) + 3(0, 1, 0) + 4(0, 2, 0)$
+
+&nbsp;
+
+**Upshot**: For a linear transformation $T: V \rightarrow W$, with $\dim(V) = n$ and $\dim(W) = m$, if $B = \{v_1, \ldots, v_n\}$ and $B' = \{w_1, \ldots, w_m\}$ are bases for $V, W$, then
+$$M_{B'}^B(T) = \begin{bmatrix} T(v_1) & T(v_2) & \cdots & T(V_n)\end{bmatrix}$$
+is a $m \times n$ matrix with column vectors containing coefficients of $T(v_1)$ WRT $B'$
+
+Furthermore, for any $v \in V, v = x_1 v_1 + \cdots + x_n v_n$, we have
+$$M_{B'}^B(T) \begin{bmatrix} x_1 \\ \cdots \\ x_n \end{bmatrix} = \begin{bmatrix} y_1 \\ \cdots \\ y_m\end{bmatrix}$$
+Thus $T(v) = y_1 w_1 + \cdots + y_m w_m$ (**Note** coordinate is WRT to $B'$)
+
+&nbsp;
+
+**Definition - Change of Basis**: Let $B = \{v_1, \ldots, v_n\}$ and $B' = \{w_1, \ldots, w_n\}$ be basis for the same vector space $V$, and let $T:V \rightarrow V$ be the identity mapping. Then
+$$M_{B'}^B(\id) = \underbrace{\begin{bmatrix} \id(v_1) & \id(v_2) & \cdots & \id(v_n)\end{bmatrix}}_{\text{WRT } B'}$$
+is the **Change of Basis** matrix for $V$
+
+&nbsp;
+
+**Example**: Let $V = P_1 = \{a_0 + a_1 x \mid a_i \in R\}$ and let $B = \{1, x\}$ and $B' = \{3 + x, 5 + 2x\}$, which are both bases for $V$
+
+$1 = a(3 + x) + b(5 + 2x) \implies a = 2, b = -1 \implies 1 = 2(3 + x) - (5 + 2x)$
+
+$x = c(3 + x) + d(5 + 2x) \implies c = -5, d = 3 \implies x = -5(3 + x) + 3(5 + 2x)$
+
+$M_{B'}^B(\id) = \underbrace{\begin{bmatrix} 2 & -5 \\ -1 & 3\end{bmatrix}}_{\text{WRT } B'}$
+
+Furthermore, consider
+
+$M_{B}^{B'}(\id) = \underbrace{\begin{bmatrix} \id(w_1) & \id(w_2)\end{bmatrix}}_{\text{WRT } B} = \begin{bmatrix} 3 & 5 \\ 1 & 2\end{bmatrix}$
+
+Finally, we see that
+$$M_{B}^{B'}(M_{B'}^B(\id)) = \id$$
+Thus the inverse of $M_{B'}^B$ is $M_B^{B'}$
