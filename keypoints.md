@@ -60,7 +60,7 @@ output: pdf_document
 
 - **Onto** if $F(D) = R \quad \quad$ **1-1** if $F(d) = F(e) \implies d= e \quad \quad$ **Bijection** if both onto and 1-1
 
-**Inverse Mapping**: If $F: D \rightarrow D$ is a bijection, then $\exists F^{-1}:R \rightarrow D$ such that $\forall r, \in R, F(F^{-1}(r)) = r$ and $\forall d \in D, F^{-1}(F(d)) = d$
+**Inverse Mapping**: If $F: D \rightarrow R$ is a bijection, then $\exists F^{-1}:R \rightarrow D$ such that $\forall r, \in R, F(F^{-1}(r)) = r$ and $\forall d \in D, F^{-1}(F(d)) = d$
 
 **Linear Transformation**: Function $T: V \rightarrow W$ for vector spaces $V, W$, satisfying
 
@@ -76,7 +76,7 @@ output: pdf_document
 
 - **Theorem**: $\dim(V) = \dim(\Ker(T)) + \dim(\Img(T))$. Comes from $V = \Ker(T) \oplus S \implies \dim(V) = \dim(\Ker(T)) + \dim(S)$
 
-**UPSHOT**: $\dim(\Ker(T)) > 0 \implies$ $T$ is NOT 1-1 $\quad \quad \dim(\Img(T)) < \dim(W) \implies T$ is NOT onto
+**Upshot**: $\dim(\Ker(T)) > 0 \implies$ $T$ is NOT 1-1 $\quad \quad \dim(\Img(T)) < \dim(W) \implies T$ is NOT onto
 
 **Isomorphism**: $T: V \rightarrow W$ such that $T$ is a linear transformation and a bijection
 
@@ -88,7 +88,7 @@ output: pdf_document
 
 - Transformation $T: V \rightarrow W$ WRT to bases $B = \{v_1, \ldots, v_m\} \subseteq V$ and $B' = \{w_1, \ldots, w_m\} \subseteq W$ is given by
 
-    $M_{B'}^B = \begin{bmatrix} T(v_1) & T(v_2) & \cdots & T(v_n)\end{bmatrix}$ where the result is written in terms of coordinates of $B'$
+    $M_{B'}^B = \begin{bmatrix} T(v_1) & T(v_2) & \cdots & T(v_n)\end{bmatrix}$ where $v_1$ is WRT to $B$ and the result is written in terms of coordinates of $B'$
 
     **Upshot**: Any vector, written in $B$ coordinates, when multiplied by this matrix, yields an answer in $B'$ coordinates
 
