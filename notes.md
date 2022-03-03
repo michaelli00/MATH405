@@ -14,6 +14,7 @@ header-includes:
     - \DeclareMathOperator{\Ker}{Ker}
     - \DeclareMathOperator{\matvect}{Mat$_{x \times n}(K)$}
     - \DeclareMathOperator{\id}{id}
+    - \DeclareMathOperator{\proj}{proj}
 output: pdf_document
 ---
 
@@ -1065,7 +1066,7 @@ $T(^t(1, 0)) = ^t(2, 0) \quad \quad T(^t(0, 1)) = ^t(0, 3)$
 
 Thus we see that $A = \begin{bmatrix} 2 & 0 \\ 0 & 3\end{bmatrix}$
 
-- **Note**: we see that applying functions just corresponds to matrix multiplication $\begin{bmatrix} 1 & 0 \\ 0 & 3\end{bmatrix} \begin{bmatrix} 2 & 0 \\ 0 & 1\end{bmatrix} \begin{bmatrix} 2 & 0 \\ 0 & 3\end{bmatrix}$
+- **Note**: we see that applying functions just corresponds to matrix multiplication $\begin{bmatrix} 1 & 0 \\ 0 & 3\end{bmatrix} \begin{bmatrix} 2 & 0 \\ 0 & 1\end{bmatrix} = \begin{bmatrix} 2 & 0 \\ 0 & 3\end{bmatrix}$
 
 &nbsp;
 
@@ -1155,6 +1156,142 @@ Furthermore, consider
 
 $M_{B}^{B'}(\id) = \underbrace{\begin{bmatrix} \id(w_1) & \id(w_2)\end{bmatrix}}_{\text{WRT } B} = \begin{bmatrix} 3 & 5 \\ 1 & 2\end{bmatrix}$
 
-Finally, we see that
-$$M_{B}^{B'}(M_{B'}^B(\id)) = \id$$
+Finally, we see that $M_{B}^{B'}(M_{B'}^B(\id)) = \id$
+
 Thus the inverse of $M_{B'}^B$ is $M_B^{B'}$
+
+# Scalar Products and Orthogonality
+
+## Scalar Prodcuts
+
+**Definition - Scalar Product:**: For a Vector Space $V$, we define $<,>: V \times V \rightarrow K$
+
+- **Example**: Think of dot products in $R^n \times R^n \rightarrow R$
+
+&nbsp;
+
+**Properties of Scalar Products**
+
+1. $<v, w> = <w, v>$
+2. $<v, w_1 + w_2> = <v, w_1> + <v, w_2>$
+3. $<v, cw> = c<v, w> \quad \quad <cv, w> = c<v, w>$
+
+&nbsp;
+
+**Consequences of Properties**
+
+- $\forall v_1, v_2, w \in V, <v_1 + v_2, w> = <v_1, w> + <v_2, w>$
+
+    *Proof*: Follows from applying properties $1$ and $2$
+
+- $\forall v \in V, <v, O_v> = 0 = <O_v, v>$
+
+  *Proof*: For any $w \in V$, we have $<v, O_V> = <v, 0w> = 0<v, w>$
+
+&nbsp;
+
+**Definition - Non-Degenerate**: Scalar product that satisfies $\forall v \neq 0, \exists w \in V$ such that $<v, w> \neq 0$
+
+&nbsp;
+
+**Example**: $\mathcal{F}([0, 1])$, all functions $f:[0,1] \rightarrow R$
+
+Let $C([0,1])$ be the set of all continuous functions $f:[0, 1] \rightarrow R$, which is clearly an $R$ subspace
+
+Now define $<f, g> = \int_0^1 f(x) g(x) \, dx$. We claim that this is a scalar product
+
+*Proof*:
+
+- $\int_0^1 f(x) g(x) \, dx = \int_0^1 g(x) f(x) \, dx$ so property $1$ holds
+
+- $\int_0^1 f(x) (g_1(x) + g_2(x)) \, dx = \int_0^1 f(x) g_1(x) \, dx + \int_0^1 f(x) g_2(x) \, dx$ so property $2$ holds
+
+- $\int_0^1 f(x) cg(x) \, dx = c\int_0^1 f(x) g(x)$ so property $3$ holds
+
+We also claim that $<f, g>$ is non-degenerate since for $f \neq 0$, we have $<f, f> = \int_0^1 f(x)^2$, which is always $\geq 0$ and is continuous
+
+&nbsp;
+
+**Example**: $f(x) = 2x + 3 \quad \quad g(x) = x^2$
+
+$<2x + 3, x^2> = \int_0^1 (2x + 3) x^2 \, dx = 3/2$
+
+&nbsp;
+
+**Defintion - Orthogonal**: Elements $v, w \in V$ are **orthogonal**, denote $v \perp w$, if $<v, w> = 0$
+
+&nbsp;
+
+**Definition - Orthogonal Complement**: Suppose $W \subseteq V$ is a subspace, then the **orthogonal complement** of $W$ is
+$$W^{\perp} = \{v \in V \mid v \perp w\} \quad \quad \text{for } w \in W$$
+
+- **Note**: $W^{\perp} \subseteq V$ is a subspace
+
+&nbsp;
+
+**Definition - Positive Definite**: Scalar product that satisfies $\forall v \neq O, <v, v> \geq 0$. Otherwise $<v, v> = 0 \implies v = O$
+
+&nbsp;
+
+**Definition - Length**: $\| v \| = \sqrt{<v, v>}$
+
+- Length between $v$ and $w$: $\|v - w\|$
+- $\|c\| = |c| \|v\|$
+- $\|v + w\|^2 = <v + w, v + w> = <v, v> + <v, w> + <w, v> + <w, w> = \|v\|^2 - 2<v, w> + \|w\|^2$
+- $v \perp w\implies <v, w> = 0 \implies \|v + w\|^2 = \|v - w\|^2 = \|v \|^2 + \|w \|^2$
+
+&nbsp;
+
+**Parallelogram Law**: For any $v, w \in V$, we have
+$$\|v + w\|^2 + \|v - w\|^2 = 2\|v\|^2 + 2 \|w \|^2$$
+
+*Proof*: Follows from the definition/properties of length
+
+&nbsp;
+
+**Definition - Unit Vector**: $v \in V$ such that $\|v \| = 1$
+
+- If $v \neq O$, then $(\frac{1}{\|v\|}) v$ is a unit vector
+
+&nbsp;
+
+**Definition - Projection**: $\proj_w v$ represents $v$ as a scalar multiple of $w$ where $\proj_w v = (\frac{<v, w>}{<w, w>}) w$
+
+- Definition comes from creating a right triangle where $v - cw \perp cw \implies <v - cw, cw> = 0$
+
+    Thus we have $<v, cw> - <cw, cw> = c<v, w> - c^2<w, w> \implies c = \frac{<v, w>}{<w, w>}$
+
+- Special case where $<w, w> = 1 \implies \proj_w v = <v, w> w$
+
+&nbsp;
+
+**Schwartz Inequality**: For any $v, w \in V$ we have
+$$|<v, w>| \leq \|v\| \|w\|$$
+
+*Proof*: If $w = O$, then $|<v, w>| \leq 0$
+
+Otherwise, using the definition of projection, we have $cw \perp v - cw$. Thus we see
+\begin{align*}
+\|v\|^2 &= \|v - cw\|^2 + \|cw\|^2 \\
+\implies \|cw^2\| &\leq \|v^2\| \\
+c^2 \|w\|^2 &\leq \|v\|^2 \\
+\frac{<v, w>^2}{<w,w>^2}\|w\|^2 &\leq \|v\|^2 \\
+\implies <v, w>^2 &\leq \|v\|^2 \|w\|^2
+\end{align*}
+
+&nbsp;
+
+**Triangle Inequality**: For $v, w \in V$, we have
+$$\|v + w\| \leq \|v\| + \|w \|$$
+
+*Proof*:
+\begin{align*}
+\|v + w\|^2 &= <v + w, v + w> \\
+&= \|v\|^2 + 2<v, w> + \|w\|^2 \\
+&\leq \|v\|^2 + 2\|v\|\|w\| + \|w\|^2 \\
+&\leq (\|v\| + \|w\|)^2 \\
+\implies \|v +  w \| &\leq \|v\| + \|w\|
+\end{align*}
+
+
+
