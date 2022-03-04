@@ -1162,7 +1162,7 @@ Thus the inverse of $M_{B'}^B$ is $M_B^{B'}$
 
 # Scalar Products and Orthogonality
 
-## Scalar Prodcuts
+## Scalar Products
 
 **Definition - Scalar Product:**: For a Vector Space $V$, we define $<,>: V \times V \rightarrow K$
 
@@ -1242,6 +1242,16 @@ $$W^{\perp} = \{v \in V \mid v \perp w\} \quad \quad \text{for } w \in W$$
 
 &nbsp;
 
+**Pythagoras Theorem**: For $v \perp w$,
+$$\|v + w\|^2 = \|v\|^2 + \|w\|^2$$
+
+*Proof*:
+\begin{align*}
+\|v + w\|^2 &= <v+w, v+w> \\
+&= <v, v> + 2<v, w> + <w,w> \\
+&= \|v\|^2 + \|w, w\|^2
+\end{align*}
+
 **Parallelogram Law**: For any $v, w \in V$, we have
 $$\|v + w\|^2 + \|v - w\|^2 = 2\|v\|^2 + 2 \|w \|^2$$
 
@@ -1293,5 +1303,91 @@ $$\|v + w\| \leq \|v\| + \|w \|$$
 \implies \|v +  w \| &\leq \|v\| + \|w\|
 \end{align*}
 
+&nbsp;
 
+**Proposition**: Suppose $\{w_1, \ldots, w_r\} \subseteq V$ is pairwise orthogonal and assume that each $w_i \neq O$. Then $\{w_1, \ldots, w_r\}$ is linearly independent
 
+*Proof*: Let $a_1 w_1 + \cdots + a_r w_r = O_V$. Then we have
+$$<w_i, a_1w_1 + \cdots + a_r w_r> = <w_i, a_1w_1> + \cdots + <w_i, a_n w_n> = 0 \quad \quad \text{since each w is pairwise orthogonal}$$
+Thus $<w_i, a_i w_i> = 0 \implies a<w_i, w_i> = 0 \implies a_i = 0$ since $<w_i, w_i> > 0$ since positive definite
+
+&nbsp;
+
+Let $W = \Span(\{w_1, \ldots, w_r\}) \subseteq V$. Then clearly $\dim(W) = r$
+
+Now take $v \in V$ and define $\displaystyle \proj_W v = \sum_{i=1}^{r} c_i w_i$ where $c_iw_i = \proj_{w_i}v$
+
+Clearly $\proj_W v \in W$
+
+**Proposition**: $\Big(\displaystyle v - \sum_{i=1}^{r} c_j w_j\Big) \perp$ each $w_i$
+
+*Proof*: Fix $i$, then
+$$\sum_{j=1}^{r} c_j w_j = c_i w_i + \sum_{j \neq i}^{}c_j w_j$$
+Now take
+$$v - \sum_{j=1}^{r}c_j w_j = (v - c_iw_i) - \sum_{j \neq i}^{} c_j w_j$$
+and take the inner product with $w_i$
+$$\underbrace{<w_i, v-c_iw_i>}_{0 \text{b/c of projection}} - <w_i, \underbrace{\sum_{j\neq i}^{}c_j w_j>}_{0 \text{ b/c orthogonal }}$$
+Thus we have $\displaystyle w_i \perp v- \sum_{j=1}^{r}c_j w_j$
+
+&nbsp;
+
+**Corollary**: $\displaystyle (v - \sum_{j=1}^{r}) \perp$ every $w \in W$
+
+*Proof*: Since each $w_i$ in the basis is orthogonal to $\displaystyle v - \sum_{j=1}^{r}c_j w_j$, we must have
+$$<w, v - \sum_{j=1}^{r}c_jw_j> = 0$$
+
+&nbsp;
+
+**Corollary**: $\displaystyle (v - \sum_{j=1}^{r}c_j w_j) \in W^\perp$
+
+*Proof*: Follows from the previous corollary
+
+&nbsp;
+
+**Geometric Interpretation**: For any $v \in V$, $\proj_W v$ is the closest point to $v$ in $W$
+$$\|v - \proj_w v\| \leq \|v - w\|$$
+
+*Proof*: Choose any $w \in W = \Span(\{v_w, \ldots, w_r\})$, then $\displaystyle w = \sum_{i=1}^{r} a_i w_i$. Then we have
+\begin{align*}
+\|v - w\|^2 &= \|v - \sum_{i=1}^{r} a_i w_i\|^2  \\
+&= \|\underbrace{v - \sum_{i=1}^{r}c_i w_i}_{\perp W} + \underbrace{\sum_{i=1}^{r}(c_i a_i) w_i\|^2}_{\in W} \\
+&= \|v - \sum_{i=1}^{r}c_i w_i\|^2 + \|\sum_{i=1}^{r}(c_i - a_i) w_i \|^2 \quad \quad \text{by Pythagoras}\\
+\end{align*}
+Thus $\displaystyle \|v - w\|^2 \geq \|v - \sum_{c_i}^{w_i}\|^2 \implies \|v - w\| \geq \|v - \sum_{i=1}^{r}c_i w_i$
+
+&nbsp;
+
+**Corollary**: Suppose $w \in W$, then $\proj_W w$ is the element of $W$ closest to $w$
+
+But we have $\displaystyle w = \sum_{i=1}^{r}c_i w_i \implies c_i = \frac{<w, w_1}{\|w_i\|^2}$
+
+## Orthonormal Basis
+
+**Definition - Orthonormal Basis**: $\{w_1, \ldots, w_r\} \subseteq W$ is an **orthonormal basis** if
+
+1. $\{w_1, \ldots, w_r\}$ are pairwise orthogonal and non are zero
+2. $\|w_i\| = 1$
+
+&nbsp;
+
+**Corollary**: If $\{w_1, \ldots, w_r\}$ is orthonormal, then $\displaystyle \forall w \in W, w = \sum_{i=1}^{r}<w, w_i> w_i$
+
+&nbsp;
+
+**Gram-Schmidt Process**: Turn any basis $B = \{v_1, \ldots, v_n\}$ into an orthnonormal basis $B' = \{u_1, \ldots, u_n\}$
+
+1. Given $v_w$, let $u_1 = \frac{1}{\|v_1\|}v_1$. Then we have $\Span(\{u_1\}) = \Span(\{v_1\})$
+
+2. Let $p_2 = v_2 - \proj_{u_1} v_2 = v_2 - <v_2, u_1 u_1$
+
+    Now let $u_2 = \frac{1}{\|p_2\|} p_2$. Then $\Span(\{u_1, u_2\}) = \Span(\{v_1, v_2\})$
+
+3. Let $p_3 = v_3 - \proj_{\Span(\{u_1, u_2\})} v_3 = v_3 - <v_3, u_1> u_1 - <v_3, u_2> u_2$
+
+    Now let $u_3 = \frac{1}{\|p_3\|}p_3$. Then $\Span(\{u_1, u_2, u_3\}) = \Span(\{v_1, v_2, v_3\})$
+
+4. $\ldots$
+
+&nbsp;
+
+**Upshot**: Any finite $R$ Vector Space $V$ with a positive definite inner product has an orthonormal basis
