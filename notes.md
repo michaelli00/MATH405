@@ -8,13 +8,13 @@ header-includes:
     - \DeclareMathOperator{\lcm}{lcm}
     - \DeclareMathOperator{\Span}{span}
     - \DeclareMathOperator{\mat}{Mat}
-    - \DeclareMathOperator{\Null}{null}
     - \DeclareMathOperator{\range}{range}
     - \DeclareMathOperator{\Img}{Im}
     - \DeclareMathOperator{\Ker}{Ker}
     - \DeclareMathOperator{\matvect}{Mat$_{x \times n}(K)$}
     - \DeclareMathOperator{\id}{id}
     - \DeclareMathOperator{\proj}{proj}
+    - \DeclareMathOperator{\Null}{Null}
 output: pdf_document
 ---
 
@@ -1331,7 +1331,7 @@ Thus we have $\displaystyle w_i \perp v- \sum_{j=1}^{r}c_j w_j$
 
 &nbsp;
 
-**Corollary**: $\displaystyle (v - \sum_{j=1}^{r}) \perp$ every $w \in W$
+**Corollary**: $\displaystyle (v - \sum_{j=1}^{r} c_j w_j) \perp$ every $w \in W$
 
 *Proof*: Since each $w_i$ in the basis is orthogonal to $\displaystyle v - \sum_{j=1}^{r}c_j w_j$, we must have
 $$<w, v - \sum_{j=1}^{r}c_jw_j> = 0$$
@@ -1391,3 +1391,122 @@ But we have $\displaystyle w = \sum_{i=1}^{r}c_i w_i \implies c_i = \frac{<w, w_
 &nbsp;
 
 **Upshot**: Any finite $R$ Vector Space $V$ with a positive definite inner product has an orthonormal basis
+
+&nbsp;
+
+**Theorem** Let $B$ ve a finite dimension $R$ Vector Space with a positive definite scalar product. Then for any subspace $W \subseteq S$
+$$V = W \oplus W^{\perp}$$
+
+*Proof*:
+
+- Show that $V = W + W^{\perp}$
+
+    Choose $v \in V$ and let $w^* = \proj_W v \in W$. Then $v - w^* \in W^{\perp}$
+
+    Thus $v = \underbrace{w^*}_{\in W} + \underbrace{(v - w^*)}_{\in W^\perp}$
+
+- Show that $W \cap W^{\perp} = \{O\}$
+
+    Choose $w \in W \cap W^{\perp}$
+
+    Since $w \in W^{\perp}$, $w$ is orthogonal to all vectors in $W$
+
+    In particular, $w \perp w \implies <w, w> = 0 \implies w = O$ since the scalar product is positive definite
+
+&nbsp;
+
+**Corollary**: If $W \subseteq V$ is a subspace, then
+$$\dim(V) = \dim(W) + \dim(W^\perp)$$
+
+## Application to Linear Equations: Rank
+
+Let $A$ be an $m \times n$ matrix with entries in $R$
+
+- Let $C_A \subseteq R^m$ be the span of column vectors of $A$
+- Let $R_A \subseteq R^n$ be the span of row vectors of $A$
+- Let $\Null(A) = \{v \in R^m \mid Av = O\}$
+
+Recall that any $m \times n$ matrix $A$ describes a linear transformation $L_A: R^n \rightarrow R^m$ where $L_a(v) = Av \in R^m$
+
+Thus $\Img(L_A) = C_A$
+
+Furthermore, $\Ker(L_A) = \{v \in R^n \mid Av = O\} = \Null(A)$
+
+Thus we have
+\begin{align*}
+\dim(R^n) &= \dim(\Img(L_A)) + \dim(\Ker(L_A)) \\
+&= \dim(C_A) + \dim(\Null(A))
+\end{align*}
+
+&nbsp;
+
+Now consider using scalar products
+
+Take $v \in \Null(A)$. Thus $Av = O$
+
+Thus $A_i \cdot v = 0 \iff A_i \perp v \iff v \perp$ all $u \in R_A \implies v \in (R_A)^\perp$
+
+Thus $\Null(A) = \Ker(A) = (R_A)^\perp$
+
+Thus $R_A \subseteq R^n$ is a subspace of $R^n$.
+
+Thus we have
+\begin{align*}
+\dim(R^n) &= \dim(R_A) + \dim((R_A)^\perp) \\
+n &= \dim(R_A) + \dim(\Null(A))
+\end{align*}
+Thus we have $\dim(R_A) = \dim(C_A)$
+
+&nbsp;
+
+**Definition - Rank**: The **rank** of a matrix $A$ is $\dim(R_A) = \dim(C_A)$
+
+&nbsp;
+
+## Scalar Products under Complex Numbers
+
+We want a positive definite scalar product for $C$
+
+Take the **complex conjugate**
+$$(a + bi)(a - bi) = a^2 = b^2$$
+Then we see that
+$$\|z\| = \sqrt{<z, \bar{z}>} \in R$$
+
+&nbsp;
+
+**Definition - Hermitian Inner Product**: For $(y_1, \ldots, y_n)$ and $(z_1, \ldots, z_n) \in C^n$, define
+$$<y, z> = y_1 \overline{z_1} + \cdots + y_n \overline{z_n}$$
+
+- **Note**: This is NOT a scalar product
+
+Now we list the properties of the Hermitian Inner Product
+
+- $<w, v> = \overline{<v, w>}$
+- $<v, w_1 + w_2> = <v, w_1> + <v, w_2>$
+- $<cv, w> = c<v, w>$ AND $<v, cw> = \overline{c}<v, w>$
+
+&nbsp;
+
+**Proposition**: The Hermitian Inner Product is positive definite
+
+*Proof*: We look at
+$$<v,v> = x_1 \overline{x_1} + \cdots + x_n \overline{x_n} = \|x_1\|^2 + \cdots + \|x_n\|^n \in R$$
+We see that $<v, v> \geq 0$. If it happens that $<v, v> = 0 \implies x_1 = \cdots = x_n = 0$
+
+&nbsp;
+
+## General Orthogonal Bases
+
+Now we relax the assumption of $<, >$ being positive definite
+
+Suppose $V$ be a finite dimension Vector Space over $R$ and let $<, >$ be a scalar product, not necessarily positive definite. Then $V$ has an orthogonal basis
+
+- **Note**: Not orthonormal, since we could have the mapping to $0$, and thus $v_i \perp v_j$
+
+&nbsp;
+
+Consider the trivial case: Let $<v, w> = 0$ for all $v, w \in V$
+
+Then any basis for $V$ is an orthogonal basis
+
+
