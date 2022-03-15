@@ -15,6 +15,7 @@ header-includes:
     - \DeclareMathOperator{\id}{id}
     - \DeclareMathOperator{\proj}{proj}
     - \DeclareMathOperator{\Null}{Null}
+    - \DeclareMathOperator{\Ann}{Ann}
 output: pdf_document
 ---
 
@@ -1497,16 +1498,201 @@ We see that $<v, v> \geq 0$. If it happens that $<v, v> = 0 \implies x_1 = \cdot
 
 ## General Orthogonal Bases
 
-Now we relax the assumption of $<, >$ being positive definite
+### Properties and Types of Scalar Products
 
-Suppose $V$ be a finite dimension Vector Space over $R$ and let $<, >$ be a scalar product, not necessarily positive definite. Then $V$ has an orthogonal basis
+Repeating a lot of what was stated above for clarity
 
-- **Note**: Not orthonormal, since we could have the mapping to $0$, and thus $v_i \perp v_j$
+A **scalar product** satisfies
+
+1. Symmetry: $\langle v, w \rangle = \langle w, v \rangle$
+2. Linear: $\langle v, w_1 + w_2 \rangle = \langle v, w_1 \rangle + \langle v, w_2 \rangle$
+3. Scalar $\langle cv, w \rangle = c \langle v, w \rangle = \langle v, cw \rangle$
 
 &nbsp;
 
-Consider the trivial case: Let $<v, w> = 0$ for all $v, w \in V$
+Types of scalar products (each progressively weaker):
 
-Then any basis for $V$ is an orthogonal basis
+- **Positive Definite**: $\forall v \in V, \langle v, v \rangle  \geq 0$ AND $\langle v, v \rangle = 0 \implies v = O$
+- **Non-Degenerate**: For $v \neq O, \exists w \in V$ such that $\langle v, w \rangle \neq 0$
+- **Non-Trivial**: $\exists v, w \in V$ such that $\langle v, w \rangle \neq 0$
+
+**Upshot**: positive definite $\implies$ non-degenerate $\implies$ non-trivial
+
+&nbsp;
+
+We also consider **Trivial Scalar Products** where $\forall v, w \in V$, we have $\langle v, w \rangle = 0$
+
+&nbsp;
+
+For a positive definite $\langle, \rangle$, we proved that
+
+1. Every finite dimentional Vector Space $V$ has an orthonormal basis (**Gram Schmidt Process**)
+2. For any subspace $W \subseteq V$, we have $W \oplus W^\perp$ (**Projection**)
+
+&nbsp;
+
+**Observation**: If $\langle, \rangle$ is trivial, then any basis of $V$ is orthogonal
+
+&nbsp;
+
+**Lemma**: Suppose $\langle v, \rangle = 0$ for all $v \in v$, then $\langle, \rangle$ is trivial
+
+*Proof*: Choose any $v, w \in V$. Then we see
+$$\langle v + w, v + w \rangle = \langle v, v \rangle + 2 \langle v, w \rangle + \langle, w, w \rangle$$
+Thus we have
+$$\langle v, w \rangle = \frac{1}{2} (\langle v + w, v + w \rangle - \langle v, v \rangle - \langle w, w \rangle) = 0$$
+
+&nbsp;
+
+**Corollary**: If $\langle v, v \rangle = 0$ for all $v \in V$, then any basis of $V$ is orthogonal
+
+*Proof*: Since $\langle, \rangle$ is trivial (shown from the Lemma), by the observation above, any basis of $V$ is orthogonal
+
+&nbsp;
+
+**Theorem 1**: If $\langle , \rangle$ is any scalar product on $V$, then $V$ has an orthogonal basis
+
+*Proof*: By Induction on $n = \dim(V)$
+
+Claim: If $\langle, \rangle$ is any scalar product on any finite dimensional Vector Space $V$ with $\dim(V) \leq n$, then $V$ has an orthogonal basis
+
+Base Case: $n = 0: \dim(V) \implies B = \{\}$ is a basis and is an orthogonal basis
+
+Base Case: $n = 1: \dim(V) = 1 \implies \{v_1\}$ is an orthogonal basis for $v_1 \in V, v_1 \neq 0$
+
+IH: Assume the claim holds for $\dim(V) = n-1$
+
+IS: Suppose $\dim(V) = n$
+
+- Case 1: $\forall v \in V, \langle v, v \rangle= 0$. Then by the preceding Lemma, $\langle, \rangle$ is trivial and any basis for $V$ is an orthogonal basis
+
+- Case 2: $\exists v_1 \in V$ such that $\langle v_1, v_1 \rangle \neq 0$
+
+    Let $V_1 = \Span(\{v_1\}) \subseteq V$ be a subspace. We show that $V = V_1 \oplus V_1^\perp$
+
+    - Show that $V = V_1 + V_1^\perp$
+
+      Choose $v \in V$. Since $\langle v_1, v_1 \rangle \neq 0$ we can use projection: $\proj_{v_1} v = \frac{\langle v, v_1 \rangle}{\langle v_1, v_1 \rangle} v_1 \in V_1$
+
+      Thus $(v - \proj_{v_1} v) \perp v_1 \implies (v - \proj_{v_1}) \in V_1^\perp$
+
+      Thus $v = \underbrace{(\proj_{v_1}v)}_{\in V_1} + \underbrace{(v - \proj_{v_1}v)}_{\in V_1^\perp}$
+
+    - Show $V_1 \cap V_1^\perp = \{O\}$
+
+      Choose $v \in V_1 \cap V_1^\perp$
+
+      $v \in V_1^\perp$ and $v \in V_1 \implies v \perp v \implies \langle v, v \rangle = 0$
+
+      However, $v \in V_1 \implies v = dv_1 \implies 0 = \langle v, v \rangle = \langle dv_1, dv_1 \rangle = d^2 \underbrace{\langle v_1, v_1 \rangle}_{\neq 0}$
+
+      Thus we see that $d = 0 \implies v = O$
+
+  Now we have $\dim(V) = \dim(V_1) + \dim(V_1^\perp) \implies \dim(V_1^\perp) = n - 1$ which by IH has an orthogonal basis $\{v_2, \ldots, v_n\}$
+
+  Finally, since $v_1 \perp v_i$ for $2 \leq i \leq n$, we see that $\{v_1, v_2, \ldots, v_n\}$ is a orthogonal basis for $V$
+
+&nbsp;
+
+**Definition - Dual Space**: $K$-Vector Space $V^* = \mathcal{L}(V, K)$  where each elemnet of $V^*$ is a linear transformation $\phi: V \rightarrow K$
+
+- **Note**: For any $w_1, \ldots, w_n \in W$, there is exactly one Linear Transformation $T: V \rightarrow W$ such that $T(v_i) = w_i$ for $1 \leq i \leq n$
+
+&nbsp;
+
+**Example**: Let $B = \{v_1, \ldots, v_n\}$ be a basis for $V$ and take
+\begin{align*}
+\phi_1: V \rightarrow K \quad \quad \phi_1(v) &= \phi_1(a_1 v_1 + \cdots + a_n v_n) = a_1 \\
+\phi_2: V \rightarrow K \quad \quad \phi_2(v) &= \phi_2(a_1 v_1 + \cdots + a_n v_n) = a_2 \\
+&\cdots
+\end{align*}
+
+Thus we see that $\phi_i(v_j) = \begin{cases} 1 & i =j \\ 0 & i \neq j \end{cases}$
+
+Let $B^* = \{\phi_1, \ldots, \phi_n\}$. Then we see that $B^*$ is a basis for $V^*$
+
+- Show linear independence: Take $a_i \in K$ such that $\underbrace{O}_{O \text{mapping}} = \underbrace{(a_1 \phi_1 + \cdots + a_n \phi_n)}_{\text{mapping}}$
+
+  This equality means that $\forall w \in V$, we have $(a_1 \phi_1 + \cdots + a_n \phi_n) (w) = O(w)$
+
+  Now applying the transformation to $v_1$, we see that $a_1 = O(v_1) = 0 \implies a_1 = 0$
+
+  Similar logic shows that $a_i = 0$ for $1 \leq i \leq n$
+
+- Show $B'$ spans $\mathcal{L}(V, K)$
+
+  Choose any $T \in \mathcal{L})(V, K)$. Then we see
+
+  $T(v_1) = b_1 \in K \quad \quad \cdots T(v_n) = b_n \in K$
+
+  Now let $\phi^* = b_1 \phi_1 + \cdots + b_n \phi_n$. Clearly $\phi \in \Span(B')$
+
+  We show that $\phi^* = T$ (they need to agree on all input)
+
+  It suffices so show that $\phi^*(v_j) = T(v_j)$ for $v_j \in B$ since $B$ is a basis of $V$
+
+  Simple calculations show that $\phi^*(v_j) = (b_1 \phi_1 + \cdots + b_n \phi_n)(v_j) = b_j = T(v_j)$
+
+  Thus $T \in \Span(B')$
+
+&nbsp;
+
+**Corollary**: $\dim(V^*) = \dim(V) = n$ (so same size as basis)
+
+&nbsp;
+
+**Corollary**: $V$ is isomorphic to $V^*$. Namely, there exists a 1-1, onto linear transformation $F: V \righarrow V^*$ where $F(v_) = \phi_1, \ldots, F(v_n) = \phi_n$
+
+These $\phi_i$ uniquely describe $F$
+
+&nbsp;
+
+Consider a subspace $W \subseteq V$
+
+**Definition - Annihilator**: $\Ann(W) = \{\phi \in V^* \mid \forall w \in W \phi(w) = 0\}$, so the set of linear transformations in $V^*$ such that $W \subseteq \Ker(\phi)$
+
+&nbsp;
+
+**Annihilator Theorem**: For any $W \subseteq V$
+$$\dim(W) + \dim(\Ann(W)) = \dim(V) = n$$
+
+*Proof*: Choose a basis for $W$, $\{w_1, \ldots, w_r\}$
+
+Now extend it to a basis for $V$, $B = \{w_1, \ldots, w_r, w_{r+1}, \ldots, w_n\}$
+
+Let $B' = \{\phi_1, \ldots, \phi_n\}$ be the dual basis of $V^*$ corresponding to $B$
+
+We claim that $\{\phi_{r+1}, \ldots, \phi_n\}$ is a basis for $\Ann(W)$
+
+- For any $w \in W$, $w = a_1 w_1 + \cdots + a_r w_r$, any $\phi_j(w) = 0$ for $j \geq r+1 \implies \{\phi_{r+1}, \ldots, \phi_n\} \subseteq \Ann(W)$
+
+- $\{\phi_{r+1}, \ldots, \phi_n\}$ is linearly independent since $B'$ is linearly independent
+
+- To show that $\Span(\{\phi_{r+1}, \ldots, \phi_n\}) = \Ann(W)$
+
+  Take $T \in \Ann(W) \implies T: V \rightarrow K$ is a linearly transformation
+
+  Furthermore, we have $T(w_1) = 0 \quad \quad T(w_r) = 0$
+
+  Since $T \in B'$ (since $B'$ is a basis for $V^*$), we have that $T = a_1 \phi_1 + \cdots + a_r \phi_r + \cdots + a_n \phi_n$
+
+  Now we see $T(w_1) = (a_1 \phi_1 + \cdots + a_n \phi_n)(w_1) = a_1 = 0$
+
+  Similarly, we see $a_i = 0$ for $1 \leq i \leq r$
+
+  Thus $T = a_{r+1} \phi_{r+1} + \cdots + a_n \phi_n \in \Span(\{\phi_{r+1}, \ldots, \phi_n\})$
+
+&nbsp;
+
+**Theorem 2**: If $\langle, \rangle$ is non-degenerate, then for every subspace $W \subseteq V$, we have
+$$V = W \oplus W^\perp$$
+
+&nbsp;
+
+Now consider a $\langle, \rangle$ non-degenerate
+
+**Claim**: $\forall v \in V$, given a linear transformation $L_v: V \rightarrow K$, let $L_v(w) = \langle v, w \rangle \in K$, then $F: \rightarrow V^*$ where $F(v) = L_v$ is an isomorphism
+
+&nbsp;
 
 
