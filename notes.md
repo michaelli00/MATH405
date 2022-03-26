@@ -21,13 +21,13 @@ output: pdf_document
 
 \newpage
 
-# Vector Space
-
-Goals of this course is to discuss
+Goals of this course are to discuss
 
 - Vector spaces
 - Linear transformations between vector spaces
 - Other operations on vector spaces
+
+# Vector Space
 
 ## Definitions
 
@@ -48,7 +48,7 @@ Goals of this course is to discuss
 
 &nbsp;
 
-**Example**: $C = \{a + bi \mid a, b \in R\}$, where $i = \sqrt{-1}$ is a field under
+**Example**: $C = \{a + bi \mid a, b \in R\}$, where $i = \sqrt{-1}$, is a field under
 
 - $+:$ $(a+bi) + (c + di) = (a + c) + (b + d)i$
 - $\times:$ $(a + bi) (c + di) = (ac - bd) + (ad + bc)i$
@@ -80,7 +80,8 @@ Goals of this course is to discuss
 - $+:$ $a + b \pmod{p}$
 - $\times: ab \pmod{p}$
 
-&nbsp;
+\newpage
+
 
 **Definition - Vector Space**: For an arbitrary field $K$, a $K$-vector space is a set $V$, with a distinguished element $O$, such that any 2 elements in $V$ can be added and scalar multiplied by $c \in K$
 
@@ -100,15 +101,17 @@ Satisfying the following properties
 &nbsp;
 
 **Example**: $R^3$ is an $R$-vector space defined by the operations
+
 $$R^3 = \{(x, y , z) \mid x, y, z \in R\}$$
 
 - $+:$ add componentwise so $(a,b,c) + (d, e, f) = (a + d, b + e, c + f)$
-- Scalar $\times:$ for $r \in R$, $r(a, b, c) = (ra, rb, rc)$
+- $\times:$ for $r \in R$, $r(a, b, c) = (ra, rb, rc)$
 - Additive Identity is $O = (0, 0, 0)$
 
 &nbsp;
 
 **Example**: For any field $K$, $K^2$ is a $K$-vector space defined by the operations
+
 $$K^2 = \{(x, y) \mid x, y \in K\}$$
 
 - $+:$ add componentwise so $(a, b) + (c, d) = (a + c, b + d)$
@@ -136,7 +139,7 @@ $$K^2 = \{(x, y) \mid x, y \in K\}$$
 
 
 - $+:$ for $f, g \in \mathcal{F}(X)$, define $f + g:= (f + g)(x)$
-- Scalar $\times:$ let $r \in R$, then define $rf:= r(f(x))$
+- $\times:$ let $r \in R$, then define $rf:= r(f(x))$
 - Additive Identity is $O = f(x) = 0$, the function that takes any $x$ to $0$
 
 &nbsp;
@@ -145,11 +148,12 @@ $$K^2 = \{(x, y) \mid x, y \in K\}$$
 
 - **Note**: $f: N \rightarrow R$ is a sequence $(a_0, \ldots, a_n)$ where $a_n = f(n)$
 
-&nbsp;
+\newpage
 
 **Lemma 1 - Cancellation**: For $u, v, w \in V$ and if $u + v = w + v$, then $u = w$
 
 *Proof*: $v \in V$ has an additive inverse, namely $-v$. Thus we have
+
 $$u + v - v = w + v - v \implies u = w$$
 
 &nbsp;
@@ -157,6 +161,7 @@ $$u + v - v = w + v - v \implies u = w$$
 **Lemma 2 - Unique Additive Inverse**: For all $v \in V$, there is a unique additive inverse, namely $-v$
 
 *Proof*: Suppose $u, w$ are both additive inverses of $v$. Then we have
+
 $$v + u = v + w \implies u = w$$
 
 &nbsp;
@@ -213,7 +218,7 @@ Then $W$ is an $R$-vector space. We prove this by showing that $W$ is a subspace
 
     Then $s(r(5, 3, 2)) = (sr)(5, 3, 2) \in W$
 
-&nbsp;
+\newpage
 
 **Example**: Let $U = \{(x,y, z) \in R^3 \mid 2x + 3y = 0\}$. We show that $U$ is a vector space by showing it's a subspace of $R^3$
 
@@ -239,6 +244,7 @@ Then $W$ is an $R$-vector space. We prove this by showing that $W$ is a subspace
 ## Basis
 
 **Definition - Linear Combination**: For vectors $\{v_1, \ldots, v_n\} \subseteq V$, a **linear combination** of $\{v_1, \ldots, v_n\}$ is a vector of the form
+
 $$a_1 v_1 + \cdots + a_n v_n \quad \quad a_i \in K$$
 
 &nbsp;
@@ -292,7 +298,9 @@ $\Span(\{(5, 3, 1), (10, 6, 2)\})$ is a line in $R^3$ passing through $(0, 0, 0)
 BWOC, assume some $v_i = a_1 v_1 + \cdots + a_n v_n$ for some $v_i \notin \{v_1, \ldots, v_n\}$
 
 Then we have
+
 $$O = a_1 v_1 + \cdots + a_n v_n + (-1)v_i$$
+
 Since $v_i$ is a linear combination of $\{v_1, \ldots, v_n\}$, the above equation shows that $\{v_1, \ldots, v_n\}$ is linearly dependent. Contradiction
 
 Thus $v_i$ cannot be written as a linear combination of the other vectors
@@ -305,7 +313,9 @@ $$a_1 v_1 + \cdots + a_n v_n = O$$
 WLOG, assume $a_1 \neq 0$. Then $v_2 a_2 + \cdots + a_n v_n = a_1 v_n$
 
 Since $a_1 \neq 0$ and $K$ is a field, we have
+
 $$v_1 = \frac{a_2}{-a_1} v_2 + \cdots + \frac{a_n}{-a_1}v_n$$
+
 Thus we have shown that $v_1$ is a linear combination of the other $n-1$ vectors
 
 &nbsp;
@@ -328,7 +338,7 @@ Thus we have shown that $v_1$ is a linear combination of the other $n-1$ vectors
 
 **Example**: $\{(5, 3, 1), (10, 6, 2)\}$ is not a basis for $\Span(\{(5, 3, 1), (10, 6, 2)\})$ since it is not linearly independent
 
-&nbsp;
+\newpage
 
 **Proposition 4**: Let $\{v_1, \ldots, v_n\}$ be a basis for $W$ and let $w \in W$ be arbitrary. Then $w$ can be written uniquely as
 $$w = a_1 v_1 + \cdots + a_n v_n \quad \quad a_i \in K$$
@@ -336,9 +346,13 @@ $$w = a_1 v_1 + \cdots + a_n v_n \quad \quad a_i \in K$$
 *Proof*: Since $\{v_1, \ldots, v_n\}$ spans $W$, every $w \in W$ is a linear combination of $\{v_1, \ldots, v_n\}$
 
 For uniqueness, suppose
+
 $$w = a_1 v_1 + \cdots + a_n v_n = b_1 v_1 + \cdots + b_n v_n$$
+
 Then we have
+
 $$O = (b_1 - a_1) v_1 + \cdots (b_n - a_n)$$
+
 Since $\{v_1, \ldots, v_n\}$ is linearly independent, we must have $b_i - a_i = 0$, and thus $b_i = a_i$ for each $i$
 
 Thus each $w \in W$ can be written uniquely as a linear combination of $\{v_1, \ldots, v_n\}$
@@ -360,23 +374,25 @@ Now let $X = \{w_1, \ldots, w_m\} \subseteq W$. Then there are 2 desirable prope
 - **X is Big**: $X$ spans $W$ if $\Span(X) = W$, i.e. all $w \in W$ is a linear combination of elements from $X$
 - **X is Small**: $X$ is linearly independent, i.e. no element in $X$ is a linear combination of the remaining elements
 
-**Note**: the empty set $\emptyset$ is linearly independent since no element in $\emptyset$ is a linear combination of the others. More notably, $\emptyset$ is a basis for $\{O\}$
+**Note**: the empty set $\emptyset$ is linearly independent since no element in $\emptyset$ is a linear combination of the others. Notably, $\emptyset$ is the basis for $\{O\}$
 
 &nbsp;
 
 **Shrinking Lemma**: Let $X = \{w_1, \ldots, w_m\} \subseteq W$ and spans $W$ but $X$ is not linearly independent. Then $X \setminus \{w_i\}$ still spans $W$ for some $w_i \in X$
 
 *Proof*: Since $X$ is not linearly independent, we know that some $w_i$ is a linear combination of elements in $X \setminus \{w_i\}$. Suppose
+
 $$w_i = a_1 w_1 + \cdots + a_m w_m \quad \quad \text{ without $w_i$ occurring}$$
 
-
 Then take arbitrary $u \in W$ where
+
 $$u = b_1 w_1 + \cdots + b_m w_m$$
+
 Replacing $w_i$ above with the previous equation, we see that $u$ is a linear combination of $X \setminus \{w_i\}$
 
 Thus $X \setminus \{w_i\} = \Span(W)$
 
-&nbsp;
+\newpage
 
 **Shrinking Theorem**: Let $X = \{w_1, \ldots, w_m\}$ span $W$. Then for some subset $Y \subseteq X$ is a basis of $W$
 
@@ -408,18 +424,22 @@ Since $X$ is finite (it has $m$ elements), we will stop eventually. Either
 *Proof*: Suppose $a_1 w_1 + \cdots + a_m w_m + bw = O$. We show that $a_1 = \cdots = a_m = b = 0$
 
 Suppose BWOC, $b \neq 0$, then we can solve for $w$
+
 $$w = \frac{-a_1}{b}w_1 + \cdots + \frac{-a_m}{b}w_m$$
+
 Which means that $w \in \Span(X)$. Contradiction
 
 Thus $b = 0$. This gives
+
 $$a_1 w_1 + \cdots + a_m w_m + 0w = O$$
+
 Since $X = \{w_1, \ldots, w_m\}$ is linearly independent, we also have $a_1 = \cdots = a_m = 0$
 
 Thus $X \cup \{w\}$ is linearly independent
 
 &nbsp;
 
-**Main Question**: does the enlarging process above terminate? After some steps, do we get a set $\{w_1, \ldots, w_m\}$ that spans $W$?
+**Main Question**: Does the enlarging process above terminate? After some steps, do we get a set $\{w_1, \ldots, w_m\}$ that spans $W$?
 
 &nbsp;
 
@@ -428,13 +448,17 @@ Thus $X \cup \{w\}$ is linearly independent
 - **Note**: If $k > n$, then $\{v_k, \ldots, v_n\} = \emptyset$
 
 *Proof*: First we show that $\Span(Y) = W$. Since $X$ spans $W$, we can write
+
 $$w = a_1 v_1 + \cdots + a_n v_n \implies v_1 = \frac{1}{a_1}w + \frac{-a_2}{a_1}v_2 + \cdots + \frac{-a_m}{a_1}v_m$$
+
 Since $w \notin \Span(\{v_k, \ldots, v_n\})$, we must have $a_i \neq 0$ for some $i < k$
 
 WLOG, let $a_1 \neq 0$. We show that $Y$ spans $W$
 
 Since $X$ spans $W$, for arbitrary $u \in W$, we have
+
 $$u = d_1 v_1 + \cdots + d_n v_n$$
+
 Replacing $v_1$ above with the previous equation, we see that $u$ is a linear combination of elements of $Y$ and thus $u \in \Span(Y)$
 
 Thus $\Span(Y) = W$
@@ -442,12 +466,16 @@ Thus $\Span(Y) = W$
 Next we show that $Y$ is linearly independent
 
 Suppose we have
+
 $$cw + b_2 v_2 + b_n v_n = O$$
+
 We show that $c = b_2 = \cdots = b_n = 0$
 
 - If $c = 0 \implies b_2 = \cdots = b_n = 0$ since $\{b_2, \ldots, b_n\}$ is linearly independent
 - Otherwise suppose $c \neq 0$, then we can solve for $w$
+
 $$w = \frac{-b_2}{c}v_2 + \cdots + \frac{-b_n}{c}v_n \implies v_1 = \frac{1}{a_1}(\frac{-b_2}{c}v_2 + \cdots + \frac{-b_n}{c}v_n) + \frac{-a_1}{a_1}v_2 + \cdots + \frac{-a_m}{a_1v_m}$$
+
 Thus $v_1$ is a linear combination of $\{v_2, \ldots, v_n\}$. Contradiction since we said $X$ was linearly independent. Thus $c = 0$
 
 &nbsp;
@@ -608,6 +636,7 @@ If $U$ is any line through $(0, 0, 0)$ such that $U \notin W$, then $R^3 = W \op
 &nbsp;
 
 **Theorem**: Let $V$ be a $K$-Vector Space with $\dim(V) = n$. Let $W \subseteq V$ be any subspace of $V$. Then there exists a subspace $U \subseteq V$ such that
+
 $$V = U \oplus W$$
 
 *Proof*: Choose any basis $Z = \{w_1, \ldots, w_m\}$ of $W$ (we know that $m \leq n$)
@@ -641,6 +670,7 @@ Let $U = \Span(\{u_1, \ldots, u_r\})$. Then $U$ is a subspace of $V$ and $\{u_1,
 # Matrices
 
 **Definition - $\mathbf{m \times n}$ Matrix**: Entries $\in K$ of the form
+
 $$A = \begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & \cdots & \cdots & a_{mn}\end{bmatrix}$$
 
 &nbsp;
@@ -669,7 +699,7 @@ Thus $\dim(\mat_{2 \times 3}(K)) = 6$
 
 &nbsp;
 
-**Example**: $\{\begin{bmatrix} a & b \\ b & d\end{bmatrix}\}$, **symmetric $\mathbf{2 \times 2}$ matrices**, is a subspace of $\mat_{2 \times 2}(K)$, which has dimension $4$
+**Example**: $\{\begin{bmatrix} a & b \\ b & d\end{bmatrix}\}$, **Symmetric $\mathbf{2 \times 2}$ matrices**, is a subspace of $\mat_{2 \times 2}(K)$, has dimension $3$
 
 &nbsp;
 
@@ -679,7 +709,7 @@ Thus $\dim(\mat_{2 \times 3}(K)) = 6$
 
 **Notation**: $A_i = (a_{i1}, \ldots, a_{in})$, the $i$th row vector, is a $1 \times n$ matrix
 
-**Notation**: $A^j = (a_{1j}, \ldots, a_{mj})$, the $j$th column vector, is a $m \times 1$ matrix
+**Notation**: $A^j = (a_{1j}, \ldots, a_{mj})$, the $j$th column vector, is an $m \times 1$ matrix
 
 &nbsp;
 
@@ -694,10 +724,14 @@ Thus $\dim(\mat_{2 \times 3}(K)) = 6$
 &nbsp;
 
 **Definition - Matrix Multiplication**: An $m \times n$ matrix $A$ can multiply with an $n \times k$ matrix $B$ where
+
 $$C_{il} = \sum_{d=1}^{n}a_{ij} b_{d, l}$$
 
 - **Note**: If $A, B$ are both $n \times n$ matrices, then $AB$ is an $n \times n$ matrix
-- **Upshot**: Square matrices are closed under transposition and matrix multiplication
+
+&nbsp;
+
+**Upshot**: Square matrices are closed under transposition and matrix multiplication
 
 &nbsp;
 
@@ -707,17 +741,21 @@ $$C_{il} = \sum_{d=1}^{n}a_{ij} b_{d, l}$$
 
 ## Linear Equations
 
-Consider
+Consider the following system
+
 \begin{align*}
  5x_1 + 3x_2 - 6x_3 &= 8 \\
  x_1 - 2x_2 + x_3 = 4
 \end{align*}
+
 We can represent this using
+
 $$A = \begin{bmatrix} 5 & 3 & -6 \\ 1 & -2 & 1\end{bmatrix} \quad \quad X = \begin{bmatrix} x_1 \\ x_2 \\ x_3\end{bmatrix} \quad \quad B = \begin{bmatrix} 8 \\ 4 \end{bmatrix} \implies AX = B$$
 
 # Mappings
 
 **Definition - Function**: Mapping between 2 sets $D, R$ such that for each $x \in D$, there exists a unique $y \in R$ such that $f(x) = y$
+
 $$F: D \rightarrow R$$
 
 - **Note**: $D$ here is the **domain** of $F$ and $R$ is the **range** of $F$
@@ -760,13 +798,15 @@ Then $t(A) = ^tA$ is a function
 **Definition - Onto**: A function $F: D \rightarrow R$ is **onto** if Image of $F = R$
 
 **Definition - 1-1**: A function $F: D \rightarrow R$ is **1-1** if different elements from $D$ get mapped to different elements of $R$
+
 $$F(d) = F(e) \implies d = e$$
 
 **Definition - Bijection**: A function that is both onto and 1-1
 
-&nbsp;
+\newpage
 
 **Definition - Inverse Function**: If $F:D \rightarrow R$ is a bijection, there exists an inverse function $F^{-1}: R \rightarrow D$ such that
+
 \begin{align*}
 \forall r, \in R, F(F^{-1}(r)) &= r\\
 \forall d, \in D, F^{-1}(F(d)) &= d
@@ -823,13 +863,18 @@ $$F(d) = F(e) \implies d = e$$
     - Clearly 1-1
     - Is a linear transformation since $E_\pi((a, b, c) + (d, e, f)) = (\pi(a + d), \pi (b + e), \pi (c + f)) = E_\pi((a, b, c)) + E_\pi((d, e, f))$
 
+\newpage
+
 ## Consequences of Properties of Linear Transformations
 
 **Proposition**:  For any linear transformation $T: V \rightarrow W$, we have that
+
 $$T(O_V) = O_W$$
+
 *Proof*: Let $w = T(O_V)$
 
 Since $O_V = 0 * O_V$, we have that
+
 $$T(O_V) = T(0 * O_V) = 0 * T(O_V) = 0 * w = O_W$$
 
 &nbsp;
@@ -858,6 +903,7 @@ $$T(v_1) = w_1, \ldots, T(v_n) = w_n$$
 &nbsp;
 
 **Definition - Pull Back**: Suppose $Y = \{w_1, \ldots, w_m\} \subseteq \Img(T)$. Then a **pull-back** is any set $\{v_1, \ldots, v_m\} \subseteq V$ such that
+
 $$T(v_1) = w_1, \ldots, T(v_m) = w_m$$
 
 &nbsp;
@@ -888,7 +934,7 @@ By the Pull Back Property, this pulls back to $n+1$ linearly independent element
 
 &nbsp;
 
-**Note**: $T: V \rightarrow W$ where $T(v) = \{O_W\}$ is a linearly transformation with $\dim(\Img(T)) = 0$, regardless of the value of $\dim(V)$
+**Note**: $T: V \rightarrow W$, where $T(v) = \{O_W\}$, is a linearly transformation with $\dim(\Img(T)) = 0$, regardless of the value of $\dim(V)$
 
 ## Kernel
 
@@ -906,6 +952,7 @@ By the Pull Back Property, this pulls back to $n+1$ linearly independent element
 &nbsp;
 
 **Proposition**: Let $T: V \rightarrow W$ be any linear transformation. For any basis $B = \{w_1, \ldots, w_m\} \subseteq \Img(T)$ and for any pullback $\{v_1, \ldots, v_m\} \subseteq V$, we have
+
 $$V = \Ker(T) \oplus S \quad \quad S = \Span(\{v_1, \ldots, v_m\})$$
 
 *Proof*: We need to show $V = \Ker(T) + S$ and $\Ker(T) \cap S = \{O_V\}$
@@ -950,7 +997,7 @@ Since $V = \Ker(T) \oplus S$, we have $\dim(\Ker(T)) + \dim(S) = \dim(\Ker(T)) +
 
 *Proof*: $\dim(\Img(T)) \leq \dim(R^3) = 3 < 4 \implies \Img(T) \neq R^4 \implies T$ is NOT onto
 
-&nbsp;
+\newpage
 
 **Corollary 2**: For linear $T: R^4 \rightarrow R^3$, $T$ is NOT 1-1
 
@@ -989,6 +1036,7 @@ Consider Vector Spaces $U, V, W$ and linear transformations $T: U \rightarrow V$
 *Proof*:
 
 - $+:$ For $u_1, u_2 \in U$ we have that
+
 \begin{align*}
 S \circ T(u_1 + u_2) &= S(T(u_1 + u_2)) \\
 &= S(T(u_1) + T(u_2)) \\
@@ -997,6 +1045,7 @@ S \circ T(u_1 + u_2) &= S(T(u_1 + u_2)) \\
 \end{align*}
 
 - $\times:$ For $u \in U$ and $c \in K$
+
 \begin{align*}
 S \circ T(cu) &= S(T(cu)) \\
 &= S(cT(u)) \\
@@ -1010,15 +1059,17 @@ Thus $S \circ T: V \rightarrow W$ is a linear transformation
 
 **Definition - Inverse Mapping**: $T^{-1}: W \rightarrow V$ where $T^{-1}(w) =$ the unique $v \in V$ such that $T(v) = w$
 
-&nbsp;
+\newpage
 
 **Proposition**: $T^{-1}: W \rightarrow V$ is a linear transformation (and thus an isomorphism)
 
 *Proof*:
 
 - $+:$ Take $w_1, w_2 \in W$ such that $T(v_1) = w_1$ and $T(v_2) = w_2$ for $v_1, v_2 \in V$. Then we see that
+
 $$T(v_1 + v_2) = T(v_1) + T(v_2) = w_1 + w_2$$
-However, by definition of inverse mapping, $v_1 + v_2$ is the unique element such that $T(v_1 + v_2) = w_1 + w_2$
+
+&nbsp; &nbsp; &nbsp; &nbsp; However, by definition of inverse mapping, $v_1 + v_2$ is the unique element such that $T(v_1 + v_2) = w_1 + w_2$
 
 &nbsp; &nbsp; &nbsp; &nbsp; Thus by definition of $T^{-1}$, we have that $T^{-1}(w_1 + w_2) = v_1 + v_2 = T^{-1}(w_1) + T^{-1}(w_2)$
 
@@ -1039,6 +1090,7 @@ It can be clearly shown that $L_A$ is a linear transformation (follows from logi
 ## Bases, Matrices, and Linear Maps
 
 For a given transformation $T: V \rightarrow W$, the matrix of $T$ with respect to the standard basis is given by
+
 $$A = (T(E_1), \ldots, T(E_n))$$
 
 &nbsp;
@@ -1067,7 +1119,9 @@ $T(^t(1, 0)) = ^t(2, 0) \quad \quad T(^t(0, 1)) = ^t(0, 3)$
 
 Thus we see that $A = \begin{bmatrix} 2 & 0 \\ 0 & 3\end{bmatrix}$
 
-- **Note**: we see that applying functions just corresponds to matrix multiplication $\begin{bmatrix} 1 & 0 \\ 0 & 3\end{bmatrix} \begin{bmatrix} 2 & 0 \\ 0 & 1\end{bmatrix} = \begin{bmatrix} 2 & 0 \\ 0 & 3\end{bmatrix}$
+&nbsp;
+
+**Upshot**: Applying functions just corresponds to matrix multiplication $\begin{bmatrix} 1 & 0 \\ 0 & 3\end{bmatrix} \begin{bmatrix} 2 & 0 \\ 0 & 1\end{bmatrix} = \begin{bmatrix} 2 & 0 \\ 0 & 3\end{bmatrix}$
 
 &nbsp;
 
@@ -1096,6 +1150,7 @@ $A = \begin{bmatrix} 1 & 0 \\ 0 & 3\end{bmatrix} \begin{bmatrix} \sqrt{2} / 2 & 
 Let $B = \{\underbrace{(1, 4)}_{v_1}, \underbrace{(3, 0)}_{v_2}\}$ be a basis for $R^2$ and $B' = \{\underbrace{(3, 0, 0)}_{w_1}, \underbrace{(0, 5, 0)}_{w_2}, \underbrace{(0, 0, 1)}_{w_3}\}$ be a basis for $R^3$
 
 We can define a matrix of $T$ with respect to $B$ and $B'$
+
 $$M_{B'}^B(T) = (\underbrace{T(v_1) \quad \quad T(v_2)}_{\text{in terms of } w_1, w_2, w_3})$$
 
 $T(v_1) = T(1, 4) = (9, -3, 1) = 3w_1 - \frac{3}{5}w_2 + w_3$
@@ -1105,6 +1160,7 @@ $T(v_2) = T(1, 4) = (15, 3, 3) = 5w_1 + \frac{3}{5}w_2 + 3w_3$
 Thus we see that $M_{B'}^B(T) = \begin{bmatrix} 3 & 5\\ -3/5 & 3/5 \\ 1 & 3\end{bmatrix}$
 
 **Upshot**: Any vector, written in $B$ coordinates, when multiplied by this matrix, yields an answer in $B'$ coordinates. Thus for $v = a v_1 + b v_2$, we have
+
 $$T(v) = (3a + 5b) w_1 + (-3/5 a + 3/5 b) w_2 + (a + 3b) w_3$$
 
 - As a sanity check, for $v = (5,8) \in R^2$
@@ -1112,38 +1168,50 @@ $$T(v) = (3a + 5b) w_1 + (-3/5 a + 3/5 b) w_2 + (a + 3b) w_3$$
   - Linear Map: writing $v$ in terms of $v_1, v_2$, we get $(5,8) = a(1, 4) + b(3, 0) \implies (5, 8) = 2(1, 4) + 2 (3, 0)$
 
     Thus we have
+
     $$M^B_{B'}(T) \begin{bmatrix} a \\ b \end{bmatrix} = \begin{bmatrix} 3 & 5 \\ -3/5 & 3/5 \\ 1 & 3\end{bmatrix} \begin{bmatrix} 2 \\ 1\end{bmatrix} = \begin{bmatrix} 11 \\ -3/5 \\ 5\end{bmatrix} \implies 11(3, 0, 0) - 3/5(0, 5, 0) + 5(0, 0, 1) = (33, -3, 5)$$
 
-&nbsp;
+\newpage
 
 **Example**: Consider $P_n = \{a_0 + a_1 x + \cdots + a_n x^n \mid a_i \in R\}$
 
 It's easily verifiable that $P_n$ is a subspace of $\mathcal{F}(R)$. Furthermore, the basis for $P_n$ is $\{1, x, \ldots, x^n\} \implies \dim(P_n) = n + 1$
 
 Let $D: P_2 \rightarrow P_2$ be the derivative
+
 $$D(a_0 + a_1 x + a_2 x^2 = a_1 + 2a_2 x)$$
+
 Easily verifiable that $D$ is a linear transformation. Consider what is the matrix of $D$ with respect to $B = \{1, x, x^2\}$?
+
 $$A = \begin{bmatrix} D(1) & D(x) & D(x^2)\end{bmatrix} = \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 2 \\ 0 & 0 & 0\end{bmatrix}$$
+
 Thus we see that for $p(x) = 5 + 3x + 4x^2$,
-$$D(p(x)) = 3 + 8x = 5(0, 0, 0) + 3(0, 1, 0) + 4(0, 2, 0)$
+
+$$D(p(x)) = 3 + 8x = 5(0, 0, 0) + 3(0, 1, 0) + 4(0, 2, 0)$$
 
 &nbsp;
 
 **Upshot**: For a linear transformation $T: V \rightarrow W$, with $\dim(V) = n$ and $\dim(W) = m$, if $B = \{v_1, \ldots, v_n\}$ and $B' = \{w_1, \ldots, w_m\}$ are bases for $V, W$, then
+
 $$M_{B'}^B(T) = \begin{bmatrix} T(v_1) & T(v_2) & \cdots & T(V_n)\end{bmatrix}$$
+
 is a $m \times n$ matrix with column vectors containing coefficients of $T(v_1)$ WRT $B'$
 
 Furthermore, for any $v \in V, v = x_1 v_1 + \cdots + x_n v_n$, we have
+
 $$M_{B'}^B(T) \begin{bmatrix} x_1 \\ \cdots \\ x_n \end{bmatrix} = \begin{bmatrix} y_1 \\ \cdots \\ y_m\end{bmatrix}$$
+
 Thus $T(v) = y_1 w_1 + \cdots + y_m w_m$ (**Note** coordinate is WRT to $B'$)
 
 &nbsp;
 
 **Definition - Change of Basis**: Let $B = \{v_1, \ldots, v_n\}$ and $B' = \{w_1, \ldots, w_n\}$ be basis for the same vector space $V$, and let $T:V \rightarrow V$ be the identity mapping. Then
+
 $$M_{B'}^B(\id) = \underbrace{\begin{bmatrix} \id(v_1) & \id(v_2) & \cdots & \id(v_n)\end{bmatrix}}_{\text{WRT } B'}$$
+
 is the **Change of Basis** matrix for $V$
 
-&nbsp;
+\newpage
 
 **Example**: Let $V = P_1 = \{a_0 + a_1 x \mid a_i \in R\}$ and let $B = \{1, x\}$ and $B' = \{3 + x, 5 + 2x\}$, which are both bases for $V$
 
@@ -1165,7 +1233,7 @@ Thus the inverse of $M_{B'}^B$ is $M_B^{B'}$
 
 ## Scalar Products
 
-**Definition - Scalar Product:**: For a Vector Space $V$, we define $<,>: V \times V \rightarrow K$
+**Definition - Scalar Product:**: For a Vector Space $V$, we define $\langle, \rangle: V \times V \rightarrow K$
 
 - **Example**: Think of dot products in $R^n \times R^n \rightarrow R$
 
@@ -1173,25 +1241,25 @@ Thus the inverse of $M_{B'}^B$ is $M_B^{B'}$
 
 **Properties of Scalar Products**
 
-1. $<v, w> = <w, v>$
-2. $<v, w_1 + w_2> = <v, w_1> + <v, w_2>$
-3. $<v, cw> = c<v, w> \quad \quad <cv, w> = c<v, w>$
+1. $\langle v, w\rangle = \langle w, v \rangle$
+2. $\langle v, w_1 + w_2\rangle = \langle v, w_1 \rangle + \langle v, w_2 \rangle$
+3. $\langle v, cw\rangle = c\langle v, w\rangle \quad \quad \langle cv, w \rangle = c\langle v, w \rangle$
 
 &nbsp;
 
 **Consequences of Properties**
 
-- $\forall v_1, v_2, w \in V, <v_1 + v_2, w> = <v_1, w> + <v_2, w>$
+- $\forall v_1, v_2, w \in V, \langle v_1 + v_2, w \rangle = \langle v_1, w \rangle + \langle v_2, w \rangle$
 
     *Proof*: Follows from applying properties $1$ and $2$
 
-- $\forall v \in V, <v, O_v> = 0 = <O_v, v>$
+- $\forall v \in V, \langle v, O_v \rangle = 0 =\langle O_v, v \rangle$
 
-  *Proof*: For any $w \in V$, we have $<v, O_V> = <v, 0w> = 0<v, w>$
+  *Proof*: For any $w \in V$, we have $\langle v, O_V \rangle = \langle v, 0w \rangle = 0 \langle v, w \rangle$
 
 &nbsp;
 
-**Definition - Non-Degenerate**: Scalar product that satisfies $\forall v \neq 0, \exists w \in V$ such that $<v, w> \neq 0$
+**Definition - Non-Degenerate**: Scalar product that satisfies $\forall v \neq 0, \exists w \in V$ such that $\langle v, w\rangle \neq 0$
 
 &nbsp;
 
@@ -1199,7 +1267,7 @@ Thus the inverse of $M_{B'}^B$ is $M_B^{B'}$
 
 Let $C([0,1])$ be the set of all continuous functions $f:[0, 1] \rightarrow R$, which is clearly an $R$ subspace
 
-Now define $<f, g> = \int_0^1 f(x) g(x) \, dx$. We claim that this is a scalar product
+Now define $\langle f, g \rangle = \int_0^1 f(x) g(x) \, dx$. We claim that this is a scalar product
 
 *Proof*:
 
@@ -1209,51 +1277,55 @@ Now define $<f, g> = \int_0^1 f(x) g(x) \, dx$. We claim that this is a scalar p
 
 - $\int_0^1 f(x) cg(x) \, dx = c\int_0^1 f(x) g(x)$ so property $3$ holds
 
-We also claim that $<f, g>$ is non-degenerate since for $f \neq 0$, we have $<f, f> = \int_0^1 f(x)^2$, which is always $\geq 0$ and is continuous
+We also claim that $\langle f, g \rangle$ is non-degenerate since for $f \neq 0$, we have $\langle f, f \rangle = \int_0^1 f(x)^2$, which is always $\geq 0$ and is continuous
 
-&nbsp;
+\newpage
 
 **Example**: $f(x) = 2x + 3 \quad \quad g(x) = x^2$
 
-$<2x + 3, x^2> = \int_0^1 (2x + 3) x^2 \, dx = 3/2$
+$\langle 2x + 3, x^2 \rangle = \int_0^1 (2x + 3) x^2 \, dx = 3/2$
 
 &nbsp;
 
-**Defintion - Orthogonal**: Elements $v, w \in V$ are **orthogonal**, denote $v \perp w$, if $<v, w> = 0$
+**Defintion - Orthogonal**: Elements $v, w \in V$ are **orthogonal**, denoted $v \perp w$, if $\langle v, w \rangle = 0$
 
 &nbsp;
 
 **Definition - Orthogonal Complement**: Suppose $W \subseteq V$ is a subspace, then the **orthogonal complement** of $W$ is
+
 $$W^{\perp} = \{v \in V \mid v \perp w\} \quad \quad \text{for } w \in W$$
 
 - **Note**: $W^{\perp} \subseteq V$ is a subspace
 
 &nbsp;
 
-**Definition - Positive Definite**: Scalar product that satisfies $\forall v \neq O, <v, v> \geq 0$. Otherwise $<v, v> = 0 \implies v = O$
+**Definition - Positive Definite**: Scalar product that satisfies $\forall v \neq O, \langle v, v \rangle > 0$. Otherwise $\langle v, v \rangle = 0 \implies v = O$
 
 &nbsp;
 
-**Definition - Length**: $\| v \| = \sqrt{<v, v>}$
+**Definition - Length**: $\| v \| = \sqrt{\langle v, v \rangle}$
 
 - Length between $v$ and $w$: $\|v - w\|$
-- $\|c\| = |c| \|v\|$
-- $\|v + w\|^2 = <v + w, v + w> = <v, v> + <v, w> + <w, v> + <w, w> = \|v\|^2 - 2<v, w> + \|w\|^2$
-- $v \perp w\implies <v, w> = 0 \implies \|v + w\|^2 = \|v - w\|^2 = \|v \|^2 + \|w \|^2$
+- $\|cv\| = |c| \|v\|$
+- $\|v + w\|^2 = \langle v + w, v + w \rangle = \langle v, v\rangle + \langle v, w \rangle + \langle w, v \rangle + \langle w, w \rangle = \|v\|^2 - 2 \langle v, w \rangle + \|w\|^2$
+- $v \perp w\implies \langle v, w \rangle = 0 \implies \|v + w\|^2 = \|v - w\|^2 = \|v \|^2 + \|w \|^2$
 
 &nbsp;
 
 **Pythagoras Theorem**: For $v \perp w$,
+
 $$\|v + w\|^2 = \|v\|^2 + \|w\|^2$$
 
 *Proof*:
+
 \begin{align*}
-\|v + w\|^2 &= <v+w, v+w> \\
-&= <v, v> + 2<v, w> + <w,w> \\
+\|v + w\|^2 &= \langle v+w, v+w \rangle \\
+&= \langle v, v \rangle + 2\langle v, w \rangle + \langle w,w \rangle \\
 &= \|v\|^2 + \|w, w\|^2
 \end{align*}
 
 **Parallelogram Law**: For any $v, w \in V$, we have
+
 $$\|v + w\|^2 + \|v - w\|^2 = 2\|v\|^2 + 2 \|w \|^2$$
 
 *Proof*: Follows from the definition/properties of length
@@ -1266,39 +1338,43 @@ $$\|v + w\|^2 + \|v - w\|^2 = 2\|v\|^2 + 2 \|w \|^2$$
 
 &nbsp;
 
-**Definition - Projection**: $\proj_w v$ represents $v$ as a scalar multiple of $w$ where $\proj_w v = (\frac{<v, w>}{<w, w>}) w$
+**Definition - Projection**: $\proj_w v$ represents $v$ as a scalar multiple of $w$ where $\proj_w v = (\frac{\langle v, w \rangle}{\langle w, w\rangle}) w$
 
-- Definition comes from creating a right triangle where $v - cw \perp cw \implies <v - cw, cw> = 0$
+- Definition comes from creating a right triangle where $v - cw \perp cw \implies \langle v - cw, cw \rangle = 0$
 
-    Thus we have $<v, cw> - <cw, cw> = c<v, w> - c^2<w, w> \implies c = \frac{<v, w>}{<w, w>}$
+    Thus we have $\langle v, cw \rangle - \langle cw, cw \rangle = c \langle v, w \rangle - c^2 \langle w, w \rangle \implies c = \frac{\langle v, w \rangle}{ \langle w, w \rangle}$
 
-- Special case where $<w, w> = 1 \implies \proj_w v = <v, w> w$
+- Special case where $\langle w, w \rangle = 1 \implies \proj_w v = \langle v, w \rangle w$
 
 &nbsp;
 
 **Schwartz Inequality**: For any $v, w \in V$ we have
-$$|<v, w>| \leq \|v\| \|w\|$$
 
-*Proof*: If $w = O$, then $|<v, w>| \leq 0$
+$$|\langle v, w \rangle| \leq \|v\| \|w\|$$
 
-Otherwise, using the definition of projection, we have $cw \perp v - cw$. Thus we see
+*Proof*: If $w = O$, then $| \langle v, w \rangle| \leq 0$
+
+Otherwise, assume that $w$ is a unit vector. Using the definition of projection, we have $cw \perp v - cw$. Thus we see
+
 \begin{align*}
 \|v\|^2 &= \|v - cw\|^2 + \|cw\|^2 \\
-\implies \|cw^2\| &\leq \|v^2\| \\
-c^2 \|w\|^2 &\leq \|v\|^2 \\
-\frac{<v, w>^2}{<w,w>^2}\|w\|^2 &\leq \|v\|^2 \\
-\implies <v, w>^2 &\leq \|v\|^2 \|w\|^2
+&= \|v - cw\|^2 + c^2 \\
+& \geq c^2 \\
+\implies \|v\| &\geq c = \frac{\langle v, w \rangle}{\langle w, w \rangle} \\
+\implies \langle v, w \rangle &\leq \|v\| \|w\|
 \end{align*}
 
 &nbsp;
 
 **Triangle Inequality**: For $v, w \in V$, we have
+
 $$\|v + w\| \leq \|v\| + \|w \|$$
 
 *Proof*:
+
 \begin{align*}
-\|v + w\|^2 &= <v + w, v + w> \\
-&= \|v\|^2 + 2<v, w> + \|w\|^2 \\
+\|v + w\|^2 &= \langle v + w, v + w \rangle \\
+&= \|v\|^2 + 2 \langle v, w \rangle + \|w\|^2 \\
 &\leq \|v\|^2 + 2\|v\|\|w\| + \|w\|^2 \\
 &\leq (\|v\| + \|w\|)^2 \\
 \implies \|v +  w \| &\leq \|v\| + \|w\|
@@ -1309,8 +1385,10 @@ $$\|v + w\| \leq \|v\| + \|w \|$$
 **Proposition**: Suppose $\{w_1, \ldots, w_r\} \subseteq V$ is pairwise orthogonal and assume that each $w_i \neq O$. Then $\{w_1, \ldots, w_r\}$ is linearly independent
 
 *Proof*: Let $a_1 w_1 + \cdots + a_r w_r = O_V$. Then we have
-$$<w_i, a_1w_1 + \cdots + a_r w_r> = <w_i, a_1w_1> + \cdots + <w_i, a_n w_n> = 0 \quad \quad \text{since each w is pairwise orthogonal}$$
-Thus $<w_i, a_i w_i> = 0 \implies a<w_i, w_i> = 0 \implies a_i = 0$ since $<w_i, w_i> > 0$ since positive definite
+
+$$\langle w_i, a_1w_1 + \cdots + a_r w_r \rangle =  \langle w_i, a_1w_1 \rangle + \cdots + \langle w_i, a_n w_n \rangle = 0 \quad \quad \text{since each w is pairwise orthogonal}$$
+
+Thus $\langle w_i, a_i w_i \rangle = 0 \implies a\langle w_i, w_i \rangle = 0 \implies a_i = 0$ since $\langle w_i, w_i\rangle > 0$ since positive definite
 
 &nbsp;
 
@@ -1320,14 +1398,22 @@ Now take $v \in V$ and define $\displaystyle \proj_W v = \sum_{i=1}^{r} c_i w_i$
 
 Clearly $\proj_W v \in W$
 
-**Proposition**: $\Big(\displaystyle v - \sum_{i=1}^{r} c_j w_j\Big) \perp$ each $w_i$
+\newpage
+
+**Proposition**: $\Big(\displaystyle v - \sum_{i=j}^{r} c_j w_j\Big) \perp$ each $w_i$
 
 *Proof*: Fix $i$, then
+
 $$\sum_{j=1}^{r} c_j w_j = c_i w_i + \sum_{j \neq i}^{}c_j w_j$$
+
 Now take
+
 $$v - \sum_{j=1}^{r}c_j w_j = (v - c_iw_i) - \sum_{j \neq i}^{} c_j w_j$$
+
 and take the inner product with $w_i$
-$$\underbrace{<w_i, v-c_iw_i>}_{0 \text{b/c of projection}} - <w_i, \underbrace{\sum_{j\neq i}^{}c_j w_j>}_{0 \text{ b/c orthogonal }}$$
+
+$$\underbrace{\langle w_i, v-c_iw_i \rangle}_{0 \text{b/c of projection}} - \langle w_i, \underbrace{\sum_{j\neq i}^{}c_j w_j \rangle}_{0 \text{ b/c orthogonal }}$$
+
 Thus we have $\displaystyle w_i \perp v- \sum_{j=1}^{r}c_j w_j$
 
 &nbsp;
@@ -1335,7 +1421,8 @@ Thus we have $\displaystyle w_i \perp v- \sum_{j=1}^{r}c_j w_j$
 **Corollary**: $\displaystyle (v - \sum_{j=1}^{r} c_j w_j) \perp$ every $w \in W$
 
 *Proof*: Since each $w_i$ in the basis is orthogonal to $\displaystyle v - \sum_{j=1}^{r}c_j w_j$, we must have
-$$<w, v - \sum_{j=1}^{r}c_jw_j> = 0$$
+
+$$\langle w, v - \sum_{j=1}^{r}c_jw_j \rangle = 0$$
 
 &nbsp;
 
@@ -1343,59 +1430,63 @@ $$<w, v - \sum_{j=1}^{r}c_jw_j> = 0$$
 
 *Proof*: Follows from the previous corollary
 
-&nbsp;
+\newpage
 
 **Geometric Interpretation**: For any $v \in V$, $\proj_W v$ is the closest point to $v$ in $W$
-$$\|v - \proj_w v\| \leq \|v - w\|$$
+
+$$\|v - \proj_W v\| \leq \|v - w\| \quad \quad \text{for any arbitrary } w \in W$$
 
 *Proof*: Choose any $w \in W = \Span(\{v_w, \ldots, w_r\})$, then $\displaystyle w = \sum_{i=1}^{r} a_i w_i$. Then we have
+
 \begin{align*}
 \|v - w\|^2 &= \|v - \sum_{i=1}^{r} a_i w_i\|^2  \\
 &= \|\underbrace{v - \sum_{i=1}^{r}c_i w_i}_{\perp W} + \underbrace{\sum_{i=1}^{r}(c_i a_i) w_i\|^2}_{\in W} \\
 &= \|v - \sum_{i=1}^{r}c_i w_i\|^2 + \|\sum_{i=1}^{r}(c_i - a_i) w_i \|^2 \quad \quad \text{by Pythagoras}\\
 \end{align*}
-Thus $\displaystyle \|v - w\|^2 \geq \|v - \sum_{c_i}^{w_i}\|^2 \implies \|v - w\| \geq \|v - \sum_{i=1}^{r}c_i w_i$
+
+Thus $\displaystyle \|v - w\|^2 \geq \|v - \sum_{i=1}^{r} c_i w_i\|^2 \implies \|v - w\| \geq \|v - \sum_{i=1}^{r}c_i w_i\|$
 
 &nbsp;
 
 **Corollary**: Suppose $w \in W$, then $\proj_W w$ is the element of $W$ closest to $w$
 
-But we have $\displaystyle w = \sum_{i=1}^{r}c_i w_i \implies c_i = \frac{<w, w_1}{\|w_i\|^2}$
+But we have $\displaystyle w = \sum_{i=1}^{r}c_i w_i \implies c_i = \frac{\langle w, w_i\rangle}{\|w_i\|^2}$
 
 ## Orthonormal Basis
 
 **Definition - Orthonormal Basis**: $\{w_1, \ldots, w_r\} \subseteq W$ is an **orthonormal basis** if
 
-1. $\{w_1, \ldots, w_r\}$ are pairwise orthogonal and non are zero
-2. $\|w_i\| = 1$
+1. $\{w_1, \ldots, w_r\}$ are pairwise orthogonal and none are zero
+2. $\|w_i\| = 1$ for $i \in \{1, \ldots, r\}$
 
 &nbsp;
 
-**Corollary**: If $\{w_1, \ldots, w_r\}$ is orthonormal, then $\displaystyle \forall w \in W, w = \sum_{i=1}^{r}<w, w_i> w_i$
+**Corollary**: If $\{w_1, \ldots, w_r\}$ is orthonormal, then $\displaystyle \forall w \in W, w = \sum_{i=1}^{r}\langle w, w_i \rangle w_i$
 
 &nbsp;
 
 **Gram-Schmidt Process**: Turn any basis $B = \{v_1, \ldots, v_n\}$ into an orthnonormal basis $B' = \{u_1, \ldots, u_n\}$
 
-1. Given $v_w$, let $u_1 = \frac{1}{\|v_1\|}v_1$. Then we have $\Span(\{u_1\}) = \Span(\{v_1\})$
+1. Given $v_1$, let $u_1 = \frac{1}{\|v_1\|}v_1$. Then we have $\Span(\{u_1\}) = \Span(\{v_1\})$
 
-2. Let $p_2 = v_2 - \proj_{u_1} v_2 = v_2 - <v_2, u_1 u_1$
+2. Let $p_2 = v_2 - \proj_{u_1} v_2 = v_2 - \langle v_2, u_1 \rangle u_1$
 
     Now let $u_2 = \frac{1}{\|p_2\|} p_2$. Then $\Span(\{u_1, u_2\}) = \Span(\{v_1, v_2\})$
 
-3. Let $p_3 = v_3 - \proj_{\Span(\{u_1, u_2\})} v_3 = v_3 - <v_3, u_1> u_1 - <v_3, u_2> u_2$
+3. Let $p_3 = v_3 - \proj_{\Span(\{u_1, u_2\})} v_3 = v_3 - \langle v_3, u_1 \rangle u_1 - \langle v_3, u_2 \rangle u_2$
 
     Now let $u_3 = \frac{1}{\|p_3\|}p_3$. Then $\Span(\{u_1, u_2, u_3\}) = \Span(\{v_1, v_2, v_3\})$
 
-4. $\ldots$
+4. Repeat
 
 &nbsp;
 
 **Upshot**: Any finite $R$ Vector Space $V$ with a positive definite inner product has an orthonormal basis
 
-&nbsp;
+\newpage
 
-**Theorem** Let $B$ ve a finite dimension $R$ Vector Space with a positive definite scalar product. Then for any subspace $W \subseteq S$
+**Theorem** Let $V$ be a finite dimension $R$ Vector Space with a positive definite scalar product. Then for any subspace $W \subseteq V$
+
 $$V = W \oplus W^{\perp}$$
 
 *Proof*:
@@ -1412,11 +1503,12 @@ $$V = W \oplus W^{\perp}$$
 
     Since $w \in W^{\perp}$, $w$ is orthogonal to all vectors in $W$
 
-    In particular, $w \perp w \implies <w, w> = 0 \implies w = O$ since the scalar product is positive definite
+    In particular, $w \perp w \implies \langle w, w \rangle = 0 \implies w = O$ since the scalar product is positive definite
 
 &nbsp;
 
 **Corollary**: If $W \subseteq V$ is a subspace, then
+
 $$\dim(V) = \dim(W) + \dim(W^\perp)$$
 
 ## Application to Linear Equations: Rank
@@ -1434,6 +1526,7 @@ Thus $\Img(L_A) = C_A$
 Furthermore, $\Ker(L_A) = \{v \in R^n \mid Av = O\} = \Null(A)$
 
 Thus we have
+
 \begin{align*}
 \dim(R^n) &= \dim(\Img(L_A)) + \dim(\Ker(L_A)) \\
 &= \dim(C_A) + \dim(\Null(A))
@@ -1452,10 +1545,12 @@ Thus $\Null(A) = \Ker(A) = (R_A)^\perp$
 Thus $R_A \subseteq R^n$ is a subspace of $R^n$.
 
 Thus we have
+
 \begin{align*}
 \dim(R^n) &= \dim(R_A) + \dim((R_A)^\perp) \\
 n &= \dim(R_A) + \dim(\Null(A))
 \end{align*}
+
 Thus we have $\dim(R_A) = \dim(C_A)$
 
 &nbsp;
@@ -1469,30 +1564,35 @@ Thus we have $\dim(R_A) = \dim(C_A)$
 We want a positive definite scalar product for $C$
 
 Take the **complex conjugate**
+
 $$(a + bi)(a - bi) = a^2 = b^2$$
+
 Then we see that
-$$\|z\| = \sqrt{<z, \bar{z}>} \in R$$
+
+$$\|z\| = \sqrt{\langle z, \bar{z} \rangle} \in R$$
 
 &nbsp;
 
 **Definition - Hermitian Inner Product**: For $(y_1, \ldots, y_n)$ and $(z_1, \ldots, z_n) \in C^n$, define
-$$<y, z> = y_1 \overline{z_1} + \cdots + y_n \overline{z_n}$$
 
-- **Note**: This is NOT a scalar product
+$$\langle y, z \rangle = y_1 \overline{z_1} + \cdots + y_n \overline{z_n}$$
+
+- **Note**: This is NOT a scalar product since $\langle y, z \rangle \neq \langle z, y \rangle$
 
 Now we list the properties of the Hermitian Inner Product
 
-- $<w, v> = \overline{<v, w>}$
-- $<v, w_1 + w_2> = <v, w_1> + <v, w_2>$
-- $<cv, w> = c<v, w>$ AND $<v, cw> = \overline{c}<v, w>$
+- $\langle w, v \rangle = \overline{\langle v, w \rangle}$
+- $\langle v, w_1 + w_2 \rangle = \langle v, w_1 \rangle + \langle v, w_2 \rangle$
+- $\langle cv, w \rangle = c\langle v, w \rangle$ AND $\langle v, cw\rangle = \overline{c}\langle v, w \rangle$
 
 &nbsp;
 
 **Proposition**: The Hermitian Inner Product is positive definite
 
 *Proof*: We look at
-$$<v,v> = x_1 \overline{x_1} + \cdots + x_n \overline{x_n} = \|x_1\|^2 + \cdots + \|x_n\|^n \in R$$
-We see that $<v, v> \geq 0$. If it happens that $<v, v> = 0 \implies x_1 = \cdots = x_n = 0$
+
+$$\langle v,v \rangle = x_1 \overline{x_1} + \cdots + x_n \overline{x_n} = \|x_1\|^2 + \cdots + \|x_n\|^n \in R$$
+We see that $\langle v, v \rangle \geq 0$. If it happens that $\langle v, v \rangle = 0 \implies x_1 = \cdots = x_n = 0$
 
 &nbsp;
 
@@ -1527,7 +1627,7 @@ We also consider **Trivial Scalar Products** where $\forall v, w \in V$, we have
 For a positive definite $\langle, \rangle$, we proved that
 
 1. Every finite dimentional Vector Space $V$ has an orthonormal basis (**Gram Schmidt Process**)
-2. For any subspace $W \subseteq V$, we have $W \oplus W^\perp$ (**Projection**)
+2. For any subspace $W \subseteq V$, we have $V = W \oplus W^\perp$ (**Projection**)
 
 &nbsp;
 
@@ -1535,11 +1635,14 @@ For a positive definite $\langle, \rangle$, we proved that
 
 &nbsp;
 
-**Lemma**: Suppose $\langle v, \rangle = 0$ for all $v \in v$, then $\langle, \rangle$ is trivial
+**Lemma**: Suppose $\langle v,v \rangle = 0$ for all $v \in v$, then $\langle, \rangle$ is trivial
 
 *Proof*: Choose any $v, w \in V$. Then we see
-$$\langle v + w, v + w \rangle = \langle v, v \rangle + 2 \langle v, w \rangle + \langle, w, w \rangle$$
+
+$$\langle v + w, v + w \rangle = \langle v, v \rangle + 2 \langle v, w \rangle + \langle w, w \rangle$$
+
 Thus we have
+
 $$\langle v, w \rangle = \frac{1}{2} (\langle v + w, v + w \rangle - \langle v, v \rangle - \langle w, w \rangle) = 0$$
 
 &nbsp;
@@ -1548,7 +1651,7 @@ $$\langle v, w \rangle = \frac{1}{2} (\langle v + w, v + w \rangle - \langle v, 
 
 *Proof*: Since $\langle, \rangle$ is trivial (shown from the Lemma), by the observation above, any basis of $V$ is orthogonal
 
-&nbsp;
+\newpage
 
 **Theorem 1**: If $\langle , \rangle$ is any scalar product on $V$, then $V$ has an orthogonal basis
 
@@ -1598,9 +1701,10 @@ IS: Suppose $\dim(V) = n$
 
 - **Note**: For any $w_1, \ldots, w_n \in W$, there is exactly one Linear Transformation $T: V \rightarrow W$ such that $T(v_i) = w_i$ for $1 \leq i \leq n$
 
-&nbsp;
+\newpage
 
 **Example**: Let $B = \{v_1, \ldots, v_n\}$ be a basis for $V$ and take
+
 \begin{align*}
 \phi_1: V \rightarrow K \quad \quad \phi_1(v) &= \phi_1(a_1 v_1 + \cdots + a_n v_n) = a_1 \\
 \phi_2: V \rightarrow K \quad \quad \phi_2(v) &= \phi_2(a_1 v_1 + \cdots + a_n v_n) = a_2 \\
@@ -1611,7 +1715,7 @@ Thus we see that $\phi_i(v_j) = \begin{cases} 1 & i =j \\ 0 & i \neq j \end{case
 
 Let $B^* = \{\phi_1, \ldots, \phi_n\}$. Then we see that $B^*$ is a basis for $V^*$
 
-- Show linear independence: Take $a_i \in K$ such that $\underbrace{O}_{O \text{mapping}} = \underbrace{(a_1 \phi_1 + \cdots + a_n \phi_n)}_{\text{mapping}}$
+- Show linear independence: Take $a_i \in K$ such that $\underbrace{O}_{O \text{ mapping}} = \underbrace{(a_1 \phi_1 + \cdots + a_n \phi_n)}_{\text{mapping}}$
 
   This equality means that $\forall w \in V$, we have $(a_1 \phi_1 + \cdots + a_n \phi_n) (w) = O(w)$
 
@@ -1623,7 +1727,7 @@ Let $B^* = \{\phi_1, \ldots, \phi_n\}$. Then we see that $B^*$ is a basis for $V
 
   Choose any $T \in \mathcal{L})(V, K)$. Then we see
 
-  $T(v_1) = b_1 \in K \quad \quad \cdots T(v_n) = b_n \in K$
+  $T(v_1) = b_1 \in K, \ldots, T(v_n) = b_n \in K$
 
   Now let $\phi^* = b_1 \phi_1 + \cdots + b_n \phi_n$. Clearly $\phi \in \Span(B')$
 
@@ -1641,7 +1745,9 @@ Let $B^* = \{\phi_1, \ldots, \phi_n\}$. Then we see that $B^*$ is a basis for $V
 
 &nbsp;
 
-**Corollary**: $V$ is isomorphic to $V^*$. Namely, there exists a 1-1, onto linear transformation $F: V \righarrow V^*$ where $F(v_) = \phi_1, \ldots, F(v_n) = \phi_n$
+**Corollary**: $V$ is isomorphic to $V^*$. Namely, there exists a 1-1, onto linear transformation $F: V \rightarrow V^*$ where
+
+$$F(v_1) = \phi_1, \ldots, F(v_n) = \phi_n$$
 
 These $\phi_i$ uniquely describe $F$
 
@@ -1651,9 +1757,10 @@ Consider a subspace $W \subseteq V$
 
 **Definition - Annihilator**: $\Ann(W) = \{\phi \in V^* \mid \forall w \in W \phi(w) = 0\}$, so the set of linear transformations in $V^*$ such that $W \subseteq \Ker(\phi)$
 
-&nbsp;
+\newpage
 
 **Annihilator Theorem**: For any $W \subseteq V$
+
 $$\dim(W) + \dim(\Ann(W)) = \dim(V) = n$$
 
 *Proof*: Choose a basis for $W$, $\{w_1, \ldots, w_r\}$
@@ -1685,6 +1792,7 @@ We claim that $\{\phi_{r+1}, \ldots, \phi_n\}$ is a basis for $\Ann(W)$
 &nbsp;
 
 **Theorem 2**: If $\langle, \rangle$ is non-degenerate, then for every subspace $W \subseteq V$, we have
+
 $$V = W \oplus W^\perp$$
 
 &nbsp;
@@ -1695,4 +1803,4 @@ Now consider a $\langle, \rangle$ non-degenerate
 
 &nbsp;
 
-
+## Sylvester's Theorem
