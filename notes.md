@@ -1233,7 +1233,7 @@ Thus the inverse of $M_{B'}^B$ is $M_B^{B'}$
 
 ## Scalar Products
 
-**Definition - Scalar Product:**: For a Vector Space $V$, we define $\langle, \rangle: V \times V \rightarrow K$
+**Definition - Scalar Product**: For a Vector Space $V$, we define $\langle, \rangle: V \times V \rightarrow K$
 
 - **Example**: Think of dot products in $R^n \times R^n \rightarrow R$
 
@@ -1293,7 +1293,7 @@ $\langle 2x + 3, x^2 \rangle = \int_0^1 (2x + 3) x^2 \, dx = 3/2$
 
 **Definition - Orthogonal Complement**: Suppose $W \subseteq V$ is a subspace, then the **orthogonal complement** of $W$ is
 
-$$W^{\perp} = \{v \in V \mid v \perp w\} \quad \quad \text{for } w \in W$$
+$$W^{\perp} = \{v \in V \mid \forall w \in W, v \perp w\}$$
 
 - **Note**: $W^{\perp} \subseteq V$ is a subspace
 
@@ -1307,7 +1307,7 @@ $$W^{\perp} = \{v \in V \mid v \perp w\} \quad \quad \text{for } w \in W$$
 
 - Length between $v$ and $w$: $\|v - w\|$
 - $\|cv\| = |c| \|v\|$
-- $\|v + w\|^2 = \langle v + w, v + w \rangle = \langle v, v\rangle + \langle v, w \rangle + \langle w, v \rangle + \langle w, w \rangle = \|v\|^2 - 2 \langle v, w \rangle + \|w\|^2$
+- $\|v + w\|^2 = \langle v + w, v + w \rangle = \langle v, v\rangle + \langle v, w \rangle + \langle w, v \rangle + \langle w, w \rangle = \|v\|^2 + 2 \langle v, w \rangle + \|w\|^2$
 - $v \perp w\implies \langle v, w \rangle = 0 \implies \|v + w\|^2 = \|v - w\|^2 = \|v \|^2 + \|w \|^2$
 
 &nbsp;
@@ -1375,7 +1375,7 @@ $$\|v + w\| \leq \|v\| + \|w \|$$
 \begin{align*}
 \|v + w\|^2 &= \langle v + w, v + w \rangle \\
 &= \|v\|^2 + 2 \langle v, w \rangle + \|w\|^2 \\
-&\leq \|v\|^2 + 2\|v\|\|w\| + \|w\|^2 \\
+&\leq \|v\|^2 + \underbrace{2\|v\|\|w\|}_{\text{by Schwartz}} + \|w\|^2 \\
 &\leq (\|v\| + \|w\|)^2 \\
 \implies \|v +  w \| &\leq \|v\| + \|w\|
 \end{align*}
@@ -1400,7 +1400,7 @@ Clearly $\proj_W v \in W$
 
 \newpage
 
-**Proposition**: $\Big(\displaystyle v - \sum_{i=j}^{r} c_j w_j\Big) \perp$ each $w_i$
+**Proposition**: $\Big(\displaystyle v - \sum_{j = 1}^{r} c_j w_j\Big) \perp$ each $w_i$
 
 *Proof*: Fix $i$, then
 
@@ -1412,7 +1412,7 @@ $$v - \sum_{j=1}^{r}c_j w_j = (v - c_iw_i) - \sum_{j \neq i}^{} c_j w_j$$
 
 and take the inner product with $w_i$
 
-$$\underbrace{\langle w_i, v-c_iw_i \rangle}_{0 \text{b/c of projection}} - \langle w_i, \underbrace{\sum_{j\neq i}^{}c_j w_j \rangle}_{0 \text{ b/c orthogonal }}$$
+$$\underbrace{\langle w_i, v-c_iw_i \rangle}_{0 \text{ b/c of projection}} - \langle w_i, \underbrace{\sum_{j\neq i}^{}c_j w_j \rangle}_{0 \text{ b/c orthogonal }}$$
 
 Thus we have $\displaystyle w_i \perp v- \sum_{j=1}^{r}c_j w_j$
 
@@ -1465,7 +1465,7 @@ But we have $\displaystyle w = \sum_{i=1}^{r}c_i w_i \implies c_i = \frac{\langl
 
 &nbsp;
 
-**Gram-Schmidt Process**: Turn any basis $B = \{v_1, \ldots, v_n\}$ into an orthnonormal basis $B' = \{u_1, \ldots, u_n\}$
+**Gram-Schmidt Process**: Turn any basis $B = \{v_1, \ldots, v_n\}$ into an orthonormal basis $B' = \{u_1, \ldots, u_n\}$
 
 1. Given $v_1$, let $u_1 = \frac{1}{\|v_1\|}v_1$. Then we have $\Span(\{u_1\}) = \Span(\{v_1\})$
 
@@ -1517,7 +1517,7 @@ Let $A$ be an $m \times n$ matrix with entries in $R$
 
 - Let $C_A \subseteq R^m$ be the span of column vectors of $A$
 - Let $R_A \subseteq R^n$ be the span of row vectors of $A$
-- Let $\Null(A) = \{v \in R^m \mid Av = O\}$
+- Let $\Null(A) = \{v \in R^n \mid Av = O\}$
 
 Recall that any $m \times n$ matrix $A$ describes a linear transformation $L_A: R^n \rightarrow R^m$ where $L_a(v) = Av \in R^m$
 
@@ -1559,13 +1559,13 @@ Thus we have $\dim(R_A) = \dim(C_A)$
 
 &nbsp;
 
-## Scalar Products under Complex Numbers
+## Scalar Products Under Complex Numbers
 
 We want a positive definite scalar product for $C$
 
 Take the **complex conjugate**
 
-$$(a + bi)(a - bi) = a^2 = b^2$$
+$$(a + bi)(a - bi) = a^2 + b^2$$
 
 Then we see that
 
@@ -1592,6 +1592,7 @@ Now we list the properties of the Hermitian Inner Product
 *Proof*: We look at
 
 $$\langle v,v \rangle = x_1 \overline{x_1} + \cdots + x_n \overline{x_n} = \|x_1\|^2 + \cdots + \|x_n\|^n \in R$$
+
 We see that $\langle v, v \rangle \geq 0$. If it happens that $\langle v, v \rangle = 0 \implies x_1 = \cdots = x_n = 0$
 
 &nbsp;
@@ -1635,7 +1636,7 @@ For a positive definite $\langle, \rangle$, we proved that
 
 &nbsp;
 
-**Lemma**: Suppose $\langle v,v \rangle = 0$ for all $v \in v$, then $\langle, \rangle$ is trivial
+**Lemma**: Suppose $\langle v,v \rangle = 0$ for all $v \in V$, then $\langle, \rangle$ is trivial
 
 *Proof*: Choose any $v, w \in V$. Then we see
 
@@ -1697,7 +1698,7 @@ IS: Suppose $\dim(V) = n$
 
 &nbsp;
 
-**Definition - Dual Space**: $K$-Vector Space $V^* = \mathcal{L}(V, K)$  where each elemnet of $V^*$ is a linear transformation $\phi: V \rightarrow K$
+**Definition - Dual Space**: $K$-Vector Space $V^* = \mathcal{L}(V, K)$  where each element of $V^*$ is a linear transformation $\phi: V \rightarrow K$
 
 - **Note**: For any $w_1, \ldots, w_n \in W$, there is exactly one Linear Transformation $T: V \rightarrow W$ such that $T(v_i) = w_i$ for $1 \leq i \leq n$
 
@@ -1713,9 +1714,9 @@ IS: Suppose $\dim(V) = n$
 
 Thus we see that $\phi_i(v_j) = \begin{cases} 1 & i =j \\ 0 & i \neq j \end{cases}$
 
-Let $B^* = \{\phi_1, \ldots, \phi_n\}$. Then we see that $B^*$ is a basis for $V^*$
+Let $B' = \{\phi_1, \ldots, \phi_n\}$. Then we see that $B'$ is a basis for $V^*$
 
-- Show linear independence: Take $a_i \in K$ such that $\underbrace{O}_{O \text{ mapping}} = \underbrace{(a_1 \phi_1 + \cdots + a_n \phi_n)}_{\text{mapping}}$
+- Show linear independence: Take $a_i \in K$ such that $\underbrace{O}_{O \text{ mapping}} = \underbrace{a_1 \phi_1 + \cdots + a_n \phi_n)}_{\text{mapping}}$
 
   This equality means that $\forall w \in V$, we have $(a_1 \phi_1 + \cdots + a_n \phi_n) (w) = O(w)$
 
@@ -1725,7 +1726,7 @@ Let $B^* = \{\phi_1, \ldots, \phi_n\}$. Then we see that $B^*$ is a basis for $V
 
 - Show $B'$ spans $\mathcal{L}(V, K)$
 
-  Choose any $T \in \mathcal{L})(V, K)$. Then we see
+  Choose any $T \in \mathcal{L}(V, K)$. Then we see
 
   $T(v_1) = b_1 \in K, \ldots, T(v_n) = b_n \in K$
 
@@ -1737,7 +1738,7 @@ Let $B^* = \{\phi_1, \ldots, \phi_n\}$. Then we see that $B^*$ is a basis for $V
 
   Simple calculations show that $\phi^*(v_j) = (b_1 \phi_1 + \cdots + b_n \phi_n)(v_j) = b_j = T(v_j)$
 
-  Thus $T \in \Span(B')$
+  Thus $T \in \Span(B%*)$
 
 &nbsp;
 
@@ -1755,7 +1756,7 @@ These $\phi_i$ uniquely describe $F$
 
 Consider a subspace $W \subseteq V$
 
-**Definition - Annihilator**: $\Ann(W) = \{\phi \in V^* \mid \forall w \in W \phi(w) = 0\}$, so the set of linear transformations in $V^*$ such that $W \subseteq \Ker(\phi)$
+**Definition - Annihilator**: $\Ann(W) = \{\phi \in V^* \mid \forall w \in W, \phi(w) = 0\}$, so the set of linear transformations in $V^*$ such that $W \subseteq \Ker(\phi)$
 
 \newpage
 
@@ -1771,7 +1772,7 @@ Let $B' = \{\phi_1, \ldots, \phi_n\}$ be the dual basis of $V^*$ corresponding t
 
 We claim that $\{\phi_{r+1}, \ldots, \phi_n\}$ is a basis for $\Ann(W)$
 
-- For any $w \in W$, $w = a_1 w_1 + \cdots + a_r w_r$, any $\phi_j(w) = 0$ for $j \geq r+1 \implies \{\phi_{r+1}, \ldots, \phi_n\} \subseteq \Ann(W)$
+- For any $w \in W$, $w = a_1 w_1 + \cdots + a_r w_r$, and $j \geq r+1$, we have htat $\phi_j(w) = 0 \implies \{\phi_{r+1}, \ldots, \phi_n\} \subseteq \Ann(W)$
 
 - $\{\phi_{r+1}, \ldots, \phi_n\}$ is linearly independent since $B'$ is linearly independent
 
@@ -1779,7 +1780,7 @@ We claim that $\{\phi_{r+1}, \ldots, \phi_n\}$ is a basis for $\Ann(W)$
 
   Take $T \in \Ann(W) \implies T: V \rightarrow K$ is a linearly transformation
 
-  Furthermore, we have $T(w_1) = 0 \quad \quad T(w_r) = 0$
+  Furthermore, we have $T(w_1) = 0, \ldots, T(w_r) = 0$
 
   Since $T \in B'$ (since $B'$ is a basis for $V^*$), we have that $T = a_1 \phi_1 + \cdots + a_r \phi_r + \cdots + a_n \phi_n$
 
@@ -1799,8 +1800,173 @@ $$V = W \oplus W^\perp$$
 
 Now consider a $\langle, \rangle$ non-degenerate
 
-**Claim**: $\forall v \in V$, given a linear transformation $L_v: V \rightarrow K$, let $L_v(w) = \langle v, w \rangle \in K$, then $F: \rightarrow V^*$ where $F(v) = L_v$ is an isomorphism
+**Claim**: $\forall v \in V$, given a linear transformation $L_v: V \rightarrow K$, let $L_v(w) = \langle v, w \rangle \in K$, then $F: V \rightarrow V^*$ where $F(v) = L_v$ is an isomorphism
 
 &nbsp;
 
+## Quadratic Forms
+
+**Definition - Symmetric Bilinear Form**: Another way of calling scalar products on a vector space $V$
+
+- **Symmetric** comes from $\langle v, w \rangle = \langle w, v \rangle$
+
+- **Bilinear** comes from $\langle v, w_1 + w_2 \rangle = \langle v, w_1 \rangle + \langle v, w_2 \rangle$ and $\langle v, cw \rangle = c \langle v, w \rangle = \langle cv, w \rangle$
+
+- **Form** comes from the mapping $(v, w) \rightarrow \langle v, w \rangle$, often denoted as a function
+
+$$g: V \times V \rightarrow K \quad \quad g(v, w) = \langle v, w \rangle$$
+
+**Definition - Quadratic Form**: Given a scalar product $g = \langle , \rangle$, the **quadratic form** determined by $g$ is a function
+
+$$f: V \rightarrow K \quad \quad f(v) = g(v, v) = \langle v, v \rangle$$
+
+&nbsp;
+
+**Example**: If $V = K^n$ then $f(X) = X \cdot X = x_1^2 + \cdots + x_n^2$ is the quadratic form determined by regular dot product
+
+&nbsp;
+
+In general, if $V = K^n$ and $C$ is a symmetric matrix, then the quadratic form is given by
+
+$$F(X) = ^tXCX = \sum_{i, j = 1}^{n} c_{ij} x_i x_j$$
+
+For a diagonal matrix $C$, this simplifies to
+
+$$F(X) = c_1x^2_1 + \cdots + c_n x^2_n$$
+
 ## Sylvester's Theorem
+
+Let $V = R^2$ and let the form be represented by the symmetric matrix
+
+$$C = \begin{bmatrix} -1 & 1 \\ 1 & -1\end{bmatrix}$$
+
+Then the vectors
+
+$$v_1 = \begin{bmatrix} 1 \\ 0\end{bmatrix} \quad \quad v_2 = \begin{bmatrix} 1 \\ 1\end{bmatrix}$$
+
+form an orthogonal basis using $f(X) = \langle X, X \rangle = ^tXCX$. Indeed
+
+$$\langle v_1, v_1 \rangle = -1 \quad \quad \langle v_2, v_2 \rangle = 0$$
+
+&nbsp;
+
+Now we generalize the situation above to arbitrary dimensions
+
+Let $\{v_1, \ldots, v_n\}$ be an orthogonal basis of $V$ and let
+
+$$c_i = \langle v_i, v_i \rangle$$
+
+After some renumbering of elements in our basis, we can assume that
+
+\begin{align*}
+c_1, \ldots, c_r &> 0\\
+c_{r+1}, \ldots, c_s &< 0\\
+c_{s+1} , \ldots, c_n = 0
+\end{align*}
+
+We are interested in looking at the number of positive, negative, and zero terms among $c_i = \langle v_i, v_i \rangle$ i.e. the numbers $r$ and $s$
+
+&nbsp;
+
+Let $X$ be the coordinate vector of an element of $V$ with respect to our basis and let $f$ be the quadratic form associated with our scalar product. Then
+
+$$F(X) = c_1 x_1^2 + \cdots + c_rx_r^2 + \cdots + c_sx_s^2$$
+
+Here we see $r$ positive terms, $s-r$ negative terms, and that $n-s$ of the terms have disappeared
+
+&nbsp;
+
+We can see this more clearly by normalizing the basis
+
+**Definition - Orthonormal**: A basis $\{v_1, \ldots, v_n\}$ is **orthonormal** if for each $i$ we have
+
+$$\langle v_i, v_i \rangle = 1 \quad \quad \text{or} \quad \quad \langle v_i, v_i \rangle = -1 \quad \quad \text{or} \quad \quad \langle v_i, v_i \rangle = 0$$
+
+If $\{v_1, \ldots, v_n\}$ is a orthogonal basis, we can always obtain an orthonormal basis by taking
+
+- $c_i = 0 \implies v'_i = v_i$
+
+- $\displaystyle c_i > 0 \implies v_i' = \frac{v_i}{\sqrt{c_i}}$
+
+- $\displaystyle c_i < 0 \implies v_i' = \frac{v_i}{\sqrt{-c_i}}$
+
+Then $\{v_1', \ldots, v_n'\}$ is an orthonormal basis
+
+&nbsp;
+
+Now suppose that $X$ is the coordinate vector of an element of $V$. In terms of the orthonormal basis, we have
+
+$$f(X) = x_1^2 + \cdots + x_r^2 - x_{r+1}^2 - \cdots - x_s^2$$
+
+Thus we can clearly see the number of positive and negative terms
+
+We now show that number of positive, negative, and zero terms don't depend on the orthonormal basis
+
+&nbsp;
+
+**Theorem 8.1**: Let $V$ be a finite dimensional vector space over $R$ with a scalar product. Take the subspace $V_0 \subseteq V, V_0 = \{v \in V \mid \forall w \in V, \langle v, w \rangle = 0\}$. Then the number of integers $i$ such that $\langle v_i, v_i \rangle = 0$ is equal to the dimension of $V_0$
+
+*Proof*: Suppose $\{v_1, \ldots, v_n\}$ is ordered such that
+
+$$\langle v_1, v_1 \rangle \neq 0, \ldots, \langle v_s, v_s \rangle \neq 0 \quad \quad \text{but} \langle v_i, v_i \rangle = 0 \quad \quad \text{for } i > s$$
+
+Since $\{v_1, \ldots, v_n\}$ is orthogonal, clearly $v_{s+1}, \ldots, v_n \in V_0$
+
+Now we take $v \in V_0$
+
+$$v = x_1v_1 + \cdots + x_sv_s + \cdots + x_n v_n$$
+
+Taking the scalar product with any $v_j$ for $j \leq s$, we get
+
+$$0 \langle v, v_j \rangle = x_j \langle v_j, v_j \rangle \implies x_j = 0 \implies v \in \Span(\{v_{s+1}, \ldots, v_n\})$$
+
+Furthermore, since $\{v_{s+1}, \ldots, v_n\}$ is linearly independent, we have that $\{v_{s+1}, \ldots, v_n\}$ is a basis for $V_0$
+
+&nbsp;
+
+**Definition - Index of Nullity**: From the proof above, we call $V_0$ the **index of nullity of the form**
+
+- **Note**: Here form is non-degenerate if and only if the index of nullity $= 0$
+
+&nbsp;
+
+**Sylvester's Theorem**: Let $V$ be a finite dimensional vector space of $R$. Then there exists $r \geq 0$ such that if $\{v_1, \ldots, v_n\}$ is a basis, then there are precisely $r$ integers such that
+
+$$\langle v_i, v_i \rangle < 0$$
+
+*Proof* Let $\{v_1, \ldots, v_n\}$ and $\{w_1, \ldots, w_n\}$ be orthogonal bases for $V$. Arrange them such that
+
+\begin{align*}
+\langle v_i, v_i \rangle &> 0 \quad \quad 1 \leq i \leq r\\
+\langle v_i, v_i \rangle &< 0 \quad \quad r+1 \leq i \leq s\\
+\langle v_i, v_i \rangle &= 0 \quad \quad s+1 \leq i \leq n\\
+\langle w_i, w_i \rangle &> 0 \quad \quad 1 \leq i \leq r'\\
+\langle w_i, w_i \rangle &< 0 \quad \quad r'+1 \leq i \leq s'\\
+\langle w_i, w_i \rangle &= 0 \quad \quad s'+1 \leq i \leq n\\
+\end{align*}
+
+We show that $v_1, \ldots v_r, w_{r'+1}, \ldots, w_n$ is linearly independent
+
+Suppose that we have
+
+$$x_1 v_1 + \cdots + x_r v_r + y_{r'+1} w_{r'+1} + \cdots + y_n w_n = 0 \implies x_1 v_1 + \cdots + x_r v_r = -(y_{r'+1} w_{r'+1} + \cdots + y_n w_n)$$
+
+Let $c_i = \langle v_i, v_i \rangle$ and $d_i = \langle w_i, w_i \rangle$
+
+Taking the scalar product of both sides with itself, we see that
+
+$$c_1x_1^2 + \cdots c_rx_r^2 = d_{r'+1}y_{r'+1}^2 + \cdots + d_{s'}y_{s'}^2$$
+
+Clearly the LHS $\geq 0$ and the RHS $\leq 0 \implies$ both sides are $0$
+
+Thus $x_1 = \cdots = x_r = 0 \implies y_{r'+1} = \cdots = y_n = 0$ by linear independence
+
+Finally, since $\dim(V) = n$, we see that $r + n - r' \leq n \implies r \leq r'$
+
+However, by symmetric we also get that $r' \leq r$
+
+Thus we must have that $r = r'$
+
+&nbsp;
+
+**Definition - Index of Positivity**: From Sylvester's Theorem, the integer $r$ is called the **index of positivity**
