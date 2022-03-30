@@ -16,6 +16,8 @@ header-includes:
     - \DeclareMathOperator{\proj}{proj}
     - \DeclareMathOperator{\Null}{Null}
     - \DeclareMathOperator{\Ann}{Ann}
+    - \DeclareMathOperator{\Tr}{Tr}
+    - \DeclareMathOperator{\ML}{ML}
 output: pdf_document
 ---
 
@@ -1970,3 +1972,223 @@ Thus we must have that $r = r'$
 &nbsp;
 
 **Definition - Index of Positivity**: From Sylvester's Theorem, the integer $r$ is called the **index of positivity**
+
+## Riesz Representation
+
+Recall that $P_2(R) = \{a_0 + a_1 x + a_2 x^2 \mid a_i \in R\}$
+
+Also recall that if $\langle, \rangle$ is non-degenerate, then $L^*: V \rightarrow V^*$ is an isomorphism where
+
+$$L^*(v) = L_v : V \rightarrow K \quad \quad L_v(w) = \langle v, w \rangle$$
+
+&nbsp;
+
+**Riesz Representation Theorem**: For any finite dimensional vector space $V$ with a non-degenerate $\langle, \rangle$, for any linear function $\phi: V \rightarrow K \in V^*$, there exists a unique $u \in V$ such that $\phi = L_u$
+
+*Proof*: Since $L^*: V \rightarrow V^*$ is an isomorphism, we let $u = (L^*)^{-1}(\phi)$
+
+&nbsp;
+
+**Proposition**: There is a polynomial $u(x) \in P_2(R)$ such that for all $p(x) \in P_2(R)$
+
+$$\int_0^1 p(x)u(x) \, dx = \int_\pi^\pi p(x) \cos(x) \, dx$$
+
+*Proof*: Clearly $V = P_2(R)$ is finite dimensional and $\langle f, g \rangle = \displaystyle \int_0^1 fg$ is non-degenerate
+
+Let
+
+$$\phi:P_2(R) \rightarrow R \quad \quad \phi(p) = \int_\pi^\pi p(x) \cos(x)\, dx$$
+
+Now we use Riesz Representation Theorem to get $u$ such that
+
+$$\int_0^1 p(x)u(x) \, dx = \langle u, p \rangle = \int_\pi^\pi p(x) \cos(x) \, dx$$
+
+&nbsp;
+
+**Proposition**: There is a $u(x) \in P_2(R)$ such that for all $p(x) \in P_2(R)$ we have
+
+$$\int_0^1 p(x)u(x) \, dx = P(0) = a_0$$
+
+*Proof*: Let
+
+$$\psi:P_2(R) \rightarrow R \quad \quad \psi(a_0 + a_1x + a_2 x^2) = a_0$$
+
+Then apply Riesz Representation Theorem
+
+# Operators
+
+**Definition - Operators**: Linear transformations $T: V \rightarrow V$
+
+&nbsp;
+
+**Definition $\mathbf{\mathcal{L}(V, V)}$**: Set of all linear transformations $T: V \rightarrow V$
+
+- **Note**: $\mathcal{L(V, V)}$ is a Vector Space
+
+&nbsp;
+
+For the remainder of the course, we look at **operators** of $V$
+
+&nbsp;
+
+For every linear transformation $T: V \rightarrow V$, we have an $n \times n$ matrix $A$
+
+However, there are many different $n \times n$ matrices associated to the same transformation $T$
+
+In fact, for any basis $B = \{v_1, \ldots, v_n\}$, we get a matrix $\displaystyle M_{n \times n}(T)_B^B$
+
+In particular, we study properties of $n \times n$ matrices $A$ that don't depend on the change of basis
+
+## Multilinear k-form
+
+**Defininition - Multilinear k-form**: A function $\omega: \underbrace{V \times \cdots \times V}_{k \text{ factors}} \rightarrow K$ such that for all $1 \leq i \leq n$, for all $v_1, \ldots, v_i, w_i, v_{i+1}, \ldots, v_k$, and $a, b \in K$ we have
+
+$$\omega(v_1, \ldots, v_{i-1}, (av_i + bw_i), v_{i+1}, \ldots, v_k) = a\omega(v_1, \ldots, v_{i-1}, v_i, v_{i+1}, \ldots, v_k) + b\omega(v_1, \ldots, v_{i-1}, w_i, v_{i+1}, \ldots, v_k)$$
+
+&nbsp;
+
+**Upshot**: It's linear on each coordinate, provided that the other coordinates stay fixed
+
+&nbsp;
+
+Let $\ML_k(V)$ be the set of all multilinear k-forms $\omega: V^k \rightarrow K$
+
+- **Note**: $\ML_k(V)$ is a $K$-Vector Space
+
+&nbsp;
+
+**Consider**: What is a multilinear 1-form
+
+$\omega: V \rightarrow K$ is a linear transformation. Thus $\{\omega: V \rightarrow K\} = V^*=$ dual space
+
+&nbsp;
+
+**Consider**: What is a multilinear 2-form (**bilinear form**)
+
+$\omega: V \times V \rightarrow K$ is linear in each coordinate
+
+$\ML_2(V)$ is the set of all bilinear forms on $V$
+
+- **Note**: Scalar Products $\subseteq ML_2$
+
+&nbsp;
+
+**Definition - Alternating**: A multilinear k-form $\omega: V^k \rightarrow K$ is **alternating** if some $v_i = v_j$ for $i \neq j$ then
+
+$$\omega(v_1, \ldots, v_k) = 0$$
+
+&nbsp;
+
+**Example**: $\begin{vmatrix} 5 & 0 & 0 \\ 4 & 3 & 3 \\ 2 & 6 & 6\end{vmatrix} = 0$
+
+&nbsp;
+
+**Definition - $\mathbf{\Omega_k(V)}$**: All alternating multilinear $k$-forms
+
+- **Note**: $\Omega_k(V)$ is a subspace of $\ML_k(V)$
+
+  - In particular $0 \in \Omega_k(V) \subseteq \ML_k(V)$. This is the $0$ mapping
+
+&nbsp;
+
+**Consider**: For a fixed $V$ with dimension $n$, what is $\Omega_n(V)$?
+
+**Definition - Permutation**: 1-1, onto mapping $\sigma: [n] \rightarrow [n]$
+
+&nbsp;
+
+**Example**: For $n = 4$, $(1, 2, 3, 4) \rightarrow (2, 4, 1, 3)$ corresponds to $\sigma(1) = 2, \sigma(2) = 4, \sigma(3) = 1, \sigma(4) = 3$
+
+&nbsp;
+
+We can also compose permutations
+
+Let $\tau(1) = 1, \tau(2) = 3, \tau(3) = 3, \tau(4) = 4$. Then
+
+- $\tau \circ \sigma(1) = 3$
+
+- $\tau \circ \sigma(2) = 4$
+
+- $\tau \circ \sigma(3) = 1$
+
+- $\tau \circ \sigma(4) = 2$
+
+&nbsp;
+
+Furthermore, every permutation $\sigma: [n] \rightarrow [n]$ has an inverse function $\sigma^{-1}$, satisfying $\sigma^{-1} \sigma = \id$
+
+- $\sigma^{-1}(1) = 3$
+
+- $\sigma^{-1}(2) = 1$
+
+- $\sigma^{-1}(3) = 4$
+
+- $\sigma^{-1}(4) = 2$
+
+&nbsp;
+
+**Definition - Transposition**: A permutation $\tau$ that swaps two entries and fixes everything else
+
+- **Note** For a transposition $\tau$, we have that $\tau^{-1} = \tau \implies \tau^2 = \id$
+
+&nbsp;
+
+Let $S_n$ be the set of all permutations of $[n]$
+
+**Claim**: $S_n$ has $n!$ elements
+
+*Proof*: on the homework
+
+&nbsp;
+
+**Claim**: For all $n \geq 1$, every $\sigma \in S_n$ can be written as a (possibly empty) product of tranpositions
+
+$$\sigma = \tau_r \circ \cdots \circ \tau_1$$
+
+*Proof by Induction*:
+
+Base Case: For $n = 1$, we have $S_1 \implies S_1 = \{\id\}$ where $\id$ is the product of no transpositions
+
+Base Case: For $n = 2$, we have $S_2 \implies S_2 = \{\id, \tau_{1, 2}\}$ where $\tau_{1, 2}$ swaps $1, 2$
+
+IH: Suppose for an arbitrary $n$, every $\sigma \in S_n$ can be written as a (possibly empty) product of transpositions
+
+IS: Choose an arbitrary $\sigma \in S_{n+1}$
+
+- Case 1: Suppose $\sigma(n + 1) = n + 1$. Then we can look at the remaining elements $[n]$, which by IH, any $\sigma \in S_n$ can be written as a product of transpositions
+
+- Case 2: Suppose $\sigma(n + 1) = j$ for some $J \leq n$. Then let $\tau$ be the transposition swapping $J, n + 1$. Then $\tau \in S_{n+1}$ and $\tau \sigma(n+1) = n + 1$
+
+  By using Case 1, we can write
+
+  $$\tau \sigma = \tau_r \circ \cdots \circ \tau_1 \implies \tau \tau \sigma = \sigma = \tau (\tau_r \circ \cdots \tau_1)$$
+
+# Determinants
+
+Determinants only make sense for square $n \times n$ matrices. We define the **determinate** as
+
+- $1 \times 1 \implies \det(a) = a$
+
+- $2 \times 2 \implies \det: M_{2 \times 2}(K) \rightarrow K$ where $\det(\begin{bmatrix} a & b \\ c & d\end{bmatrix}) = ad - bc$
+
+- $3 \times 3 \implies \det:M_{3 \times 3}(K) \rightarrow K$ where $\det(\begin{bmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33}\end{bmatrix}) = a_{11} \begin{vmatrix} a_{22} & a_{23} \\ a_{32} & a_{33} \end{vmatrix} - a_{12} \begin{vmatrix} a_{21} & a_{23} \\ a_{31} & a_{33}\end{vmatrix} + a_{13} \begin{vmatrix} a_{21} & a_{22} \\ a_{31} & a_{32}\end{vmatrix}$
+
+&nbsp;
+
+**Example**: $\begin{vmatrix} 2 & 1t \\ 3 & 5t\end{vmatrix} = 2(5t) - 3(t) = 10t - 3t = t \begin{vmatrix} 2 & 1 \\ 3 & 5\end{vmatrix}$
+
+**Example**: $\begin{vmatrix} a + a' & b \\ c + c' & d\end{vmatrix} = \begin{vmatrix} a & b \\ c & d\end{vmatrix} + \begin{vmatrix} a' & b \\ c' & d\end{vmatrix}$
+
+- **Upshot**: Freezing a column gives us linearity with the other column
+
+**Example**: $\begin{vmatrix} b & a \\ d c\end{vmatrix} = bc - ad = -1 \begin{vmatrix} a & b \\ c & d\end{vmatrix}$
+
+- **Upshot**: Switching columns changes the sign of the determinant
+
+**Example**: $\begin{vmatrix} 1 & 0 \\ 0 & 1\end{vmatrix} = 1$
+
+&nbsp;
+
+**Example**: $\begin{vmatrix} 5 & 1 & 2 \\ 3 & 2 & 0 \\ 4 & 1 & 3\end{vmatrix} + \begin{vmatrix} 5 & 2 & 2 \\ 3 & -1 & 0 \\ 4 & 0 & 3\end{vmatrix} = 11 - 25 = -14 = \begin{vmatrix} 5 & 3 & 2 \\ 3 & 1 & 0 \\ 4 & 1 & 3\end{vmatrix}$
+
+&nbsp;
