@@ -2083,15 +2083,15 @@ $$\omega(v_1, \ldots, v_k) = 0$$
 
 &nbsp;
 
-**Definition - $\mathbf{\Omega_k(V)}$**: All alternating multilinear $k$-forms
+**Definition - $\mathbf{\Lambda(V)}$**: All alternating multilinear $k$-forms
 
-- **Note**: $\Omega_k(V)$ is a subspace of $\ML_k(V)$
+- **Note**: $\Lambda(V)$ is a subspace of $\ML_k(V)$
 
-  - In particular $0 \in \Omega_k(V) \subseteq \ML_k(V)$. This is the $0$ mapping
+  - In particular $0 \in \Lambda(V) \subseteq \ML_k(V)$. This is the $0$ mapping
 
 &nbsp;
 
-**Consider**: For a fixed $V$ with dimension $n$, what is $\Omega_n(V)$?
+**Consider**: For a fixed $V$ with dimension $n$, what is $\Lambda(V)$?
 
 **Definition - Permutation**: 1-1, onto mapping $\sigma: [n] \rightarrow [n]$
 
@@ -2162,6 +2162,131 @@ IS: Choose an arbitrary $\sigma \in S_{n+1}$
   By using Case 1, we can write
 
   $$\tau \sigma = \tau_r \circ \cdots \circ \tau_1 \implies \tau \tau \sigma = \sigma = \tau (\tau_r \circ \cdots \tau_1)$$
+
+&nbsp;
+
+**Definition - $\mathbf{\epsilon}$**: Is a function $\epsilon: S_k \rightarrow \{-1, +1\}$
+
+$$\epsilon(\sigma) = \begin{cases} +1 & \sigma \text{ is even } \\ -2 & \sigma \text{ is odd }\end{cases}$$
+
+- **Note**: Any $\sigma \in S_k$ permuates $\{x_1, \ldots, x_k\} \rightarrow \{x_{\sigma(1)}, \ldots, x_{\sigma(k)}\}$
+
+&nbsp;
+
+**Notation**: For each $\omega \in \Lambda_k(V)$ and each $\sigma \in S_k$, we let
+
+$$(\sigma_\omega)(x_1, \ldots, x_k) = \omega (x_{\sigma(1)}, \ldots, x_{\sigma(k)})$$
+
+&nbsp;
+
+**Example**: For $k = 3$, suppose $\sigma(x_1, x_2, x_3) = (x_3, x_1, x_2)$
+
+Then for any $(v_1, v_2, v_3) \in V^3$, we have
+
+$$(\sigma_{\omega})(v_1, v_2, v_3) = \omega(v_3, v_1, v_2)$$
+
+&nbsp;
+
+**Theorem**: If $\omega \in \Lambda(V)$ and $\sigma \in S_k$, then
+
+$$(\sigma_\omega) = \epsilon(\sigma) \omega$$
+
+Meaning that for all $(v_1, \ldots, v_k) \in V^k$, we have
+
+$$(\sigma_\omega)(v_1, \ldots, v_k) = \omega(v_{\sigma(1)}, \ldots, v_{\sigma(k)}) = \epsilon(\sigma) \omega(v_1, \ldots, v_k)$$
+
+*Proof*: Since $\sigma$ is a product of transpositions, it suffices to prove that when $\sigma$ is a transposition $\tau$ swapping $i, j$
+
+- **Note**: $\epsilon(\tau) - 1$
+
+We need to show that for all $(v_1, \ldots, v_k) \in V^k$, we have
+
+$$\omega(v_{\tau(1)}, \ldots, v_{\tau(k)}) = - \omega(v_1, \ldots, v_k)$$
+
+Notation wise, let $\overline{\omega}(x, y)$ denote
+
+$$\omega(v_1, \ldots, v_{i-1}, x, v_{i+1}, \ldots, v_{j-1}, y, v_{j+1}, v_k)$$
+
+Note that $\overline{\omega}(x + y, x+ y) = 0$ since $\omega$ is alternating
+
+Thus we see that
+
+$$\overline{\omega}(x + y, x+ y) = \overline{\omega}(x, x) + \overline{\omega}(x, y) + \overline{\omega}(y, x) + \overline{\omega}(y, y) = 0$$
+
+This shows that
+
+$$\overline{\omega}(x, y) = \overline{\omega}(y, x) \implies \overline{\omega}(v_j, v_i) = -\overline{\omega}(v_i, v_j)$$
+
+&nbsp;
+
+
+**Theorem**: Suppose $\{v_1, \ldots, v_k\} \subseteq V$ is linaerly dependent. Then for all $\\omega \in \Lambda_k(V)$, we have
+
+$$\omega(v_1, \ldots, v_k) = 0$$
+
+*Proof*: Suppose that $v_i$ is a linear combination of the other vectors in the basis
+
+$$v_i = \sum_{j \neq i} a_j v_j$$
+
+Then we see that
+
+$$\omega(v_1, \ldots, v_{i-1}, (\sum_{j \neq i} a_j v_j), v_{i+1}, \ldots, v_k) = \underbrace{\sum_{j \neq i} a_j \omega(v_1, \ldots, v_{i - 1}, v_j, v_{i+1}, \ldots, v_k)}_{\text{by multilinearlity}} = 0$$
+
+This last part follows since there are $2$ $v_j$ and $\omega$ is alternating
+
+**Upshot**: Alternating multilinear k-forms preserve linearly dependence
+
+&nbsp;
+
+**The Big Count**: Suppose $\dim(V) = n$ and $V$ has a basis $B = \{b_1, \ldots, b_n\}$. Take any $\omega \in \Lambda_k(V)$. Then for any $(v_1, \ldots, v_n) \in V^n$
+
+$$\omega(v_1, \ldots, v_n) = (\sum_{j} a_{1j} b_j, \ldots, \sum_{j}a_{1n} b_j) = \underbrace{\sum_{1 \leq j_1, \ldots, j_n \leq n} a_{1j_1}, \ldots, a_{nj_n} \omega(b_{j1}, \ldots, b_{jn})}_{n^n \text{ terms }}$$
+
+- **Note**: This follows from $\displaystyle v_i = \sum_{j} a_{1j} b_j$
+
+However, the terms in the summation above are non-zero only when $j_1, \ldots, j_n$ are distinct
+
+Thus the terms in the summation can be viewed as permutations $\sigma: \{1, \ldots, n\} \rightarrow \{j_1, \ldots, j_n\}$
+
+Thus the summation actually only involves $n!$ terms
+
+$$\sum_{\sigma \in S_n} a_{1 \sigma(1)} \cdots a_{n \sigma(n)} \underbrace{\omega(b_{\sigma(1)}, \ldots, b_{\sigma(n)})}_{(\sigma_{\omega})(b_1, \ldots b_n)}$$
+
+Finally, we see that this is equal to
+
+$$\sum_{\sigma \in S_n} a_{1 \sigma(1)} \cdots a_{n \sigma(n)} \epsilon(\sigma)\omega(b_1, \ldots, b_n) = \omega(b_1, \ldots, b_n) \underbrace{\sum_{\sigma \in S_n} a_{1 \sigma(1)} \cdots a_{n \sigma(n)} \epsilon(\sigma)}_{\in K}$$
+
+&nbsp;
+
+### Consequences of the Big Count
+
+Let $\{b_1, \ldots, b_n\}$ be a basis of $V$
+
+1. If $\omega(b_1, \ldots, b_n) = 0 \implies \omega = 0$, the $0$ mapping
+
+2. If $\omega(b_1, \ldots, b_n) \neq 0$ for some basis, then $\omega(c_1, \ldots, c_n) \neq 0$ for any other basis of $V$, $\{c_1, \ldots, c_n\}$
+
+3. If $w, w' \neq 0$ are $2$ different elements in $\Lambda_{n}(V)$,then they are linearly dependent
+
+    - This means that $w' = cw$ for some $c \in K \implies \dim(\Lambda_n(V)) \leq 1$
+
+&nbsp;
+
+**Theorem**: If $\dim(V) = n \geq 1$, then $\dim(\Lambda_n(V)) = 1$
+
+- This means that there is some non-zero $\omega \in \Lambda_n(V)$
+
+*Proof by Induction* on $k \leq n$
+
+We will show that there is some non-zero $\omega \in \Lambda_n(V)$
+
+Base case $k = 1$. Recall that $\ML_1(V) = V^*$, which has dimension $\geq 1$
+
+IH: Assume there exists a non-zero $\omega \in \Lambda_k(V)$ with $k < n$
+
+IS: Show that there is a $\hat{\omega} \in \Lambda_{k+1}(V)$ where $\hat{\omega} \neq 0$
+
+
 
 # Determinants
 
