@@ -18,6 +18,7 @@ header-includes:
     - \DeclareMathOperator{\Ann}{Ann}
     - \DeclareMathOperator{\Tr}{Tr}
     - \DeclareMathOperator{\ML}{ML}
+    - \DeclareMathOperator{\rank}{rank}
 output: pdf_document
 ---
 
@@ -2286,7 +2287,149 @@ IH: Assume there exists a non-zero $\omega \in \Lambda_k(V)$ with $k < n$
 
 IS: Show that there is a $\hat{\omega} \in \Lambda_{k+1}(V)$ where $\hat{\omega} \neq 0$
 
+**TODO FINISH THIS PROOF**
 
+&nbsp;
+
+Now take a linear transformation $T: V \rightarrow V$ that induces another linear transformation $T^*: \Lambda_n(V) \rightarrow \Lambda_n(V)$ defined by
+
+$$T^*(\omega): V^n \rightarrow K \quad \quad T^*(\omega)(u_1, \ldots, u_n) = \omega(T(u_1), \ldots, T(u_n))$$
+
+Clearly, $T^*: \Lambda_n(V) \rightarrow \Lambda_n(V)$ is just scalar multiplication, meaning that there is some $d \in K$ such that
+
+$$\forall \omega \in \Lambda_n(V), T^*(\omega) = d\omega$$
+
+&nbsp;
+
+**Definition - Determinant**: The **determinate** of $T$ is exactly the $d$ above. That is $\det(T) = d \in K$
+
+&nbsp;
+
+**Properties of $\mathbf{\det(T)}$**:
+
+1. Suppose $T: V \rightarrow v$ is multiplication by $a$. That is $T(v) = av$
+
+    Then $T^*: \Lambda_n(V) \rightarrow \Lambda_n(V) \quad \quad T^*(\omega)(u_1, \ldots, u_n) = \omega(T(u_1), \ldots, T(u_n)) = \omega(au_1, \ldots, au_n) = a^n \omega(u_1, \ldots, u_n)$
+
+    Thus $T^*(\omega) = a^n \omega$ for $\omega \in \Lambda_n(V)$
+
+    Here $\det(T) = a^n$
+
+    **Special Cases**:
+
+    - $\id: V \rightarrow V \quad \quad \forall v \in V, \id(v) = v \implies \det(\id) = 1$
+
+    - zero$: V \rightarrow V \quad \quad \forall v \in V, \text{zero}(v) = 0 \implies \det(\text{zero}) = 0$
+
+2. Take two linear transformations $S, T: V \rightarrow V$
+
+    Then the composition $S \circ T : V \rightarrow V$ is also a linear transformation
+
+    We claim that $\det(S \circ T) = \det(S) \det(T)$
+
+    For any $\omega \in \Lambda_n(V)$, we have that
+
+  \begin{align*}
+    (S \circ T)^* (\omega)(u_1, \ldots, u_n) &= \omega(S \circ T(u_1), \ldots, S \circ T(u_n))\\
+    &= \det(S) \omega(T(u_1), \ldots, T(u_n)) \\
+    &= \det(S) \det(T) \omega(u_1, \ldots, u_n) \\
+    \implies (S \circ T)^*(\omega) &= \det(T) \det(S) \omega
+  \end{align*}
+
+&nbsp; &nbsp; &nbsp; &nbsp; **Special Cases**:
+
+
+  - Suppose that $T: V \rightarrow v$ is invertible, then clearly $T^{-1} \circ T = \id \implies \det(T^{-1} \circ T) = \det(\id) = 1$
+
+      Thus $\det(T^{-1}) \det(T) = 1 \implies \det(T^{-1}) = \displaystyle \frac{1}{\det(T)}$
+
+      Thus $T$ is invertible if and only if $\det(T) \neq 0$
+
+&nbsp;
+
+**TFAE Theorem**:
+
+1. $T$ is an isomorphism
+
+2. $T$ is invertible
+
+3. $\rank(T) = n$
+
+4. $\det(T) \neq 0$
+
+*Proof*: $1 \iff 2 \iff 3$ is shown by the previous proof
+
+To show that $4$ must hold, by the special case before, if any of $1, 2, 3$ hold, then $\det(T) \neq 0$
+
+Now we show that if $1, 2, 3$ fail, then $\det(T) = 0$
+
+Since $3$ fails, we must have that $\rank(T) = \dim(\Img(T)) < \dim(V) = n$
+
+Now choose any $\omega \in \Lambda_n(V)$ and choose any $(u_1, \ldots, u_n) \in V^n$
+
+We see that
+
+$$(T^*)(\omega)(u_1, \ldots, u_n) = \omega(T(u_1), \ldots, T(u_n))$$
+
+Since $\{T(u_1, \ldots, T(u_n)\}$ are $n$ vectors in $\Im(T)$, they must be linearly dependent
+
+Thus since $\omega$ respect linearly dependency, we see that
+
+$$\omega(T(u_1), \ldots, T(u_n)) = 0$$
+
+Thus for any $\omega \in \Lambda_n(V)$, we must have
+
+$$T^*(\omega) = 0 \implies \det(T) = 0$$
+
+&nbsp;
+
+### Matrix Representation
+
+Now take $A \in M_{n \times n}(K)$
+
+We know that $A$ encodes a linear transformation, namely $T_A: K^n \rightarrow K^n$
+
+Thus $\det(A) = \det(T_A)$
+
+**Consequences**:
+
+1. $\det(I_n) = 1$ since $T_{I_n} = \id: K^n \rightarrow K^n$ and $\det(\id) = 1$
+
+2. $\det(O) = 0$ since $T_{\text{zero}} = \text{zero}:K^n \rightarrow K^n$ and $\det(\text{zero}) = 0$
+
+3. For $A, B \in M_{n \times n}(K), \det(AB) = \det(A) \det(B)$
+
+    The linear transformation $T_{AB}$ is described by the composition $T_A \circ T_B \implies \det(T_{AB}) = \det(T_A) \det(T_B) = \det(A) \det(B)$
+
+&nbsp;
+
+**TFAE Theorem**: For $A \in M_{n \times n}(K)$, the following are equivalent
+
+1. $T_A$ is an isomorphism
+
+2. $A$ is invertible
+
+3. $\rank(A) = n$
+
+4. $\det(A) \neq 0$
+
+&nbsp;
+
+Now we can compute $\det(A)$ for $A \in M_{n \times n}(K)$ by applying The Count Theorem
+
+$$\det(A) = \sum_{\sigma \in S_n}^{} \epsilon(\sigma) a_{1 \sigma(1)} \cdots a_{n \sigma(n)}$$
+
+&nbsp;
+
+**Example**: For $n = 2$ we have $S_2 = \{\id, \tau\}$ where $\epsilon(\id) = 1$ and $\epsilon(\tau) = -1$
+
+$$\det(A) = \sum_{\sigma \in S_n}^{} \epsilon(\sigma) a_{1 \sigma(1)} \cdots a_{n \sigma(n)} = \epsilon(\id) a_{11} a_{22} - \epsilon(\tau) a_{12} a_{21} = a_{11}a_{22} - a_{12}a_{21}$$
+
+&nbsp;
+
+**Note**: Since any linear transformation can be represented as a matrix $A$, we have that
+
+$$\det(A) = \sum_{\sigma \in S_n}^{}a_{1 \sigma(1)} \cdots a_{n \sigma(n)} = \det(^tA)$$
 
 # Determinants
 
@@ -2306,7 +2449,7 @@ Determinants only make sense for square $n \times n$ matrices. We define the **d
 
 - **Upshot**: Freezing a column gives us linearity with the other column
 
-**Example**: $\begin{vmatrix} b & a \\ d c\end{vmatrix} = bc - ad = -1 \begin{vmatrix} a & b \\ c & d\end{vmatrix}$
+**Example**: $\begin{vmatrix} b & a \\ d &c \end{vmatrix} = bc - ad = -1 \begin{vmatrix} a & b \\ c & d\end{vmatrix}$
 
 - **Upshot**: Switching columns changes the sign of the determinant
 
@@ -2316,4 +2459,110 @@ Determinants only make sense for square $n \times n$ matrices. We define the **d
 
 **Example**: $\begin{vmatrix} 5 & 1 & 2 \\ 3 & 2 & 0 \\ 4 & 1 & 3\end{vmatrix} + \begin{vmatrix} 5 & 2 & 2 \\ 3 & -1 & 0 \\ 4 & 0 & 3\end{vmatrix} = 11 - 25 = -14 = \begin{vmatrix} 5 & 3 & 2 \\ 3 & 1 & 0 \\ 4 & 1 & 3\end{vmatrix}$
 
+## Row Determinants
+
+We look at what exactly are row reductions and their impact on determinants
+
+Suppose $A^1, \ldots, A^n$ are columns of $A$. Let $B$ have the same columns, except two swapped columns
+
+From the rules of determinants, we have that
+
+$$\det(B) = -\det(A)$$
+
+Now consider replacing a column by itself plus some scalar multiple of another column
+
+That is $B = [A^1 + cA^2, A^2, \ldots]$. Then we see that
+
+$$\det(B) = \det(A^1, A^2, \ldots) + c\det(A^2, A^2, A^3, \ldots) = \det(A)$$
+
+Finally, since $\det(^tA) = \det(A)$, these equalities work under row operations as well
+
+# Symmetric, Hermitian, Unitary Operators
+
+**Definition - Operator**: A linear transformation $T: V \rightarrow V$
+
+Consider when $V$ is a $K$-Vector Space and $\langle, \rangle$ is a positive definite scalar product
+
 &nbsp;
+
+Recall that
+
+- $\|v\| = \sqrt{\langle v, v \rangle}$
+
+- Gram-Schmidt process takes a basis $B$ and produces an orthonormal basis
+
+- $V^*$ is the set of linear transformation $\phi: V \rightarrow R$ and that $V \approx V^*$ under
+
+$$L^*: V \rightarrow V^* \quad \quad L^*(w): V \rightarrow R \quad \quad L^*(w)(v) = \langle v, w\rangle \forall v \in V$$
+
+&nbsp;
+
+**Fundamental Fact**
+
+For any operator $A: V \rightarrow V$, there exists a unique operator $B: V \rightarrow V$ such that for all $v, w \in V$
+
+$$\langle Av, w \rangle = \langle v, Bw \rangle$$
+
+Here $B$ is called the **transpose** of $A$, namely $B = ^t A$
+
+&nbsp;
+
+Now given $A$< how do we find $B$?
+
+Take $w \in V$ and let $L_w^A: V \rightarrow R$ be defined by $L_w^A(v) = \langle Av, w \rangle$
+
+- It can be shown that $L_w^A$ is a linear transformation. Thus $L_w^A \in L^*$
+
+Furthermore, since $L^*:V \rightarrow V^*$ is an isomorphism, there exists a unique $w' \in V$ such that
+
+$$L^*(w') = L^A_w$$
+
+- Importantly, $L^*(w')$ is the same function as $L_w^A$
+
+But then we have that
+
+$$\forall v \in V \quad \quad L_w^A(v) = L^*(w')(v) \implies \langle Av, w \rangle = \langle v, w' \rangle$$
+
+Now we define $B: V \rightarrow V$ such that $B(w) = w'$. Thus we have
+
+- **Note**: It can be shown that $B$ is a linear transformation
+
+$$\langle Av, w \rangle = \langle v, Bw \rangle$$
+
+&nbsp;
+
+Furthermore we have that
+
+$$\langle A v, w \rangle = \langle v, ^tAw \rangle$$
+
+&nbsp;
+
+**Definition - Symmetric**: An operator $A: V \rightarrow V$ is **symmetric** if and only if any $n \times n$ matrix representing $A$ is a symmetric matrix
+
+$$^t A = A$$
+
+&nbsp;
+
+**Definition - Unitary**: An operator $A: V \rightarrow V$ is **unitary** if
+
+$$\forall v, w \in V \quad \quad \langle A v, A w \rangle = \langle v, w \rangle$$
+
+- **Note**: We say $A$ is **norm-preserving** if for all $v \in V$, $\langle Av \rangle = \langle v \rangle$
+
+&nbsp;
+
+**Proposition**: $A$ Is unitary if and only if $A$ is norm-preserving
+
+*Proof*: $\implies$ Assume that $A$ is unitary and choose $v \in V$. Clearly
+
+$$\|Av\|^2 = \langle Av, Av \rangle = \langle v, v \rangle = \|v\|^2$$
+
+$\impliedby$ Assum $A$ is norm-preserving and chooose $v, w \in V$. Then
+
+$$\langle v + w, v + w \rangle - \langle v - w, v - w \rangle = 4 \langle v, w \rangle$$
+
+Similarly, we have that
+
+$$\langle A(v + w), A(v + w) \rangle - \langle A(v - w), A (v-w) \rangle  = 4 \langle Av , Aw \rangle$$
+
+Thus we have that $\|v + w\|^2 - \|v - w\|^2 = \|A(v + w)\|^2 - \|A(v- w)\|^2 \implies \langle v, w \rangle = \langle Av, Aw \rangle$
