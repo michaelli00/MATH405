@@ -7,12 +7,17 @@ header-includes:
     - \DeclareMathOperator{\lcm}{lcm}
     - \DeclareMathOperator{\Span}{span}
     - \DeclareMathOperator{\mat}{Mat}
-    - \DeclareMathOperator{\Null}{null}
     - \DeclareMathOperator{\range}{range}
     - \DeclareMathOperator{\Img}{Im}
     - \DeclareMathOperator{\Ker}{Ker}
     - \DeclareMathOperator{\matvect}{Mat$_{x \times n}(K)$}
     - \DeclareMathOperator{\id}{id}
+    - \DeclareMathOperator{\proj}{proj}
+    - \DeclareMathOperator{\Null}{Null}
+    - \DeclareMathOperator{\Ann}{Ann}
+    - \DeclareMathOperator{\Tr}{Tr}
+    - \DeclareMathOperator{\ML}{ML}
+    - \DeclareMathOperator{\rank}{rank}
 output: pdf_document
 ---
 
@@ -93,3 +98,76 @@ output: pdf_document
     **Upshot**: Any vector, written in $B$ coordinates, when multiplied by this matrix, yields an answer in $B'$ coordinates
 
 **Change of Basis**: $M_{B'}^B(\id) = \begin{bmatrix} \id(v_1) & \id(v_2) & \cdots \id(v_n)\end{bmatrix}$ with respect to bases $B, B'$ of the same vector space $V$
+
+\newpage
+
+**Scalar Product**: $V \times V \rightarrow K$ satisfying $\langle v, w \rangle = \langle w, v \rangle \quad \quad \langle v, c(w_1 + w_2) \rangle = c\langle v, w_1 \rangle + c \langle v, w_2 \rangle$
+
+- **Positive Definite**: For $v \neq O, \langle v, v \rangle > 0$
+- **Non-Degenerate**: For $v \neq O, \exists w \in W, \langle v, w \rangle \neq 0$
+- **Non-Trivial**: $\exists v, w \in V$ such that $\langle v, w \rangle \neq 0$
+- **Trivial**: $\forall v, w \in V, \langle v, w \rangle = 0$
+
+**Orthogonal**: $v \perp w \implies \langle v, w \rangle = 0 \quad \quad$ **Orthogonal Complement**: $W^\perp = \{v \in V \mid \forall w \in W, v \perp w\} \subseteq V$
+
+**Length**: $\| v \| = \sqrt{\langle v, v \rangle} \quad \quad$ **Projection**: For $w \in V$ and any $v \in V, \exists c \in K$ such that $v - cw \perp w \implies \proj_{w}v = \frac{\langle v, w \rangle}{\langle w, w \rangle} w$
+
+**Pythagoras Theorem**: $v \perp w \implies \|v + w\|^2 = \|v\|^2 + \|w\|^2 \quad \quad$ **Parallelogram Law**: $\|v + w\|^2 + \|v - w\|^2 = 2\|v\|^2 + 2\|w\|^2$
+
+**Schwartz Inequality**: $|\langle v, w \rangle| \leq \|v\|\|w\| \quad \quad$ **Triangle Inequality**: $\|v + w\| \leq \|v\| + \|w\|$
+
+**Proposition**: $\{w_1, \ldots, w_r\}$ pairwise orthogonal $\implies \{w_1, \ldots, w_r\}$ is linearly independent
+
+**Projection onto Subspace**: $\proj_Wv = \sum_{i=1}^{r} \proj_{w_i}w_i = \sum_{i=1}^{r} c_i w_i$. Clearly $\proj_W v \in W$
+
+**Proposition**: $(v - \sum_{j=1}^{r}c_j w_j) \perp w_i$ for all $i \quad \quad$ **Corollary**: $(v - \sum_{j=1}^{r}c_j w_j) \perp w$ for all $w \in W$
+
+**Geometric Interpertation**: $\proj_W v$ is the closest point to $v$ in $W$: $\|v - \proj_W v \| \leq \|v - w \|$ for any $w \in W$
+
+**Orthonormal Basis**: $\{w_1, \ldots, w_r\}$ that is pairwise orthogonal and each $\|w_i\| = 1$
+
+**Gram-Schmidt Process**: $u_1 = v_1 \quad \quad p_2 = v_2 - \proj_{u_1} v_2 \implies u_2 = \frac{1}{\|p_2\|} p_2 \quad \quad p_3 = v_3 - \proj_{u_1} v_3 - \proj_{u_2}v_3 \implies u_3 = \frac{1}{\|p_3\|} p_3$
+
+**Theorem**: $V = W \oplus W^\perp \quad \quad$ **Corollary**: $\dim(V) = \dim(W) + \dim(W^\perp)$
+
+**Rank**: $\dim(R^n) = \dim(C_A) + \dim(\Null(A)) = \dim(R_A) + \dim((R_A)^\perp) \implies \dim(R_A) = \dim(C_A)$
+
+**Hermitian Inner Product**: For $y, z \in C^n$, $\langle y, z \rangle = y_1 \overline{z_1} + \cdots + y_n \overline{z_n}$
+
+- **Proposition**: Positive definite since $\langle v, v \rangle = x_1 \overline{x_1} + \cdots x_n \overline{x_n} = \|x_1\|^2 + \cdots + \|x_n\|^2 \geq 0$
+
+**Lemma**: $\forall v \in V, \langle v, v \rangle = 0 \implies \langle, \rangle$ is trivial $\quad \quad$ **Corollary**: $\forall v \in V, \langle v, v \rangle = 0 \implies$ any basis of $V$ is orthogonal
+
+**Theorem**: If $\langle, \rangle$ is a scalar product on $V$, then $V$ has an orthogonal basis
+
+**Dual Space**: $V^* = \mathcal{L}(V, K)$ containing linear transformations $\phi: V \rightarrow K$
+
+- Typically we take $\phi_i$ where $\phi_i(v_j) = \begin{cases} 1 & i = j \\ 0 & i \neq j \end{cases} \quad \quad$ **Proposition**: $B' = \{\phi_1, \ldots, \phi_n\}$ is a basis for $V^*$
+
+- **Corollary** $\dim(V^*) \approx \dim(V)$. Namely $\dim(V^*) = \dim(V)$ and $\exists$ a 1-1, onto linear transformation $F: V \rightarrow V^*, F(v_i) = \phi_i$
+
+**Annihilator**: $\Ann(W) = \{\phi \in V^* \mid \forall w \in W, \phi(w) = 0\}$. The set of linear transformations $\phi$ in $V^*$ where $W \subseteq \Ker(\phi)$
+
+**Annihilator Theorem**: $\dim(W) + \dim(\Ann(W)) = \dim(V) = n$
+
+**Determinate Formula**: $D(A) = (-1)^{i+1} a_{i1} \det(A_{i1}) + \cdots + (-1)^{i + n} a_{in} \det(A_{in})$
+
+- $D(A^1, \ldots, A^n) =  \sum_{\sigma}^{}\epsilon(\sigma) a_{\sigma(1), 1} \cdots a_{\sigma(n), n}$
+
+- Determinant is linear: $D(A^1, \ldots, C + C', \ldots, A^n) = D(A^1, \ldots, C, \ldots, A^n) + D(A^1, \ldots, C', \ldots, A^n)$
+
+- If $2$ columns are equal, i.e. $A^j = A^i$, then $D(A) = 0$
+
+- For the unit matrix $I$, $D(I) = 1$
+
+- Interchanging columns changes sign: $D(A^1, \ldots, A^i, \ldots, A^j, \ldots) = - D(A^1, \ldots, A^j, \ldots, A^i, \ldots)$
+
+- Adding a scalar multiple of a column to another column doesn't change $D(A): D(\ldots, A^k + tA^j, \ldots) = D(\ldots, A^k, \ldots)$
+
+**Symmetric Operator**: $\langle Av , w \rangle = \langle v, Aw \rangle \implies A = ^t A$
+
+**Hermitian Operator**: $\langle Av, w \rangle = \langle v, A^* w \rangle = \langle v, ^t \overline{A} w\rangle \implies A = ^t \overline{A}$
+
+**Unitary**: $\langle Av , Aw \rangle = \langle v, w\rangle$
+
+- $^t A A = I \iff$ real unitary $\quad \quad A^* A = ^t \overline{A} A = I \iff$ complex unitary

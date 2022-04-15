@@ -929,7 +929,7 @@ Furthermore, $\{v_1, \ldots, v_m\}$ spans $S$ by definition
 
 &nbsp;
 
-**Corollary**: If $T: V \rightarrow W$ is any linearly transformation and if $\dim(V) = n$, then $\dim(\Img(T)) \leq n$
+**Corollary**: If $T: V \rightarrow W$ is any linear transformation and if $\dim(V) = n$, then $\dim(\Img(T)) \leq n$
 
 *Proof*: BWOC, suppose $\dim(\Img(T)) > n$, thus we can create a set of $n+1$ linearly independent elements in $\Img(T)$.
 
@@ -937,7 +937,7 @@ By the Pull Back Property, this pulls back to $n+1$ linearly independent element
 
 &nbsp;
 
-**Note**: $T: V \rightarrow W$, where $T(v) = \{O_W\}$, is a linearly transformation with $\dim(\Img(T)) = 0$, regardless of the value of $\dim(V)$
+**Note**: $T: V \rightarrow W$, where $T(v) = \{O_W\}$, is a linear transformation with $\dim(\Img(T)) = 0$, regardless of the value of $\dim(V)$
 
 ## Kernel
 
@@ -1256,7 +1256,7 @@ Thus the inverse of $M_{B'}^B$ is $M_B^{B'}$
 
     *Proof*: Follows from applying properties $1$ and $2$
 
-- $\forall v \in V, \langle v, O_v \rangle = 0 =\langle O_v, v \rangle$
+- $\forall v \in V, \langle v, O_V \rangle = 0 =\langle O_V, v \rangle$
 
   *Proof*: For any $w \in V$, we have $\langle v, O_V \rangle = \langle v, 0w \rangle = 0 \langle v, w \rangle$
 
@@ -1280,7 +1280,7 @@ Now define $\langle f, g \rangle = \int_0^1 f(x) g(x) \, dx$. We claim that this
 
 - $\int_0^1 f(x) cg(x) \, dx = c\int_0^1 f(x) g(x)$ so property $3$ holds
 
-We also claim that $\langle f, g \rangle$ is non-degenerate since for $f \neq 0$, we have $\langle f, f \rangle = \int_0^1 f(x)^2$, which is always $\geq 0$ and is continuous
+We also claim that $\langle f, g \rangle$ is non-degenerate since for $f \neq 0$, we have $\langle f, f \rangle = \int_0^1 f(x)^2$, which is always $> 0$ and is continuous
 
 \newpage
 
@@ -1324,7 +1324,7 @@ $$\|v + w\|^2 = \|v\|^2 + \|w\|^2$$
 \begin{align*}
 \|v + w\|^2 &= \langle v+w, v+w \rangle \\
 &= \langle v, v \rangle + 2\langle v, w \rangle + \langle w,w \rangle \\
-&= \|v\|^2 + \|w, w\|^2
+&= \|v\|^2 + \|w\|^2
 \end{align*}
 
 **Parallelogram Law**: For any $v, w \in V$, we have
@@ -1341,11 +1341,13 @@ $$\|v + w\|^2 + \|v - w\|^2 = 2\|v\|^2 + 2 \|w \|^2$$
 
 &nbsp;
 
+Let $w \in V$. For any $v \in V$ there exists $c \in K$ such that $v - cw \perp w$. That is $\langle v-cw, w \rangle = 0$
+
 **Definition - Projection**: $\proj_w v$ represents $v$ as a scalar multiple of $w$ where $\proj_w v = (\frac{\langle v, w \rangle}{\langle w, w\rangle}) w$
 
-- Definition comes from creating a right triangle where $v - cw \perp cw \implies \langle v - cw, cw \rangle = 0$
+- Definition comes from creating a right triangle where $v - cw \perp w \implies \langle v - cw, w \rangle = 0$
 
-    Thus we have $\langle v, cw \rangle - \langle cw, cw \rangle = c \langle v, w \rangle - c^2 \langle w, w \rangle \implies c = \frac{\langle v, w \rangle}{ \langle w, w \rangle}$
+    Thus we have $\langle v, w \rangle - \langle cw, w \rangle = \langle v, w \rangle - c \langle w, w \rangle \implies c = \frac{\langle v, w \rangle}{ \langle w, w \rangle}$
 
 - Special case where $\langle w, w \rangle = 1 \implies \proj_w v = \langle v, w \rangle w$
 
@@ -1355,7 +1357,7 @@ $$\|v + w\|^2 + \|v - w\|^2 = 2\|v\|^2 + 2 \|w \|^2$$
 
 $$|\langle v, w \rangle| \leq \|v\| \|w\|$$
 
-*Proof*: If $w = O$, then $| \langle v, w \rangle| \leq 0$
+*Proof*: If $w = O$, then $| \langle v, w \rangle| = 0 \leq \|v\|\|w\| = 0$
 
 Otherwise, assume that $w$ is a unit vector. Using the definition of projection, we have $cw \perp v - cw$. Thus we see
 
@@ -1439,11 +1441,11 @@ $$\langle w, v - \sum_{j=1}^{r}c_jw_j \rangle = 0$$
 
 $$\|v - \proj_W v\| \leq \|v - w\| \quad \quad \text{for any arbitrary } w \in W$$
 
-*Proof*: Choose any $w \in W = \Span(\{v_w, \ldots, w_r\})$, then $\displaystyle w = \sum_{i=1}^{r} a_i w_i$. Then we have
+*Proof*: Choose any $w \in W = \Span(\{w_1, \ldots, w_r\})$, then $\displaystyle w = \sum_{i=1}^{r} a_i w_i$. Then we have
 
 \begin{align*}
 \|v - w\|^2 &= \|v - \sum_{i=1}^{r} a_i w_i\|^2  \\
-&= \|\underbrace{v - \sum_{i=1}^{r}c_i w_i}_{\perp W} + \underbrace{\sum_{i=1}^{r}(c_i a_i) w_i\|^2}_{\in W} \\
+&= \|\underbrace{v - \sum_{i=1}^{r}c_i w_i}_{\in W^{\perp}} + \underbrace{\sum_{i=1}^{r}(c_i a_i) w_i\|^2}_{\in W} \\
 &= \|v - \sum_{i=1}^{r}c_i w_i\|^2 + \|\sum_{i=1}^{r}(c_i - a_i) w_i \|^2 \quad \quad \text{by Pythagoras}\\
 \end{align*}
 
@@ -1484,11 +1486,11 @@ But we have $\displaystyle w = \sum_{i=1}^{r}c_i w_i \implies c_i = \frac{\langl
 
 &nbsp;
 
-**Upshot**: Any finite $R$ Vector Space $V$ with a positive definite inner product has an orthonormal basis
+**Upshot**: Any finite $R$-Vector Space $V$ with a positive definite inner product has an orthonormal basis
 
 \newpage
 
-**Theorem** Let $V$ be a finite dimension $R$ Vector Space with a positive definite scalar product. Then for any subspace $W \subseteq V$
+**Theorem**: Let $V$ be a finite dimension $R$ Vector Space with a positive definite scalar product. Then for any subspace $W \subseteq V$
 
 $$V = W \oplus W^{\perp}$$
 
@@ -1522,7 +1524,7 @@ Let $A$ be an $m \times n$ matrix with entries in $R$
 - Let $R_A \subseteq R^n$ be the span of row vectors of $A$
 - Let $\Null(A) = \{v \in R^n \mid Av = O\}$
 
-Recall that any $m \times n$ matrix $A$ describes a linear transformation $L_A: R^n \rightarrow R^m$ where $L_a(v) = Av \in R^m$
+Recall that any $m \times n$ matrix $A$ describes a linear transformation $L_A: R^n \rightarrow R^m$ where $L_A(v) = Av \in R^m$
 
 Thus $\Img(L_A) = C_A$
 
@@ -1681,7 +1683,7 @@ IS: Suppose $\dim(V) = n$
 
       Choose $v \in V$. Since $\langle v_1, v_1 \rangle \neq 0$ we can use projection: $\proj_{v_1} v = \frac{\langle v, v_1 \rangle}{\langle v_1, v_1 \rangle} v_1 \in V_1$
 
-      Thus $(v - \proj_{v_1} v) \perp v_1 \implies (v - \proj_{v_1}) \in V_1^\perp$
+      Thus $(v - \proj_{v_1} v) \perp v_1 \implies (v - \proj_{v_1}v) \in V_1^\perp$
 
       Thus $v = \underbrace{(\proj_{v_1}v)}_{\in V_1} + \underbrace{(v - \proj_{v_1}v)}_{\in V_1^\perp}$
 
@@ -1719,11 +1721,11 @@ Thus we see that $\phi_i(v_j) = \begin{cases} 1 & i =j \\ 0 & i \neq j \end{case
 
 Let $B' = \{\phi_1, \ldots, \phi_n\}$. Then we see that $B'$ is a basis for $V^*$
 
-- Show linear independence: Take $a_i \in K$ such that $\underbrace{O}_{O \text{ mapping}} = \underbrace{a_1 \phi_1 + \cdots + a_n \phi_n)}_{\text{mapping}}$
+- Show linear independence: Take $a_i \in K$ such that $\underbrace{O}_{O \text{ mapping}} = \underbrace{a_1 \phi_1 + \cdots + a_n \phi_n}_{\text{mapping}}$
 
   This equality means that $\forall w \in V$, we have $(a_1 \phi_1 + \cdots + a_n \phi_n) (w) = O(w)$
 
-  Now applying the transformation to $v_1$, we see that $a_1 = O(v_1) = 0 \implies a_1 = 0$
+  Now applying the transformation to $v_1$, we see that $a_1\phi_1(v_1) = O(v_1) = 0 \implies a_1 = 0$
 
   Similar logic shows that $a_i = 0$ for $1 \leq i \leq n$
 
@@ -1741,7 +1743,7 @@ Let $B' = \{\phi_1, \ldots, \phi_n\}$. Then we see that $B'$ is a basis for $V^*
 
   Simple calculations show that $\phi^*(v_j) = (b_1 \phi_1 + \cdots + b_n \phi_n)(v_j) = b_j = T(v_j)$
 
-  Thus $T \in \Span(B%*)$
+  Thus $T \in \Span(B)$
 
 &nbsp;
 
@@ -1759,7 +1761,7 @@ These $\phi_i$ uniquely describe $F$
 
 Consider a subspace $W \subseteq V$
 
-**Definition - Annihilator**: $\Ann(W) = \{\phi \in V^* \mid \forall w \in W, \phi(w) = 0\}$, so the set of linear transformations in $V^*$ such that $W \subseteq \Ker(\phi)$
+**Definition - Annihilator**: $\Ann(W) = \{\phi \in V^* \mid \forall w \in W, \phi(w) = 0\}$, so the set of linear transformations $\phi$ in $V^*$ such that $W \subseteq \Ker(\phi)$
 
 \newpage
 
@@ -1775,13 +1777,13 @@ Let $B' = \{\phi_1, \ldots, \phi_n\}$ be the dual basis of $V^*$ corresponding t
 
 We claim that $\{\phi_{r+1}, \ldots, \phi_n\}$ is a basis for $\Ann(W)$
 
-- For any $w \in W$, $w = a_1 w_1 + \cdots + a_r w_r$, and $j \geq r+1$, we have htat $\phi_j(w) = 0 \implies \{\phi_{r+1}, \ldots, \phi_n\} \subseteq \Ann(W)$
+- For any $w \in W$, $w = a_1 w_1 + \cdots + a_r w_r$, and $j \geq r+1$, we have that $w_j = O \implies \phi_j(w) = 0 \implies \{\phi_{r+1}, \ldots, \phi_n\} \subseteq \Ann(W)$
 
 - $\{\phi_{r+1}, \ldots, \phi_n\}$ is linearly independent since $B'$ is linearly independent
 
 - To show that $\Span(\{\phi_{r+1}, \ldots, \phi_n\}) = \Ann(W)$
 
-  Take $T \in \Ann(W) \implies T: V \rightarrow K$ is a linearly transformation
+  Take $T \in \Ann(W) \implies T: V \rightarrow K$ is a linear transformation
 
   Furthermore, we have $T(w_1) = 0, \ldots, T(w_r) = 0$
 
@@ -1935,7 +1937,7 @@ Furthermore, since $\{v_{s+1}, \ldots, v_n\}$ is linearly independent, we have t
 
 **Sylvester's Theorem**: Let $V$ be a finite dimensional vector space of $R$. Then there exists $r \geq 0$ such that if $\{v_1, \ldots, v_n\}$ is a basis, then there are precisely $r$ integers such that
 
-$$\langle v_i, v_i \rangle < 0$$
+$$\langle v_i, v_i \rangle > 0$$
 
 *Proof* Let $\{v_1, \ldots, v_n\}$ and $\{w_1, \ldots, w_n\}$ be orthogonal bases for $V$. Arrange them such that
 
@@ -2168,7 +2170,7 @@ IS: Choose an arbitrary $\sigma \in S_{n+1}$
 
 **Definition - $\mathbf{\epsilon}$**: Is a function $\epsilon: S_k \rightarrow \{-1, +1\}$
 
-$$\epsilon(\sigma) = \begin{cases} +1 & \sigma \text{ is even } \\ -2 & \sigma \text{ is odd }\end{cases}$$
+$$\epsilon(\sigma) = \begin{cases} +1 & \sigma \text{ is even } \\ -1 & \sigma \text{ is odd }\end{cases}$$
 
 - **Note**: Any $\sigma \in S_k$ permuates $\{x_1, \ldots, x_k\} \rightarrow \{x_{\sigma(1)}, \ldots, x_{\sigma(k)}\}$
 
@@ -2221,7 +2223,7 @@ $$\overline{\omega}(x, y) = \overline{\omega}(y, x) \implies \overline{\omega}(v
 &nbsp;
 
 
-**Theorem**: Suppose $\{v_1, \ldots, v_k\} \subseteq V$ is linaerly dependent. Then for all $\\omega \in \Lambda_k(V)$, we have
+**Theorem**: Suppose $\{v_1, \ldots, v_k\} \subseteq V$ is linearly dependent. Then for all $\omega \in \Lambda_k(V)$, we have
 
 $$\omega(v_1, \ldots, v_k) = 0$$
 
@@ -2235,7 +2237,7 @@ $$\omega(v_1, \ldots, v_{i-1}, (\sum_{j \neq i} a_j v_j), v_{i+1}, \ldots, v_k) 
 
 This last part follows since there are $2$ $v_j$ and $\omega$ is alternating
 
-**Upshot**: Alternating multilinear k-forms preserve linearly dependence
+**Upshot**: Alternating multilinear k-forms preserve linear dependence
 
 &nbsp;
 
@@ -2507,7 +2509,7 @@ Here $B$ is called the **transpose** of $A$, namely $B = ^t A$
 
 &nbsp;
 
-Now given $A$< how do we find $B$?
+Now given $A$, how do we find $B$?
 
 Take $w \in V$ and let $L_w^A: V \rightarrow R$ be defined by $L_w^A(v) = \langle Av, w \rangle$
 
@@ -2557,7 +2559,7 @@ $$\forall v, w \in V \quad \quad \langle A v, A w \rangle = \langle v, w \rangle
 
 $$\|Av\|^2 = \langle Av, Av \rangle = \langle v, v \rangle = \|v\|^2$$
 
-$\impliedby$ Assum $A$ is norm-preserving and chooose $v, w \in V$. Then
+$\impliedby$ Assume $A$ is norm-preserving and chooose $v, w \in V$. Then
 
 $$\langle v + w, v + w \rangle - \langle v - w, v - w \rangle = 4 \langle v, w \rangle$$
 
@@ -2566,3 +2568,103 @@ Similarly, we have that
 $$\langle A(v + w), A(v + w) \rangle - \langle A(v - w), A (v-w) \rangle  = 4 \langle Av , Aw \rangle$$
 
 Thus we have that $\|v + w\|^2 - \|v - w\|^2 = \|A(v + w)\|^2 - \|A(v- w)\|^2 \implies \langle v, w \rangle = \langle Av, Aw \rangle$
+
+# Eigenvectors and Eigenvalues
+
+For the rest of the course, we consider a Finite Dimensional Vector Space $V$ over $R$ or $C$ with a positive definite $\langle, \rangle$ that is
+
+- Scalar if we are dealing with $R$
+
+- Hermitian if we are dealing with $C$
+
+We study operators $A: V \rightarrow V$
+
+Some operators are easy to understand. For example consider $A: R ^2 \rightarrow R^2 \quad \quad A = \begin{bmatrix} 5 & 0 \\ 0 & 3\end{bmatrix}$
+
+Then we have $A \begin{bmatrix} 1 \\ 0\end{bmatrix} = \begin{bmatrix} 5 \\ 0\end{bmatrix}$ and $A \begin{bmatrix} 0 \\ 1\end{bmatrix} = \begin{bmatrix} 0 \\ 3\end{bmatrix}$
+
+Thus $A$ stretches $x$ by $5$ and streches $y$ by $3 \implies A\begin{bmatrix} x \\ y\end{bmatrix} = \begin{bmatrix} 5x \\ 3y\end{bmatrix}$
+
+&nbsp;
+
+However, some operators are more difficult to understand. For example, consider $B: R^2 \rightarrow R^2 \quad \quad B = \begin{bmatrix} 3 & 1 \\ 1 & 3\end{bmatrix}$
+
+Then we have $B \begin{bmatrix} 1 \\ 0 \end{bmatrix} = \begin{bmatrix} 3 \\ 1\end{bmatrix}$ and $B \begin{bmatrix} 0 \\ 1\end{bmatrix} = \begin{bmatrix} 1 \\ 3\end{bmatrix}$
+
+Clearly using the standard basis, it's difficult to describe the operator
+
+However, if we instead use the basis $B = \{\begin{bmatrix} 1 \\ 1 \end{bmatrix}, \begin{bmatrix} 1 \\ -1 \end{bmatrix}\}$, we get
+
+$$B \begin{bmatrix} 1 \\ 1 \end{bmatrix} = 4\begin{bmatrix} 1 \\ 1 \end{bmatrix} \quad \quad B \begin{bmatrix} 1 \\ -1 \end{bmatrix} = 2 \begin{bmatrix} 1 \\ -1 \end{bmatrix}$$
+
+Which is much makes it much easier to describe the operator
+
+&nbsp;
+
+**Definition - Eigenvector**: Nonzero $v \in V$ such that $Av = \lambda v$ for some $\lambda \in K$
+
+**Definition - Eigenvalue**: Some $\lambda \in K$ such that $Av = \lambda v$ for some nonzero $v \in V$
+
+&nbsp;
+
+So for the examples above
+
+- Eigenvalues for $A$ are $\lambda \in \{5, 3\}$ corresponding to $\begin{bmatrix} 1 \\ 0\end{bmatrix}$ and $\begin{bmatrix} 0 \\ 1 \end{bmatrix}$
+
+- Eigenvalues for $B$ are $\lambda \in \{4, 2\}$ corresponding to $\begin{bmatrix} 1 \\ 1\end{bmatrix}$ and $\begin{bmatrix} 1 \\ -1 \end{bmatrix}$
+
+&nbsp;
+
+**Definition - Eigenspace**: For any $\lambda$, the **eigenspace** is
+
+$$W_\lambda = \{v \in V \mid Av = \lambda v\}$$
+
+- **Note**: $W_\lambda$ is a subspace of $V$
+
+&nbsp;
+
+**Example**: Rotations. Fix an angle $\theta$
+
+Define the operator $R_\theta = R^2 \rightarrow R^2$ (rotation counter-clockwise) by
+
+$$R_\theta = \begin{bmatrix} \cos \theta & \sin \theta \\ -\sin \theta & \cos \theta \end{bmatrix}$$
+
+- **Note**: There are no eigenvalues in $R$ and thus no eigenvectors
+
+- **Note**: However, for $v \in C^2, R_\theta(v) = e^{i \theta} v$
+
+&nbsp;
+
+Now show how to determine if $\lambda$ is an eigenvalue
+
+By definition, $\lambda$ is an eigenvalue if and only if there is some nonzero $v \in V$ such that $Av = \lambda v$
+
+But this means that $(\lambda I - A)v = O$
+
+Which means that $v \in \Ker(\lambda I - A)$
+
+Which means that $\Ker(\lambda I - A) \neq \{O\}$
+
+Which means that $\det(\lambda I - A) = 0$
+
+&nbsp;
+
+**Definition - Characteristic Polynomial**: For an operator $A$, we define the **characteristic polynomial**
+
+$$P_A(t) = \det(t I - A)$$
+
+- **Note**: $\lambda$ is an eigenvalue of $A$ if and only if $P_A(\lambda) = 0$
+
+&nbsp;
+
+**Example**: Consider $A: R^2 \rightarrow R^2 \quad \quad A = \begin{bmatrix} 1 & 4\\ 2 & 3\end{bmatrix}$. Determine the eigenvalues of $A$
+
+We look at
+
+$$\det(\lambda I - A) = \lambda^2 - 4 \lambda + 3 - 8 = 0 \implies t \in \{5, -1\}$$
+
+Thus eigenvalues of $A$ are $\{5, -1\}$
+
+&nbsp;
+
+**Note**: By the Fundamental Theorem of Algebra, every non-constant monic polynomial has a root in $C$. Thus every $A: V \rightarrow V$ has an eigenvalue (hence eigenvector) in $C$
