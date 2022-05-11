@@ -716,13 +716,13 @@ Thus $\dim(\mat_{2 \times 3}(K)) = 6$
 
 &nbsp;
 
-**Definition - Transpose**: Given an $m \times n$ matrix $A$, the **transpose** $^t A$ is an $n \times m$ matrix that swaps the rows and columns, and vice versa
+**Definition - Transpose**: Given an $m \times n$ matrix $A$, the **transpose** $A^t$ is an $n \times m$ matrix that swaps the rows and columns, and vice versa
 
-- **Note**: If $A$ is a square $n \times n$ matrix, then $^t A$ is also a square $n \times n$ matrix
+- **Note**: If $A$ is a square $n \times n$ matrix, then $A^t$ is also a square $n \times n$ matrix
 
 &nbsp;
 
-**Example**: $^t \begin{bmatrix} 4 & 0 & 3 \\ -1 & 3 & 0\end{bmatrix} = \begin{bmatrix} 4 & -1 \\ 0 & 3 \\ 2 & 6\end{bmatrix}$
+**Example**: $\begin{bmatrix} 4 & 0 & 3 \\ -1 & 3 & 0\end{bmatrix}^t = \begin{bmatrix} 4 & -1 \\ 0 & 3 \\ 2 & 6\end{bmatrix}$
 
 &nbsp;
 
@@ -794,7 +794,7 @@ Thus $\frac{d}{dx}$ is a function
 
 **Example**: $t: \mat_{2 \times 3}(K) \rightarrow \mat_{3 \times 2}(K)$
 
-Then $t(A) = ^tA$ is a function
+Then $t(A) = A^t$ is a function
 
 &nbsp;
 
@@ -1158,9 +1158,11 @@ $$M_{B'}^B(T) = (\underbrace{T(v_1) \quad \quad T(v_2)}_{\text{in terms of } w_1
 
 $T(v_1) = T(1, 4) = (9, -3, 1) = 3w_1 - \frac{3}{5}w_2 + w_3$
 
-$T(v_2) = T(1, 4) = (15, 3, 3) = 5w_1 + \frac{3}{5}w_2 + 3w_3$
+$T(v_2) = T(3, 0) = (15, 3, 3) = 5w_1 + \frac{3}{5}w_2 + 3w_3$
 
 Thus we see that $M_{B'}^B(T) = \begin{bmatrix} 3 & 5\\ -3/5 & 3/5 \\ 1 & 3\end{bmatrix}$
+
+&nbsp;
 
 **Upshot**: Any vector, written in $B$ coordinates, when multiplied by this matrix, yields an answer in $B'$ coordinates. Thus for $v = a v_1 + b v_2$, we have
 
@@ -1735,7 +1737,7 @@ Let $B' = \{\phi_1, \ldots, \phi_n\}$. Then we see that $B'$ is a basis for $V^*
 
   $T(v_1) = b_1 \in K, \ldots, T(v_n) = b_n \in K$
 
-  Now let $\phi^* = b_1 \phi_1 + \cdots + b_n \phi_n$. Clearly $\phi \in \Span(B')$
+  Now let $\phi^* = b_1 \phi_1 + \cdots + b_n \phi_n$. Clearly $\phi* \in \Span(B')$
 
   We show that $\phi^* = T$ (they need to agree on all input)
 
@@ -1743,7 +1745,7 @@ Let $B' = \{\phi_1, \ldots, \phi_n\}$. Then we see that $B'$ is a basis for $V^*
 
   Simple calculations show that $\phi^*(v_j) = (b_1 \phi_1 + \cdots + b_n \phi_n)(v_j) = b_j = T(v_j)$
 
-  Thus $T \in \Span(B)$
+  Thus $T' \in \Span(B)$
 
 &nbsp;
 
@@ -2160,11 +2162,11 @@ IS: Choose an arbitrary $\sigma \in S_{n+1}$
 
 - Case 1: Suppose $\sigma(n + 1) = n + 1$. Then we can look at the remaining elements $[n]$, which by IH, any $\sigma \in S_n$ can be written as a product of transpositions
 
-- Case 2: Suppose $\sigma(n + 1) = j$ for some $J \leq n$. Then let $\tau$ be the transposition swapping $J, n + 1$. Then $\tau \in S_{n+1}$ and $\tau \sigma(n+1) = n + 1$
+- Case 2: Suppose $\sigma(n + 1) = j$ for some $j \leq n$. Then let $\tau$ be the transposition swapping $j, n + 1$. Then $\tau \in S_{n+1}$ and $\tau \sigma(n+1) = n + 1$
 
   By using Case 1, we can write
 
-  $$\tau \sigma = \tau_r \circ \cdots \circ \tau_1 \implies \tau \tau \sigma = \sigma = \tau (\tau_r \circ \cdots \tau_1)$$
+  $$\tau \sigma = \tau_r \circ \cdots \circ \tau_1 \implies \tau \tau \sigma = \sigma = \tau (\tau_r \circ \cdots \circ \tau_1)$$
 
 &nbsp;
 
@@ -2172,7 +2174,7 @@ IS: Choose an arbitrary $\sigma \in S_{n+1}$
 
 $$\epsilon(\sigma) = \begin{cases} +1 & \sigma \text{ is even } \\ -1 & \sigma \text{ is odd }\end{cases}$$
 
-- **Note**: Any $\sigma \in S_k$ permuates $\{x_1, \ldots, x_k\} \rightarrow \{x_{\sigma(1)}, \ldots, x_{\sigma(k)}\}$
+- **Note**: Any $\sigma \in S_k$ permutes $\{x_1, \ldots, x_k\} \rightarrow \{x_{\sigma(1)}, \ldots, x_{\sigma(k)}\}$
 
 &nbsp;
 
@@ -2200,13 +2202,13 @@ $$(\sigma_\omega)(v_1, \ldots, v_k) = \omega(v_{\sigma(1)}, \ldots, v_{\sigma(k)
 
 *Proof*: Since $\sigma$ is a product of transpositions, it suffices to prove that when $\sigma$ is a transposition $\tau$ swapping $i, j$
 
-- **Note**: $\epsilon(\tau) - 1$
+- **Note**: $\epsilon(\tau) = - 1$
 
 We need to show that for all $(v_1, \ldots, v_k) \in V^k$, we have
 
 $$\omega(v_{\tau(1)}, \ldots, v_{\tau(k)}) = - \omega(v_1, \ldots, v_k)$$
 
-Notation wise, let $\overline{\omega}(x, y)$ denote
+Notationwise, let $\overline{\omega}(x, y)$ denote
 
 $$\omega(v_1, \ldots, v_{i-1}, x, v_{i+1}, \ldots, v_{j-1}, y, v_{j+1}, v_k)$$
 
@@ -2309,7 +2311,7 @@ $$\forall \omega \in \Lambda_n(V), T^*(\omega) = d\omega$$
 
 **Properties of $\mathbf{\det(T)}$**:
 
-1. Suppose $T: V \rightarrow v$ is multiplication by $a$. That is $T(v) = av$
+1. Suppose $T: V \rightarrow V$ is multiplication by $a$. That is $T(v) = av$
 
     Then $T^*: \Lambda_n(V) \rightarrow \Lambda_n(V) \quad \quad T^*(\omega)(u_1, \ldots, u_n) = \omega(T(u_1), \ldots, T(u_n)) = \omega(au_1, \ldots, au_n) = a^n \omega(u_1, \ldots, u_n)$
 
@@ -2569,6 +2571,219 @@ $$\langle A(v + w), A(v + w) \rangle - \langle A(v - w), A (v-w) \rangle  = 4 \l
 
 Thus we have that $\|v + w\|^2 - \|v - w\|^2 = \|A(v + w)\|^2 - \|A(v- w)\|^2 \implies \langle v, w \rangle = \langle Av, Aw \rangle$
 
+## Symmetric Operators
+
+Here we look at any vector space $K^n$ and non-degenerate scalar products
+
+**Lemma**: For $A: V \rightarrow V$, there exists a unique $B: V \rightarrow V$ such that for all $u, w \in V$
+
+$$\langle Av, w \rangle = \langle v, Bw \rangle$$
+
+*Proof*: For $w \in V$, we define $L: V \rightarrow K$ as $L(v) = \langle Av, w \rangle$
+
+- Clearly $L$ is linear and thus $L \in V^*$
+
+- Furthermore, we know that there exists a unique $w' \in V$ such that for all $v \in V$,
+
+$$L(v) = \langle Av, w \rangle = \langle v, w' \rangle = \langle v, Bw \rangle$$
+
+Now define $B:V \rightarrow V$ as $B(w) = Bw = w'$
+
+Now we show that $B$ is linear
+
+-
+
+\begin{align*}
+\langle v, B(w_1 + w_2) \rangle &= \langle Av, w_1 + w_2 \rangle \\
+&= \langle Av, w_1 \rangle + \langle Av, w_2 \rangle \\
+&= \langle v, B w_1 \rangle + \langle v, Bw_2 \rangle \\
+&= \langle v, Bw_1 + Bw_2 \rangle
+\end{align*}
+
+-
+
+\begin{align*}
+\langle v, B(cw) \rangle &= \langle Av, cw \rangle  \\
+&= c \langle Av, w \rangle \\
+&= c \langle v, Bw \rangle \\
+&= \langle v, cBw \rangle
+\end{align*}
+
+&nbsp;
+
+Here $B = A^t$ is called the **transpose** of $A$
+
+**Definition - Symmetric**: An operator $A$ is **symmetric** if $A^t = A$
+
+- Thus for any operator of $V$
+
+$$\langle Av, w \rangle = \langle v, A^t w \rangle$$
+
+&nbsp;
+
+**Upshot**: $A$ is symmetric if and only if $\langle Av, w \rangle = \langle v, Aw \rangle$ for all $v, w \in V$
+
+&nbsp;
+
+**Example**: Consider the typical dot product in $V = K^n$ and consider a matrix $A$ and column vectors $X, Y$
+
+$$\langle X, Y \rangle = X^t Y \implies \langle AX, Y \rangle = (AX)^t Y = X^t A^tY = \langle X, A^t Y \rangle$$
+
+&nbsp;
+
+**Theorem**: For any operators, we have that
+
+1. $(A + B)^t = A^t + B^t$
+
+2. $(AB)^t = B^t A^t$
+
+3. $(cA)^t = cA^t$
+
+4. $A^{tt} = A$
+
+*Proof of 2*:
+
+$$\langle ABv, w \rangle = \langle Bv, A^t w \rangle = \langle v, B^t A^t w \rangle \implies (AB)^t = B^t A^t$$
+
+## Hermitian Operators
+
+Here we consider a vector space over $C$ and a Hermitian inner product
+
+Recall that a Hermitian inner product is one such that
+
+$$\langle X, Y \rangle = X^t \overline{Y}$$
+
+&nbsp;
+
+**Theorem**: For any vector space $V$ over $C$ with a Hermitian inner product, given a function $L$, there exists a unique $w' \in V$ such that
+
+$$L(v) = \langle v, w' \rangle \quad \quad \forall v \in V$$
+
+&nbsp;
+
+Now we denote the mapping $w \rightarrow w'$ by $A^*$
+
+**Lemma**: For $A: V \rightarrow V$ there exists a unique operator $A^*: V \rightarrow V$ such that
+
+$$\langle Av, w \rangle = \langle v, A^* w \rangle \quad \quad \forall v, w \in V$$
+
+&nbsp;
+
+**Definition - Adjoint**: Here $A^*$ is called the **adjoint** of $A$
+
+&nbsp;
+
+**Example**: Consider
+
+\begin{align*}
+\langle X, Y \rangle = X^t \overline{Y} \implies \langle AX, Y \rangle = (AX)^t \overline{Y} = X^t A^t \overline{Y} = X^t \overline{(\overline{A^t}Y)} \\
+\langle X, A^* Y \rangle = X^t \overline{(A^*Y)}
+\end{align*}
+
+Thus we see that $A^* = \overline{A^t}$
+
+&nbsp;
+
+**Definition - Hermitian**: An operator is **Hermitian** if $A^* = \overline{A^t} = A$, or $A^t = \overline{A}$
+
+&nbsp;
+
+**Theorem**:
+
+1. $(A + B)^* = A^* + B^*$
+
+2. $(AB)^* = B^* A^*$
+
+3. $(\alpha A)^* = \overline{\alpha} A^*$
+
+4. $A^{**} = A$
+
+*Proof 3*:
+
+$$\langle \alpha A, w \rangle = \alpha \langle Av, w \rangle = \alpha \langle v, A^* w \rangle = \langle v, \overline{\alpha} A^* w \rangle = \langle v, (\alpha A)^* w \rangle$$
+
+
+Thus $(\alpha A)^* = \overline{\alpha}A^*$
+
+## 7.3 Unitary Operators
+
+Consider a vector space over $R$ and a positive definite scalar product
+
+**Definition - Real Unitary**: An operator $A$ is **real unitary** if
+
+$$\langle Av, Aw \rangle = \langle v, w \rangle$$
+
+**Theorem**: For a vector space $V$ over $R$ and an operator $A: V \rightarrow V$, the following are equivalent
+
+1. $A$ is unitary
+
+2. $A$ preserves the norm $\|Av \| = \|v \|$
+
+3. For every unit vector $v \in V$, $Av$ is also a unit vector
+
+*Proof $1 \rightarrow 2$*: Since $\langle Av, Av \rangle = \langle v, v \rangle$, which means that their norms are also equivalent
+
+*Proof $2 \rightarrow 1$*: We see that
+
+$$\langle A(v + w), A(v + w) \rangle - \langle A(v - w), A(v - w) \rangle = 4 \langle Av, Aw \rangle = 4 \langle v, w \rangle = \langle v + w, v +w \rangle - \langle v - w, v - w \rangle$$
+
+*Proof $2 \leftrightarrow 3$*: Follows since $\|Av\| = \|v\|$
+
+&nbsp;
+
+**Upshot**: Unitary mappings map unit vectors to unit vectors
+
+- Also preserves perpendicularity
+
+$$\langle Uv, Uw \rangle = \langle v, w \rangle = 0$$
+
+&nbsp;
+
+**Theorem**: For a vector space over $R$ with a positive definite sclar product, a linear map $A: V \rightarrow V$ is unitary if and only if
+
+$$A^t A = I$$
+
+*Proof*: An operator $A$ is unitary if and only if
+
+$$\langle Av, Aw \rangle = \langle v, w \rangle \implies \langle A^t A v, w \rangle = \langle v, w \rangle$$
+
+Thus this equivalency holds when $A^t A = I$
+
+&nbsp;
+
+**Note**: A unitary matrix is invertible since $Av = O \implies v = O$ since $A$ preserve the norm
+
+&nbsp;
+
+Under $V = R^n$ and the usual dot product, a real matrix is **real unitary** if
+
+$$A^t A = I_n \iff A^t = A^{-1}$$
+
+&nbsp;
+
+**Example**: The only unitary maps on $R^2$ to itself are rotations
+
+$$\begin{bmatrix} \cos \theta & - \sin \theta \\ \sin \theta & \cos \theta \end{bmatrix} \quad \quad \begin{bmatrix} \cos \theta & \sin \theta \\ \sin \theta & - \cos \theta \end{bmatrix}$$
+
+&nbsp;
+
+Under $V = C^n$ and the usual Hermitian product, $A$ is **complex unitary** if
+
+$$\langle Av, Aw \rangle = \langle v, w \rangle$$
+
+This holds if and only if
+
+$$A^* A = I \iff \overline{A^t} A = I \iff \overline{A^t} = A^{-1}$$
+
+&nbsp;
+
+**Theorem**: Let $V$ be a vector space either over $R$ with a positive definite scalar product, or over $C$ with a positive definite hermitian product. For a linear map $A: V \rightarrow V$ and an orthonormal basis $\{v_1, \ldots, v_n\}$, we have that
+
+- $A$ is unitary $\implies \{Av_1, \ldots, Av_n\}$ is an orthonormal basis
+
+- If $\{w_1, \ldots, w_n\}$ is another orthonormal basis such that $Av_i = w_i$, then $A$ is unitary
+
+
 # Eigenvectors and Eigenvalues
 
 For the rest of the course, we consider a Finite Dimensional Vector Space $V$ over $R$ or $C$ with a positive definite $\langle, \rangle$ that is
@@ -2597,7 +2812,7 @@ However, if we instead use the basis $B = \{\begin{bmatrix} 1 \\ 1 \end{bmatrix}
 
 $$B \begin{bmatrix} 1 \\ 1 \end{bmatrix} = 4\begin{bmatrix} 1 \\ 1 \end{bmatrix} \quad \quad B \begin{bmatrix} 1 \\ -1 \end{bmatrix} = 2 \begin{bmatrix} 1 \\ -1 \end{bmatrix}$$
 
-Which is much makes it much easier to describe the operator
+Which is much easier to describe the operator
 
 &nbsp;
 
@@ -2623,6 +2838,20 @@ $$W_\lambda = \{v \in V \mid Av = \lambda v\}$$
 
 &nbsp;
 
+**Theorem**: Every non-zero element of $W_\lambda$ is an eigenvector of $A$ having $\lambda$ as its eigenvalue
+
+*Proof*: Let $v_1, v_2 \in V$ such that $Av_1 = \lambda v_1$ and $A v_2 = \lambda v_2$. Then
+
+$$A(v_1 + v_2) = Av_1 + Av_2 = \lambda v_1 + \lambda v_2 = \lambda (v_1 + v_2)$$
+
+If $c \in K$ then
+
+$$A(c v_1) = cAv_1 = c\lambda v_1 = \lambda cv_1$$
+
+Thus any linear combination of elements of $W_\lambda$ has the same eigenvalue
+
+&nbsp;
+
 **Example**: Rotations. Fix an angle $\theta$
 
 Define the operator $R_\theta = R^2 \rightarrow R^2$ (rotation counter-clockwise) by
@@ -2634,6 +2863,47 @@ $$R_\theta = \begin{bmatrix} \cos \theta & \sin \theta \\ -\sin \theta & \cos \t
 - **Note**: However, for $v \in C^2, R_\theta(v) = e^{i \theta} v$
 
 &nbsp;
+
+**Theorem**: Let $v_1, \ldots, v_m$ be eigenvectors of $A$ with eigenvalues $\lambda_1, \ldots, \lambda_m$. Also assume that these eigenvalues are distinct, then $v_1, \ldots, v_m$ are linearly independent
+
+*Proof by Induction*:
+
+Base Case: $m = 1$ then clearly $v_1 \in V$ is linearly independent
+
+IH: Assume statement holds for $m - 1$
+
+IS: Show for $m$. Suppose we have the relation
+
+$$c_1 v_1 + \cdots + c_m v_m = O$$
+
+Then we multiply the equation above by $\lambda_1$ and by $A$ to get
+
+\begin{align*}
+c_1 \lambda_1 v_1 + \cdots + c_m \lambda_1 v_m &= O \\
+c_1 \lambda_1 v_1 + \cdots + c_m \lambda_m v_m &= O \\
+\end{align*}
+
+Combining the equations, we get
+
+$$c_2 (\lambda_2 - \lambda_1) v_2 + \cdots + c_m (\lambda_m - \lambda_1) v_m = O$$
+
+Since $\lambda_i, \lambda_j$ are distinct, we conclude (by IH) that
+
+$$c_2 = \cdots = c_m = 0$$
+
+Finally looking back at the original equation, we get $c_1v_1 = O \implies c_1 = 0$
+
+&nbsp;
+
+**Definition - Diagonalization**: Suppose we have a linear map $L: V \rightarrow V$ and a basis of $V$ $\{v_1, \ldots, v_n\}$. We say this basis **diagonalizes** $L$ if each $v_i$ is an eigenvector of $L$ such that $Lv_i = c_i v_i$
+
+Then the matrix representing $L$ with respect to this basis is a diagonal matrix
+
+$$A = \begin{bmatrix} c_1 & 0 & \cdots & 0 \\ 0 & c_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & c_n \end{bmatrix}$$
+
+We say that a linear map $L$ can be **diagonalized** if there exists a basis of $V$ consisting of eigenvectors
+
+## Characteristic Polynomial
 
 Now show how to determine if $\lambda$ is an eigenvalue
 
@@ -2668,3 +2938,286 @@ Thus eigenvalues of $A$ are $\{5, -1\}$
 &nbsp;
 
 **Note**: By the Fundamental Theorem of Algebra, every non-constant monic polynomial has a root in $C$. Thus every $A: V \rightarrow V$ has an eigenvalue (hence eigenvector) in $C$
+
+
+## Diagonalization of Symmetric Linear Maps
+
+In this section, we let $V$ be a vector space over $R$ with a positive definite scalar product
+
+Recall that $A$ is symmetric if we have the relation
+
+$$\langle Av, w \rangle = \langle v, Aw \rangle$$
+
+**Theorem**: Let $A: V \rightarrow V$ be a symmetric matrix, then $A$ has a nonzero eigenvector
+
+*Proof*: If $V$ is a vector space under $C$, we know that it has a nonzero eigenvector
+
+Now consider $V$ as a vector space under $R$ with eigenvalue $\lambda \in C$ and eigenvector $Z = X + iY \in C$. We show that $X, Y$ are real eigenvectors of $A$ with eigenvalue $\lambda$
+
+Let $Z = (z_1, \ldots, z_n)^t$ have complex coordinates $z_i$. Then
+
+$$Z \cdot \overline{Z} = \overline{Z} \cdot Z = \overline{Z}^t Z = |z_1|^2 + \cdots + |z_n|^2 > 0$$
+
+By hypothesis, we have that $AZ = \lambda Z$. Thus
+
+$$\overline{Z}^t AZ = \overline{Z}^t \lambda Z = \lambda \overline{Z}^t Z$$
+
+Since the transpose of a $1 \times 1$ matrix equals itself, we also have
+
+$$Z^t A^t \overline{Z} = \overline{Z}^t A Z = \lambda \overline{Z}^t Z$$
+
+However since $\overline{AZ} = A \overline{Z}$ (since $A$ is real) and $\overline{AZ} = \overline{\lambda} \overline{Z}$. Thus we have
+
+$$\lambda \overline{Z}^t Z = \overline{\lambda} Z^t \overline{Z}$$
+
+Since $Z^t \overline{Z} \neq 0$, it follows that $\lambda = \overline{\lambda}$ and thus $\lambda$ is real
+
+Now from $AZ = \lambda Z$, we see that
+
+$$Ax + iAY = \lambda X + i\lambda Y$$
+
+Since $A, X, Y$ are real and $AX = \lambda X$ and $AY = \lambda Y$, this proves the theorem
+
+&nbsp;
+
+**Example**: Consider
+
+$$A = \begin{bmatrix} 3 & -1 \\ -1 & 2 \end{bmatrix}$$
+
+Then for $X^t = (x, y)$, we see that
+
+$$X^t AX = 3x^2 - 2xy + 2y^2$$
+
+&nbsp;
+
+**Theorem**: If $V$ is a finite dimensional vector space with a positive definite scalar product, with $A:V \rightarrow V$ a symmetric linear map, then $A$ has a nonzero eigenvector
+
+*Proof*: Follows from the previous theorem
+
+&nbsp;
+
+**Definition - Invariant**: For a subspace $W \subseteq V$ and symmetric linear map $A: V \rightarrow V$, we say that $W$ is **invariant** under $A$ if $A(W) \subseteq W$, that is $\forall u \in W, Au \in W$
+
+&nbsp;
+
+**Theorem**: Let $A: V \rightarrow V$ be a symmetric linear map and let $v$ be a non-zero eigenvector of $A$
+
+- If $w \in V$ and $w \perp v$, then $Aw \perp v$
+
+- If $W$ is a subspace of $V$ and is invariant under $A$, then $W^{\perp}$ is also invariant under $A$
+
+*Proof*: Suppose that $v$ is an eigenvector of $A$, then
+
+$$\langle Aw, v \rangle = \langle w, Av \rangle = \langle w, \lambda v \rangle = \lambda \langle w, v \rangle = 0$$
+
+Thus $Aw \perp v$
+
+Now suppose that $W$ is invariant under $A$ and take $u \in W^{\perp}$. Then for all $w \in W$ we have that
+
+$$\langle Au, w \rangle = \langle u, Aw \rangle = 0$$
+
+Thus $Au \in W^{\perp} \implies W^\perp$ is invariant under $A$
+
+&nbsp;
+
+**Spectral Theorem**: For a symmetric linear map $A: V \rightarrow V$, $V$ has an orthonormal basis consisting of eigenvectors
+
+*Proof*: Since $A$ is a symmetric, there exists a non-zero eigenvector $v$ for $A$
+
+Let $W$ be the one-dimensional space generated by $v$. Then $W$ is invariant under $A$
+
+Thus by the theorem above, $W^\perp$ is also invariant under $A$ and is a vector space of dimension $n - 1$
+
+By applying induction, we can find a basis $\{v_2, \ldots, v_n\}$ of $W\perp$ consisting of eigenvectors
+
+Finally we have an orthogonal basis of $V$ consisting of eigenvectors $\{v_1, \ldots, v_n\}$
+
+Taking the norm of each vector gives us an orthonormal basis
+
+Finally, let $\{e_1, \ldots, e_n\}$ be an orthonormal basis of $V$ such that each $e_i$ is an eigenvector, then the matrix of $A$ with respect to this basis is diagonal and consists of the eigenvalues
+
+$$A = \begin{bmatrix} \lambda_1 & 0 & \cdots & 0 \\ 0 & \lambda_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & \lambda_n \end{bmatrix}$$
+
+&nbsp;
+
+**Definition - Spectral Basis**: A basis $\{v_1, \ldots, v_n\}$ such that each $v_i$ is an eigenvector for $A$ is called a **spectral basis** of $A$
+
+- This basis **diagonalizes** $A$ since the matrix of $A$ with respect to this basis is a diagonal basis
+
+# Polynomials and Matrices
+
+## Polynomials
+
+**Definition - Polynomial**: A **polynomial** over a field $K$ is an expression
+
+$$f(t) = a_nt^n + \cdots + a_0$$
+
+Where $t$ is a variable
+
+We also define operations on polynomials
+
+- Addition
+
+$$(f + g)(t) = (a_n + b_n)t^n + \cdots + (a_0 + b_0)$$
+
+- Scalar Multiplication
+
+$$(cf)(t) = c a_nt^n + \cdots + ca_0$$
+
+- Multiplication
+
+$$(fg)(t) = c_{n+m}t^{n+m} + \cdots + c_0 \quad \quad c_k = \sum_{i=0}^{k}a_i b_{k-i} = a_0 b_k + a_1 b_{k-1} + \cdots + a_k b_0$$
+
+&nbsp;
+
+**Theorem**: For polynomials $f, g$
+
+$$\deg(fg) = \deg(f) + \deg(g)$$
+
+- **Note**: We let $f = 0$ have degree $- \infty$
+
+*Proof*:
+
+$(fg)(t) =  a_nb_mt^{n +m} + \cdots$ and $a_n b_m \neq 0$. Thus $\deg(fg) = n + m = \deg(f) + \deg(g)$
+
+If either $f, g$ is $0$, then our convention of having the $0$ function have degree $-\infty$ works out
+
+&nbsp;
+
+**Definition - Root**: A **root** $\alpha$ of $f$ is a number such that $f(\alpha) = 0$
+
+&nbsp;
+
+**Theorem**: Let $f$ be a polynomial with complex coefficients, leading coefficient $1$, and $\deg(f) = n \geq 1$, then there exist complex numbers $\alpha_1, \ldots, \alpha_n$ such that
+
+$$f(t) = (t - \alpha_1) \cdots (t - \alpha_n)$$
+
+## Polynomials of Matrices and Linear Maps
+
+We denote the set of polynomials with coefficients in $K$ as $K[t]$
+
+Now for a polynomial $f \in K[t]$ and a square matrix $A$ with coefficients in $K$, we can write
+
+$$f(A) = a_n A^n + \cdots + a_0 I$$
+
+**Theorem**: For $f, g \in K[t]$ and a square matrix, we have
+
+\begin{align*}
+(f + g)(A) &= f(A) + g(A) \\
+(fg)(A) &= f(A)g(A) \\
+(cf)(A) &= cf(A) \quad \quad c \in K
+\end{align*}
+
+**Theorem**: For a $n \times n$ matrix $A$, there exists a non-zero polynomial $f \in K[t]$ such that $f(A) = O$
+
+*Proof*: Since the vector space of $n \times n$ matrices has dimension $n^2$, successive powers of $A$ are dependent independent for some $N > n^2$
+
+Thus there exists numbers $a_0, \ldots, a_N \in K$, not all $0$, such that
+
+$$a_NA^N + \cdots + a_0 I = O$$
+
+Setting, $f(t) = a_Nt^N + \cdots + a_0$ gets us the desired polynomial
+
+&nbsp;
+
+**Note**: The theorem above also applies for any linear map $A$ of a finite dimensional vector space
+
+# Triangulation of Matrices and Linear Maps
+
+## Existence of Triangulation
+
+**Definition - Fan**: A **Fan** of an operator $A$ is a sequence of subspaces $\{V_1, \ldots, V_n\}$ such that each $V_i \subset V_{i + 1}$, where each $\dim(V_i) = i$ and each $V_i$ is $A$-invariant
+
+**Definition - Fan Basis**: For a fan of $A$, $\{V_1, \ldots, V_n\}$, a **fan basis** is a basis $\{v_1, \ldots, v_n\}$ such that $\{v_1, \ldots, v_i\}$ is a basis for $V_i$
+
+- **Note**: A fan basis automatically exists since we can inductively construct a basis for $V_i$; namely, let $v_1$ be a basis for $V_1$. We can extend this to $\{v_1, v_2\}$, a basis of $V_2$, and so on until we have a basis $\{v_1, \ldots, v_n\}$ of $V_n$
+
+&nbsp;
+
+**Theorem**: Let $\{v_1, \ldots, v_n\}$ be a fan basis for $A$, then a matrix associated with $A$ relative to this basis is an upper triangular matrix
+
+*Proof*: Since $AV_i$ is contained in $V_i$, there exists numbers $a_{ij}$ such that
+
+\begin{align*}
+Av_1 &= a_{11} v_1 \\
+Av_2 &= a_{12}v_1 + a_{22} v_2 \\
+\vdots \\
+Av_n &= a_{1n} v_1 + \cdots + a_{nn} v_n \\
+\end{align*}
+
+Thus the matrix associated with $A$ with respect to our basis is a triangular matrix
+
+$$A = \begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ 0 & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & a_{nn} \end{bmatrix}$$
+
+&nbsp;
+
+**Note**: Let $A$ be an upper triangular matrix as above, we can view $A$ as a linear map $K^n \rightarrow K^n$. Thus the column unit vectors $e^1, \ldots, e^n$ form a fan basis for $A$
+
+Indeed, if we let $V_i$ be the space generated by $e^1, \ldots, e^i$, then $\{V_1, \ldots, V_n\}$ is the corresponding fan
+
+Thus the converse of the above theorem is true
+
+&nbsp;
+
+**Definition - Triangulable**: For an operator $A: V \rightarrow V$, if there exists a basis for $V$ for which the associated matrix of $A$ is triangular, the $A$ is **triangulable**
+
+
+&nbsp;
+
+**Theorem**: For a finite dimensional vector space $V$ over the complex numbers, let $A: V \rightarrow V$ be a linear map. Then there exists a fan of $A$ in $V$
+
+*Proof by Induction*: If $\dim(V) = 1$, then there is nothing to prove
+
+IH: Assume the statement holds for $\dim(V) = n - 1$
+
+IS: Show the statement holds for $\dim(V) = n$
+
+Since $V$ is over the complex numbers, it has a non-zero eigenvector $v_1$ for $A$. Let $V_1$ be the subspace generated by $v_1$
+
+Thus for some subspace $W$, we can write
+
+$$V = V_1 \oplus W$$
+
+The only issue is that $W$ isn't $A$-invariant
+
+Define $P_1$ to be the projection of $V$ onto $V_1$ and $P_2$ to be the project of $V$ onto $W$
+
+Then clearly $P_2A$ is a linear map $V \rightarrow V$ that maps $W$ into $W$ (since $P_2$ maps any element of $V$ into $W$)
+
+Thus by IH, $P_2A$ has a fan, call it $\{W_1, \ldots, W_{n-1}\}$
+
+Now we let
+
+$$V_i = V_1 + W_{i - 1} \quad \quad i \geq 2$$
+
+Then $V_i \subseteq V_{i + 1}$ and $\dim(V_i) = i$
+
+Now to show that $\{V_1, \ldots, V_n\}$ is a fan for $A$, we show that $AV_i$ is contained in $V_i$
+
+$$A = IA = (P_1 + P_2)A = P_1A + P_2A$$
+
+Now take $v \in V_i$, we can write $v = cv_1 + w_{i-1}$ and we see that $P_1(Av) \in V_1$ and $P_2Av = P_2 A(c v_1) + P_2Aw_{i-1} = cP_2(c \lambda_1 v_1) + P_2 AW_{i-1} = P_2 AW_{i-1} \in W_{i-1} \subset V_i$
+
+&nbsp;
+
+**Corollary**: For a vector space $V$ over the complex numbers and an operator $A: V \rightarrow V$, there exists a basis of $V$ such that the matrix of $A$ with respect to this basis is triangular
+
+&nbsp;
+
+**Corollary**: For a matrix $M$ of complex numbers, there exists a non-singular matrix $B$ such that $B^{-1}MB$ is triangular
+
+## Theorem of Hamilton-Cayley
+
+Suppose we have eigenvectors $\{v_1, \ldots, v_n\}$ and eigenvalues $\{\lambda_1, \ldots, \lambda_n\}$. Consider the characteristic polynomial of $A$
+
+$$P(A) = (A - \lambda_1 I) \cdots (A - \lambda_nI)$$
+
+If we apply $P(A)$ to any eigenvector $v_i$, then the factor $A - \lambda_i I$ will result in $0$ and thus
+
+$$P(A)v_i = O \implies P(A) = O$$
+
+&nbsp;
+
+**Theorem**: For a vector space over the complex numbers and an operator $A: V \rightarrow V$, then for the characteristic polynomial $P$, we have
+
+$$P(A) = O$$
