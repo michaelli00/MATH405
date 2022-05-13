@@ -90,7 +90,7 @@ $\dim(V) = \dim(\Ker(T)) + \dim(\Img(T))$
 
 **Lemma**: $\langle v, v \rangle = 0 \implies$ scalar product is trivial $\quad \quad \langle v +w, v + w \rangle = \langle v, v \rangle + 2 \langle v, w \rangle + \langle w, w \rangle \implies \langle v, w \rangle = 0$
 
-- **Corollary** $\forall v, \langle v, v \rangle 0 \implies$ has a orthogonal basis
+- **Corollary** $\forall v, \langle v, v \rangle = 0 \implies$ has a orthogonal basis
 
 **Theorem**: For any scalar product, $V$ has a orthogonal basis
 
@@ -100,7 +100,7 @@ $\dim(V) = \dim(\Ker(T)) + \dim(\Img(T))$
 
   - For any $v, \proj_{V_1}v \in V_1$ and $v - \proj_{V_1}v \in V_1^\perp \implies v = \proj_{V_1}v + v - \proj_{V_1}v \implies V = V_1 + V_1^\perp$
 
-  - For $v \in V_1 \cap V_1^\perp$, $\langle v, v \rangle = 0$ and $v = dv_1 \implies d^2 \langle v_1, v_1 \rangle = 0$ and since $\langle v_1, \rangle \neq 0 \implies d = 0 \implies v = 0$
+  - For $v \in V_1 \cap V_1^\perp$, $\langle v, v \rangle = 0$ and $v = dv_1 \implies d^2 \langle v_1, v_1 \rangle = 0$ and since $\langle v_1, v_1 \rangle \neq 0 \implies d = 0 \implies v = 0$
 
 **Orthogonal**: $\langle v, w \rangle = 0 \implies v \perp w \quad \quad$ **Orthogonal Complement**: $W^\perp = \{v \in V \mid \forall w \in W, v \perp w\}$
 
@@ -174,7 +174,7 @@ $\proj_W v \in W \quad \quad (v - \proj_W v) \in W^\perp$
 
   For 1-1, take $v \in \Ker(F) \implies \lambda_v = 0 \implies \forall \phi \in V^*, \phi(v) = 0$. BWOC, suppose $v \neq 0 \implies \exists \phi$ such that $\phi(v) \neq 0$
 
-  Since $\dim(V) \approx \dim(V^*) \approx \dim(V^{**}) \implies F$ is onto and thus a bijection
+  Since $\dim(V) = \dim(V^*) = \dim(V^{**}) \implies F$ is onto and thus a bijection
 
   To show that $F$ is an isomorphism, $F(aw + bv) = \lambda_{aw + bv} = \phi(aw + bv) = a\phi(w) + b\phi(v) = a\lambda_w + b \lambda_v$
 
@@ -267,7 +267,7 @@ For $A \in M_{n \times n}(K), \det(A) = \sum_{\sigma \in S_n} \epsilon(\sigma) a
 
 **7.1.10**: Take positive definite $\langle , \rangle$ over $R$ and suppose that $V = W + W^\perp$. Let $P$ be the projection on $W$. Show that $P$ is symmetric and semipositive ($\langle Av, v \rangle \geq 0$)
 
-- Show symmetric, take $a = a_1 + a_2$ and $b = b_1 + b_2$, then $\langle Pa, b \range = \langle a_1, b_1 \rangle = \langle a, Pb \rangle$
+- Show symmetric, take $a = a_1 + a_2$ and $b = b_1 + b_2$, then $\langle Pa, b \rangle = \langle a_1, b_1 \rangle = \langle a, Pb \rangle$
 
 - Show semipositive, take $a = a_1 + a_2$, then $\langle Pa, a \rangle = \langle a_1, a_1 \rangle \geq 0$ since positive definite
 
@@ -275,7 +275,7 @@ For $A \in M_{n \times n}(K), \det(A) = \sum_{\sigma \in S_n} \epsilon(\sigma) a
 
 - $\langle v_i, w_j \rangle = \langle v_i, a_1v_1 + \cdots + a_n v_n \rangle = a_i$ and $\langle Av_i, A w_j \rangle = a_i \langle w_i, w_i \rangle = a_i$
 
-**7.3.3**: Show that $A^t$ is unitary, $A^{-1}$ exists and is unitary, if $B$ is real unitary, then $AB$ and $B^{-1}AB$ are unitary
+**7.3.3**: Let $A$ be real unitary, show that $A^t$ is unitary, $A^{-1}$ exists and is unitary, if $B$ is real unitary, then $AB$ and $B^{-1}AB$ are unitary
 
 - $\langle A^t v, A^t w \rangle = \langle v, A A^t w \rangle = \langle v, w \rangle$
 
@@ -321,7 +321,7 @@ For $A \in M_{n \times n}(K), \det(A) = \sum_{\sigma \in S_n} \epsilon(\sigma) a
 
 - If $\lambda = 0$, then $Av = 0 \implies A$ not invertible since $\Ker(A) \neq \{O\}$
 
-- $A^{-1}A v = A^{-1} \lambda v \implies Iv = A^{-1}v \lambda v \implies A^{-1} v = \lambda^{-1} v$
+- $A^{-1}A v = A^{-1} \lambda v \implies Iv = A^{-1} \lambda v \implies A^{-1} v = \lambda^{-1} v$
 
 **8.2.12**: Does the derivative of $\{\sin t, \cos t\}$ have any non-zero eigenvectors?
 
@@ -343,7 +343,7 @@ For $A \in M_{n \times n}(K), \det(A) = \sum_{\sigma \in S_n} \epsilon(\sigma) a
 
 - $D = U^{-1} A U \implies A = UDU^{-1} = U \lambda I U^{-1} = \lambda I$. Thus any vector is an eigenvector
 
-**8.4.13**: Let $A: V \rightarrow$ be symmetric and that there are $n$ distinct eigenvalues of $A$. Then the eigenvectors form an orthogonal basis of $V$
+**8.4.13**: Let $A: V \rightarrow V$ be symmetric and that there are $n$ distinct eigenvalues of $A$. Then the eigenvectors form an orthogonal basis of $V$
 
 - Any $v_i, v_j$ are orthogonal since $\langle A v_i, v_j \rangle = \lambda_i \langle v_i, v_j \rangle = \lambda_j \langle v_i, v_j \rangle = \langle v_i, A v_j \rangle \implies (\lambda_i - \lambda_j) \langle v_i, v_j \rangle = 0 \implies v_i \perp v_j$
 
@@ -353,7 +353,7 @@ For $A \in M_{n \times n}(K), \det(A) = \sum_{\sigma \in S_n} \epsilon(\sigma) a
 
 - For complex polynomial, $\exists \alpha_1, \ldots, \alpha_n$ such that $f(t) = (t - \alpha_1) \cdots (t - \alpha_n)$
 
-For $n \times n$ matrix $A$, exists a polynomial $f \in K[t]$ such that $f(A) = 0$. Follows from owers of $A$ are linearly dependent for $N > n^2$
+For $n \times n$ matrix $A$, exists a polynomial $f \in K[t]$ such that $f(A) = 0$. Follows from powers of $A$ are linearly dependent for $N > n^2$
 $$a_NA^n + \cdots + a_0 I = 0 \implies f(t) = a_Nt^N + \cdots + a_0$$
 - **Note**: this also applies to linear maps $A$
 
@@ -371,7 +371,7 @@ $$a_NA^n + \cdots + a_0 I = 0 \implies f(t) = a_Nt^N + \cdots + a_0$$
 
 - **Note**: Converse holds since an upper triangular matrix $A$ has column unit vectors that form a fan basis for $A$
 
-**Trianglular**: Operator $A:V \rightarrow V$ has a basis with an associated matrix of $A$ that is **triangular**
+**Triangulable**: Operator $A:V \rightarrow V$ has a basis with an associated matrix of $A$ that is **triangular**
 
 **10.1.4**: Show that the inverse of an invertible triangular matrix is also triangular, having the same fan as $A$, $\{V_1, \ldots, V_n\}$
 
@@ -379,9 +379,9 @@ $$a_NA^n + \cdots + a_0 I = 0 \implies f(t) = a_Nt^N + \cdots + a_0$$
 
 **Theorem**: For $V$ over the complex, fan of $A$ exists
 
-For char polynomial $P(A) = (A - \lambda_1 I) v_1 \cdots (A- \lambda_n I) v_i = 0 \implies P(A) = 0$ for vectors of a basis of eigenvectors $\{v_1, \ldots, v_n\}$
+For char polynomial $P(A) = (A - \lambda_1 I) v_1 \cdots (A- \lambda_n I) v_n = 0 \implies P(A) = 0$ for vectors of a basis of eigenvectors $\{v_1, \ldots, v_n\}$
 
-**Theorem**: Let $V$ be a complex vector space and $A: V \rightarrow V$, let $P$ be the char polynomila, then $P(A) = 0$
+**Cayley-Hamilton Theorem**: Let $V$ be a complex vector space and $A: V \rightarrow V$, let $P$ be the char polynomial, then $P(A) = 0$
 
 - **Corollary**: For a $n \times n$ matrix of complex numbers $A$, $P(A) = 0$
 
@@ -407,13 +407,13 @@ For char polynomial $P(A) = (A - \lambda_1 I) v_1 \cdots (A- \lambda_n I) v_i = 
 
 **Multiplicity**: $f = p^m g \implies m$ is the mulitplicity of $p$ in $f$
 
-Take $f(t) \in K[t]$ and $w = W = \Ker(f(A))$, then $W$ is invariant under $A$
+Take $f(t) \in K[t]$ and $w \in W = \Ker(f(A))$, then $W$ is invariant under $A$
 
 - For $v \in W$, we have $tf(t) = f(t)t \implies Af(A)v = f(A)Av = 0 \implies Av \in W$
 
 **Note**: $f(A) g(A) = g(A) f(A)$
 
-**Theorem**: For $f \in K[t]$ where $f = f_1 f_2$ where $f_1, f_2$ have degree $\geq$ and $\gcd = 1$, $f(A) = 0$, and $W_1 = \Ker(f_1(A)), W_2 = \Ker(f_2(A))$, we have that $V = W_1 + W_2$
+**Theorem**: For $f \in K[t]$ where $f = f_1 f_2$ where $f_1, f_2$ have degree $\geq 1$ and $\gcd = 1$, $f(A) = 0$, and $W_1 = \Ker(f_1(A)), W_2 = \Ker(f_2(A))$, we have that $V = W_1 + W_2$
 
 - $g_1(A) f_1(A)v + g_2(A) f_2(A)v = v \implies V = W_2 + W_1$ since left component in $W_2$ and right component in $W_1$
 
@@ -421,7 +421,7 @@ Take $f(t) \in K[t]$ and $w = W = \Ker(f(A))$, then $W$ is invariant under $A$
 
 - **Corollary**: Theorem also applies for several product of factors
 
-**Theorem**: Vector Space over $C$ and an $A: V \rightarrow A$ such that $P(A) = 0$ where $P(t) = (t - \alpha_1)^{m_1} \cdots (t - \alpha_r)^{m_r}$. Set $W_i = \Ker(A - \alpha_iI)^{m_i}$, then $V = \oplus W_1 \oplus \cdots \oplus W_r$
+**Theorem**: Vector Space over $C$ and an $A: V \rightarrow A$ such that $P(A) = 0$ where $P(t) = (t - \alpha_1)^{m_1} \cdots (t - \alpha_r)^{m_r}$. Set $W_i = \Ker(A - \alpha_iI)^{m_i}$, then $V = W_1 \oplus \cdots \oplus W_r$
 
 **11.4.1**: Show that $\Img(f_1(A)) = \Ker(f_2(A))$
 
@@ -451,6 +451,12 @@ Take $f(t) \in K[t]$ and $w = W = \Ker(f(A))$, then $W$ is invariant under $A$
 
   Any irreducible over $C$ has degree $1$ thus $g(t) = t - \lambda \implies g(A) = 9 \implies A = \lambda I$
 
+**11.5.5**: Let $S$ be a set of operators and $U, W$ be S-invariant. Show that $U + W$ and $U \cap W$ are S-invariant
+
+- Take $v = u + w \implies Tv = Tu + Tw \in U + W \quad \quad$ Take $v \in U \cap W \implies Tv \in U$ and $\in W$
+
+
+
 **Cyclic**: $(A - \lambda I)$ is cyclic if $(A - \lambda I)^r v = O \quad \quad$ **Period** is $r$ such that $(A - \alpha I)^k v \neq 0$ for $0 \leq k < r$
 
 **Lemma**: $\{v, (A - \alpha I)v, \ldots, (A - \alpha I)^{r-1} v\}$ is linearly independent
@@ -469,12 +475,30 @@ A vector space is **cyclic** if $\{v, Av, \ldots, A^{r-1}v\}$ generates $V$
 
 ![Jordan Basis](./assets/jordan.png){ height=100px}
 
-- **Note**: $(A - \alpha I)^{r-1}v$ is an eigenvector with eigven value $\alpha$
+- **Note**: $(A - \alpha I)^{r-1}v$ is an eigenvector with eigenvalue $\alpha$
 
 If $V$ is the direct sum of A-invariant subspaces, $V = V_1 \oplus \cdots \oplus V_m$ and each $V_i$ is cyclic, the then the sequence of Jordan basis for each $V_i$ form a basis for $V$
 
 **Jordan Normal Form**:
 
-![Jordan Normal Form](./assets/jordan-normal.png){ height=150px}
+![Jordan Normal Form](./assets/jordan-normal.png){ height=200px}
 
 **Theorem**: For $V$ over $C$ and operator $A: V \rightarrow V$, $V$ can be expressed as a direct sum of A-invariant cyclic subspace
+
+**Minimal Polynomial**: Factors of characteristic polynomial of minimal degrees such that $M(A) = 0$
+
+**Similar**: $A, B$ are **similar** if there is an invertible matrix $N$ such that $B = N^{-1} A N$
+
+- If $\det(A) \neq \det(B)$, then $A, B$ are NOT similar
+
+**11.6.2**: Let $V$ be cyclic. Show that the subspace of $V$ generated by eigenvectors of A is one-dimensional.
+
+- $V$ has a basis $\{v, (A - \alpha I)v, \ldots, (A - \alpha I)^{r-1}v\}$ then we see that $0 = (A - \alpha I) = a_0 (A - \alpha I)v + \cdots + a_{r-2} (A - \alpha I)v \implies a_0 = \cdots = a_{r-2} = 0 \implies$ subspace is generated by $(A - \alpha I)^{r-1} v$
+
+**11.6.3**: Let $V$ be cyclic and $f$ be a polynomial. What are the eigenvalues of $f(A)$? Same question when $V$ is not cyclic?
+
+- Since $V$ is cyclic, it has a jordan basis with eigenvalues on the diagonal $\implies$ eigenvalue of $f(A)$ is $f(\lambda)$. Otherwise, we can write $V$ as a direct sum of cyclic subspaces, eigenvalues are $f(\lambda_i)$
+
+**11.6.4**: If $A$ is nilpotent and not $O$, show that $A$ is not diagonalizable
+
+- BWOC suppose $A$ is diagonalizable, then $O = A^r v = \lambda^r v$. Impossible
